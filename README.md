@@ -1,5 +1,9 @@
 # Starah
 
+Root/User privilege level abstraction management layer for users and sysadmins,
+controlling what an AI agent has access to. Starah ("Levels" in Sanskrit) intends to
+solve the usability vs. security problem of AI agents in Linux distros.
+
 *Starah* (Sanskrit: “levels”) gives AI agents **levels of privilege** on Linux. The
 person who owns the machine chooses, at first login, what each agent may do on its own.
 Anything beyond that level waits for the person's approval. No kernel changes are
