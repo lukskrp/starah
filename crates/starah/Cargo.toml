@@ -1,0 +1,20 @@
+[package]
+name = "starah"
+description = "Starah command-line tool and polkit helper"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "starah"
+path = "src/main.rs"
+
+[[bin]]
+name = "starah-polkit-check"
+path = "src/polkit_check.rs"
+
+[dependencies]
+serde_json.workspace = true
+tokio.workspace = true
+zbus.workspace = true
+futures-util.workspace = true

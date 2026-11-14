@@ -1,0 +1,17 @@
+[package]
+name = "starahd"
+description = "Starah's privilege broker (D-Bus org.starah.Broker1)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "starahd"
+path = "src/main.rs"
+
+[dependencies]
+starah-policy.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+zbus.workspace = true

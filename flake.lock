@@ -1,0 +1,27 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1794641228,
+        "narHash": "sha256-WvUkp9VFNz7kKtC/CFwFphNhi1LSDZP6xl34MSWPXGo=",
+        "owner": "lukskrp",
+        "repo": "tulsipkgs",
+        "rev": "fde56768c41e806459d32d12b49df4220bfbf752",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lukskrp",
+        "ref": "tulsi-unstable",
+        "repo": "tulsipkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

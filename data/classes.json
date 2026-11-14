@@ -1,0 +1,42 @@
+{
+  "_comment": "polkit action id -> class (observe, routine, admin, sensitive, forbidden). Exact ids win, then the longest prefix; anything else is 'default'. org.starah.* is always forbidden.",
+  "default": "sensitive",
+  "actions": {
+    "org.tulsi.extensions": "routine",
+    "org.tulsi.apply": "admin",
+
+    "org.freedesktop.policykit.exec": "forbidden",
+    "org.freedesktop.accounts.user-administration": "forbidden",
+    "org.freedesktop.accounts.change-own-password": "forbidden",
+    "org.freedesktop.accounts.change-own-user-data": "forbidden",
+    "org.freedesktop.accounts.set-login-option": "forbidden",
+    "org.freedesktop.login1.set-user-linger": "forbidden",
+
+    "org.freedesktop.systemd1.manage-units": "admin",
+    "org.freedesktop.systemd1.reload-daemon": "admin",
+    "org.freedesktop.systemd1.manage-unit-files": "sensitive",
+    "org.freedesktop.systemd1.set-environment": "sensitive",
+    "org.freedesktop.systemd1.bypass-dump-ratelimit": "admin",
+
+    "org.freedesktop.login1.power-off": "admin",
+    "org.freedesktop.login1.reboot": "admin",
+    "org.freedesktop.login1.suspend": "admin",
+    "org.freedesktop.login1.hibernate": "admin",
+
+    "org.freedesktop.udisks2.filesystem-mount": "routine",
+    "org.freedesktop.udisks2.eject-media": "routine",
+    "org.freedesktop.udisks2.power-off-drive": "routine"
+  },
+  "prefixes": {
+    "org.freedesktop.NetworkManager.": "admin",
+    "org.freedesktop.timedate1.": "admin",
+    "org.freedesktop.hostname1.": "admin",
+    "org.freedesktop.locale1.": "admin",
+    "org.freedesktop.login1.": "sensitive",
+    "org.freedesktop.udisks2.": "sensitive",
+    "org.freedesktop.machine1.": "sensitive",
+    "org.freedesktop.import1.": "sensitive",
+    "org.freedesktop.home1.": "forbidden",
+    "org.freedesktop.accounts.": "forbidden"
+  }
+}

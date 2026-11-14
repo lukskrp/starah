@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD polkit Policy Configuration 1.0//EN"
+  "http://www.freedesktop.org/software/polkit/policyconfig-1.dtd">
+<!-- What humans need to steer Starah. Agents can never get these: starahd refuses
+     agent callers before asking polkit, and Starah classes org.starah.* as forbidden. -->
+<policyconfig>
+  <vendor>Starah</vendor>
+
+  <action id="org.starah.configure">
+    <description>Choose what AI agents may do on this system</description>
+    <message>Authentication is required to change the privilege levels of AI agents</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.starah.decide">
+    <description>Approve or reject a request from an AI agent</description>
+    <message>Authentication is required to answer a request from an AI agent</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.starah.run">
+    <description>Start an AI agent</description>
+    <message>Authentication is required to start an AI agent</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+</policyconfig>

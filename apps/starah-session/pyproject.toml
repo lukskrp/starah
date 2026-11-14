@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "starah-session"
+version = "0.1.0"
+description = "Starah in the desktop session: first-login setup, login summary, agent requests (OTK)"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = ["PyGObject"]
+
+[project.scripts]
+starah-session = "starah_session.app:main"
+
+[tool.setuptools.packages.find]
+include = ["starah_session*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
