@@ -11,10 +11,11 @@ from pathlib import Path
 LEVELS = [
     ("Observe", "Can look at the system, but cannot change anything."),
     ("Propose", "Can suggest changes; you approve each one before it happens."),
-    ("Routine", "Makes low-risk changes on its own (browser extensions, mounting disks); "
-                "asks you for everything else."),
-    ("Administer", "Installs software, edits the configuration and manages services on its "
-                   "own; asks you before sensitive changes."),
+    ("Routine", "Makes changes that a restart into the previous system can undo on its own "
+                "(installing software, turning features on or off, browser extensions); asks "
+                "you before anything that touches your files, accounts or disks."),
+    ("Administer", "Also edits the configuration freely and manages services on its own; "
+                   "asks you before sensitive changes."),
     ("Delegate", "Does everything an administrator can on its own, except changing "
                  "Starah, user accounts and passwords."),
 ]

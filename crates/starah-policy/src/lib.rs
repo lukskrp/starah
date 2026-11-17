@@ -67,9 +67,10 @@ impl From<Level> for u8 {
 pub enum Class {
     /// Reads state; changes nothing.
     Observe,
-    /// Low-risk, easily undone (browser extensions, mounting a disk).
+    /// Low-risk, easily undone (browser extensions, mounting a disk, TulsiOS changes a
+    /// NixOS rollback undoes).
     Routine,
-    /// System administration (packages, configuration, services, network, power).
+    /// System administration (free-form configuration, services, network, power).
     Admin,
     /// Could take over the machine or its data (unit files, raw disks, VMs).
     Sensitive,
@@ -608,6 +609,20 @@ mod tests {
                 assert_eq!(verdict(level, *class), want, "{level:?} × {class:?}");
             }
         }
+    }
+
+    /// The shipped classes: what a NixOS rollback undoes is routine, free-form
+    /// configuration that reaches outside a generation is admin.
+    #[test]
+    fn shipped_classes_follow_reversibility() {
+        let classes: Classes =
+            serde_json::from_str(include_str!("../../../data/classes.json")).unwrap();
+        assert_eq!(classes.class_of("org.tulsi.apply"), Class::Routine);
+        assert_eq!(classes.class_of("org.tulsi.extensions"), Class::Routine);
+        assert_eq!(classes.class_of("org.tulsi.configure"), Class::Admin);
+        assert_eq!(classes.class_of("org.tulsi.anything-new"), Class::Sensitive);
+        assert_eq!(verdict(Level::Routine, classes.class_of("org.tulsi.apply")), Verdict::Allow);
+        assert_eq!(verdict(Level::Routine, classes.class_of("org.tulsi.configure")), Verdict::Ask);
     }
 
     #[test]

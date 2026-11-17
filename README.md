@@ -14,8 +14,8 @@ agent.
 |---|---|---|
 | 0 | Observe | look, never change |
 | 1 | Propose | nothing; every change is a request you approve |
-| 2 | Routine | low-risk changes (browser extensions, mounting disks) |
-| 3 | Administer | install software, edit configuration, manage services |
+| 2 | Routine | changes a rollback fully undoes (installing software, toggling features, browser extensions, mounting disks) |
+| 3 | Administer | edit configuration freely, manage services |
 | 4 | Delegate | everything except Starah itself, accounts and passwords |
 
 ## Use (NixOS)

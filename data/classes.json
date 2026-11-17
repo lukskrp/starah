@@ -1,9 +1,10 @@
 {
-  "_comment": "polkit action id -> class (observe, routine, admin, sensitive, forbidden). Exact ids win, then the longest prefix; anything else is 'default'. org.starah.* is always forbidden.",
+  "_comment": "polkit action id -> class (observe, routine, admin, sensitive, forbidden). Exact ids win, then the longest prefix; anything else is 'default'. org.starah.* is always forbidden. TulsiOS changes a NixOS rollback fully undoes (org.tulsi.apply, .extensions) are routine; free-form configuration edits that reach outside the generation (org.tulsi.configure) are admin.",
   "default": "sensitive",
   "actions": {
     "org.tulsi.extensions": "routine",
-    "org.tulsi.apply": "admin",
+    "org.tulsi.apply": "routine",
+    "org.tulsi.configure": "admin",
 
     "org.freedesktop.policykit.exec": "forbidden",
     "org.freedesktop.accounts.user-administration": "forbidden",

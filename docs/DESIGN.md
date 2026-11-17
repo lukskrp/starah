@@ -37,8 +37,13 @@ operation behind a daemon that asks polkit, so it doesn't need one.
   win over prefixes, the longest prefix wins, and unknown actions are *sensitive*.
   - **observe**: reads state only.
   - **routine**: low-risk and easily undone, such as browser extensions or mounting a disk.
-  - **admin**: system administration: packages, configuration, services, network,
-    power.
+    On TulsiOS this includes installing software and turning features on or off
+    (`org.tulsi.apply`): such a change lives in a NixOS generation, so `tulsi undo` or
+    booting the previous generation undoes it completely. The human is asked about what a
+    rollback cannot undo, not about what sounds risky.
+  - **admin**: system administration: free-form configuration edits that reach outside a
+    generation (`org.tulsi.configure`: accounts, boot, file systems, activation scripts,
+    service code), services, network, power.
   - **sensitive**: can take over the machine or its data: unit files, raw disks,
     containers and VMs.
   - **forbidden**: never delegated, at any level: Starah itself (`org.starah.*`),

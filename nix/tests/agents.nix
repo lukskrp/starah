@@ -115,9 +115,9 @@
           for r in requests():  # the retry asked again; answer no
               machine.succeed(alice(f"starah reject {r[0]}"))
 
-      def ask_in_background(tag, title):
+      def ask_in_background(tag, title, action="org.tulsi.apply"):
           machine.succeed(alice(
-              f"(starah run --agent helper -- starah ask org.tulsi.apply \"{title}\" \"+ package cowsay\"; "
+              f"(starah run --agent helper -- starah ask {action} \"{title}\" \"+ package cowsay\"; "
               f"echo $? > /tmp/{tag}.rc) > /tmp/{tag}.log 2>&1 &"
           ))
           machine.wait_until_succeeds(alice("starah requests") + f" | grep -q \"{title}\"")
@@ -125,7 +125,7 @@
 
       with subtest("a cooperating agent asks first and waits for the human"):
           req = ask_in_background("ask1", "install cowsay")
-          assert req[1] == "helper" and req[2] == "admin", req
+          assert req[1] == "helper" and req[2] == "routine", req
           machine.sleep(1)
           machine.fail("test -e /tmp/ask1.rc")  # still waiting
           machine.succeed(alice(f"starah approve {req[0]}"))
@@ -133,6 +133,17 @@
           req = ask_in_background("ask2", "install cowsay again")
           machine.succeed(alice(f"starah reject {req[0]}"))
           machine.wait_until_succeeds("grep -qx 1 /tmp/ask2.rc")
+
+      with subtest("level 2 (Routine): what a rollback undoes goes ahead, the rest asks"):
+          machine.succeed(alice("starah set helper 2"))
+          machine.succeed(
+              "starah run --agent helper -- starah ask org.tulsi.apply 'install hello' '+ package hello'"
+          )
+          assert requests() == [], requests()
+          req = ask_in_background("ask3", "add user bob", "org.tulsi.configure")
+          assert req[2] == "admin", req
+          machine.succeed(alice(f"starah reject {req[0]}"))
+          machine.wait_until_succeeds("grep -qx 1 /tmp/ask3.rc")
 
       with subtest("level 3 (Administer): administration without asking"):
           machine.succeed(alice("starah set tester 3"))
