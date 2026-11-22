@@ -41,7 +41,7 @@ python3Packages.buildPythonApplication {
       desktopName = "Agent Privileges";
       comment = "Choose what AI agents may do on this computer";
       exec = "starah-session --show";
-      icon = "security-high";
+      icon = "org.starah.Session";
       categories = [
         "Settings"
         "System"
@@ -49,6 +49,13 @@ python3Packages.buildPythonApplication {
       ];
     })
   ];
+
+  # The app icon: a balance with three bricks in each pan, in front of a Tulsi
+  # leaf (data/make_icon.py generates it).
+  postInstall = ''
+    install -Dm644 data/org.starah.Session.svg \
+      $out/share/icons/hicolor/scalable/apps/org.starah.Session.svg
+  '';
 
   dontWrapGApps = true;
   preFixup = ''

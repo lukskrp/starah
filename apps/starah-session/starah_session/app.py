@@ -229,6 +229,8 @@ class StarahApp(Gtk.Application):
             self.show_levels(force=True)
             return
         self.started = True
+        # Starah's own icon (the balance) for every window, in the window list too.
+        Gtk.Window.set_default_icon_name(APP_ID)
         self.hold()  # keep running as the request notifier without windows
         try:
             self.broker = Broker()
