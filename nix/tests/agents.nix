@@ -21,6 +21,8 @@
           description = "Test agent";
         };
         agents.helper.description = "Asks before acting";
+        # Made in the agent's own home at each interactive session.
+        agents.tester.homeLinks.".config/test/linked" = "/etc/hostname";
       };
       # `su` shells are not active local sessions: let wheel steer Starah in the test.
       security.polkit.extraConfig = ''
@@ -34,6 +36,12 @@
       systemd.services.demo.script = "sleep infinity";
       systemd.services.demo2.script = "sleep infinity";
       environment.systemPackages = [ pkgs.jq ];
+      # An interactive agent session, as a person starts one in their terminal
+      # (`script` gives the client a real terminal). Prints what the agent sees.
+      environment.etc."starah-test/session".source = pkgs.writeShellScript "session" ''
+        cd "$1"
+        exec script -qec "stty rows 33 cols 101; starah run --interactive --agent tester -- /run/current-system/sw/bin/sh -c 'id -un; pwd; echo HOME=\$HOME; stty size; echo made > made.txt; ls -A /home/alice; readlink \$HOME/.config/test/linked; echo ARGS:\$#' " /dev/null
+      '';
       # Asks polkit whether the calling process may perform an action.
       environment.etc."starah-test/pk".source = pkgs.writeShellScript "pk" ''
         exec ${pkgs.polkit.bin}/bin/pkcheck --action-id "$1" --process $$
@@ -170,5 +178,39 @@
           machine.succeed("systemctl restart starahd.service")
           machine.wait_for_unit("starahd.service")
           assert "level 4 (Delegate)" in machine.succeed(alice("starah status"))
+
+      with subtest("interactive: the agent's own user, on a terminal, in the project folder only"):
+          machine.succeed(alice("mkdir -p ~/proj ~/secret && echo s > ~/secret/s && echo ~ > /dev/null"))
+          out = machine.succeed(alice("/etc/starah-test/session /home/alice/proj"))
+          machine.log(out)
+          assert "starah-tester" in out and "/home/alice/proj" in out, out
+          assert "33 101" in out, out  # the terminal's size reached the agent
+          assert "HOME=/var/lib/starah-agents/tester/home/alice" in out, out
+          assert "secret" not in out, out  # the rest of the home is hidden
+          assert "/etc/hostname" in out, out  # its home link
+          # What it made is alice's on disk.
+          assert machine.succeed("stat -c %U /home/alice/proj/made.txt").strip() == "alice"
+          # The session's mount is gone once the agent has exited.
+          machine.wait_until_succeeds("test -z \"$(ls -A /run/starah/sessions 2>/dev/null)\"", timeout=30)
+          machine.fail("findmnt -rn | grep -q /run/starah/sessions")
+
+      with subtest("interactive: not in the home itself, unless the person allowed it"):
+          out = machine.fail(alice("/etc/starah-test/session /home/alice 2>&1"))
+          machine.succeed(alice("starah home tester on"))
+          out = machine.succeed(alice("/etc/starah-test/session /home/alice/proj"))
+          assert "secret" in out and "HOME=/home/alice" in out, out
+          assert '"event":"home-access"' in machine.succeed(alice("starah audit 50"))
+          machine.succeed(alice("starah home tester off"))
+
+      with subtest("interactive: the agent stops when its terminal goes away"):
+          # A terminal of alice's running the client (its own unit, so the test can close it).
+          machine.succeed(
+              "systemd-run --unit=alice-terminal --uid=alice -p WorkingDirectory=/home/alice/proj -p Environment=PATH=/run/current-system/sw/bin:/run/wrappers/bin "
+              "script -qec 'starah run -i --agent tester -- /run/current-system/sw/bin/sleep 300' /dev/null"
+          )
+          machine.wait_until_succeeds("systemctl list-units --no-legend 'starah-tester-*' | grep -q running", timeout=30)
+          machine.succeed("systemctl stop alice-terminal.service")
+          machine.wait_until_fails("systemctl list-units --no-legend 'starah-tester-*.service' | grep -v prepare | grep -v end | grep -q starah", timeout=30)
+          machine.wait_until_succeeds("test -z \"$(ls -A /run/starah/sessions 2>/dev/null)\"", timeout=30)
   '';
 }

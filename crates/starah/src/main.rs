@@ -6,9 +6,15 @@
 //!   starah approve ID [MINUTES]        approve a request
 //!   starah reject ID
 //!   starah run --agent NAME -- CMD…    run CMD as the agent, sandboxed, with this stdio
+//!   starah run --interactive --agent NAME -- CMD…
+//!                                      run CMD as the agent on this terminal, in this
+//!                                      project folder (or the whole home, if allowed)
+//!   starah home AGENT on|off           let AGENT use your whole home in interactive
+//!                                      sessions (logins, SSH keys, other projects)
 //!   starah ask ACTION TITLE [CHANGE…]  (inside an agent) ask before acting; waits
 //!   starah audit [N]                   the last N audit entries
 
+mod interactive;
 mod proxy;
 
 use std::process::ExitCode;
@@ -21,7 +27,8 @@ use zbus::zvariant::Fd;
 fn usage() -> ExitCode {
     eprintln!(
         "usage: starah status | set AGENT LEVEL… | requests | approve ID [MINUTES] | reject ID\n\
-         \x20      | run --agent NAME -- CMD… | ask ACTION TITLE [CHANGE…] | audit [N]"
+         \x20      | run [--interactive] --agent NAME -- CMD… | home AGENT on|off\n\
+         \x20      | ask ACTION TITLE [CHANGE…] | audit [N]"
     );
     ExitCode::from(2)
 }
@@ -56,7 +63,11 @@ async fn run(args: &[String]) -> Result<ExitCode, String> {
                 serde_json::from_str(&broker.get_policy().await.map_err(err)?).unwrap_or_default();
             println!(
                 "Configured: {}",
-                if policy["configured"] == true { "yes" } else { "no (first-login setup pending)" }
+                if policy["configured"] == true {
+                    "yes"
+                } else {
+                    "no (first-login setup pending)"
+                }
             );
             for a in policy["agents"].as_array().into_iter().flatten() {
                 println!(
@@ -95,7 +106,10 @@ async fn run(args: &[String]) -> Result<ExitCode, String> {
                         format!(
                             "{}{}",
                             r["action"].as_str().unwrap_or("?"),
-                            r["detail"].as_str().map(|d| format!(" ({d})")).unwrap_or_default()
+                            r["detail"]
+                                .as_str()
+                                .map(|d| format!(" ({d})"))
+                                .unwrap_or_default()
                         )
                     });
                 println!(
@@ -119,9 +133,38 @@ async fn run(args: &[String]) -> Result<ExitCode, String> {
             broker.decide(id, false, 0).await.map_err(err)?;
             Ok(ExitCode::SUCCESS)
         }
+        ("run", [flag, rest @ ..]) if flag == "--interactive" || flag == "-i" => {
+            let (agent, cmd) = match rest {
+                [f, agent, sep, cmd @ ..] if f == "--agent" && sep == "--" && !cmd.is_empty() => {
+                    (agent, cmd)
+                }
+                _ => return Ok(usage()),
+            };
+            let mut argv = cmd.to_vec();
+            argv[0] = resolve(&argv[0]).ok_or_else(|| format!("{}: command not found", argv[0]))?;
+            let status = interactive::run(&broker, agent, &argv).await?;
+            Ok(ExitCode::from(status.clamp(0, 255) as u8))
+        }
+        ("home", [agent, setting]) if setting == "on" || setting == "off" => {
+            broker
+                .set_home_access(agent, setting == "on")
+                .await
+                .map_err(err)?;
+            eprintln!(
+                "starah: {agent} {} your whole home in interactive sessions",
+                if setting == "on" {
+                    "may now use"
+                } else {
+                    "no longer uses"
+                }
+            );
+            Ok(ExitCode::SUCCESS)
+        }
         ("run", rest) => {
             let (agent, cmd) = match rest {
-                [flag, agent, sep, cmd @ ..] if flag == "--agent" && sep == "--" && !cmd.is_empty() => {
+                [flag, agent, sep, cmd @ ..]
+                    if flag == "--agent" && sep == "--" && !cmd.is_empty() =>
+                {
                     (agent, cmd)
                 }
                 _ => return Ok(usage()),
@@ -130,7 +173,13 @@ async fn run(args: &[String]) -> Result<ExitCode, String> {
             argv[0] = resolve(&argv[0]).ok_or_else(|| format!("{}: command not found", argv[0]))?;
             let (stdin, stdout, stderr) = (std::io::stdin(), std::io::stdout(), std::io::stderr());
             let unit = broker
-                .run(agent, &argv, Fd::from(&stdin), Fd::from(&stdout), Fd::from(&stderr))
+                .run(
+                    agent,
+                    &argv,
+                    Fd::from(&stdin),
+                    Fd::from(&stdout),
+                    Fd::from(&stderr),
+                )
                 .await
                 .map_err(err)?;
             let status = broker.wait(&unit).await.map_err(err)?;

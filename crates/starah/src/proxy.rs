@@ -23,6 +23,15 @@ pub trait Broker1 {
         stdout: Fd<'_>,
         stderr: Fd<'_>,
     ) -> zbus::Result<String>;
+    fn run_interactive(
+        &self,
+        agent: &str,
+        argv: &[String],
+        cwd: &str,
+        env: &[String],
+        tty: &str,
+    ) -> zbus::Result<String>;
+    fn set_home_access(&self, agent: &str, allow: bool) -> zbus::Result<()>;
     fn wait(&self, unit: &str) -> zbus::Result<i32>;
     fn audit_log(&self, limit: u32) -> zbus::Result<String>;
 

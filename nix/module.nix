@@ -18,7 +18,10 @@ let
 
   configFile = pkgs.writeText "starah-config.json" (
     builtins.toJSON {
-      agents = lib.mapAttrs (_: a: { inherit (a) level description; }) cfg.agents;
+      agents = lib.mapAttrs (_: a: {
+        inherit (a) level description;
+        home_links = a.homeLinks;
+      }) cfg.agents;
       classes = lib.recursiveUpdate (lib.importJSON cfg.classesFile) cfg.extraClasses;
       grant_minutes = cfg.grantMinutes;
       user_prefix = "starah-";
@@ -88,6 +91,18 @@ in
               type = lib.types.str;
               default = "";
               description = "Shown to the human next to the agent.";
+            };
+            homeLinks = lib.mkOption {
+              type = lib.types.attrsOf lib.types.str;
+              default = { };
+              example = {
+                ".claude/skills" = "/etc/tulsi/agents/skills";
+              };
+              description = ''
+                Links made in the agent's own home for each person at the start of an
+                interactive session (`starah run --interactive`), unless already there:
+                path in that home → target.
+              '';
             };
           };
         }

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 # Must match starah-policy's Level (0–4).
@@ -13,7 +13,7 @@ LEVELS = [
     ("Propose", "Can suggest changes; you approve each one before it happens."),
     ("Routine", "Makes changes that a restart into the previous system can undo on its own "
                 "(installing software, turning features on or off, browser extensions); asks "
-                "you before anything that touches your files, accounts or disks."),
+                "you before anything that touches accounts or disks."),
     ("Administer", "Also edits the configuration freely and manages services on its own; "
                    "asks you before sensitive changes."),
     ("Delegate", "Does everything an administrator can on its own, except changing "
@@ -40,6 +40,8 @@ class Agent:
     description: str
     level: int
     default_level: int
+    # People who let this agent use their whole home in interactive sessions.
+    home_access: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -58,6 +60,7 @@ class Policy:
                     description=a.get("description", ""),
                     level=int(a["level"]),
                     default_level=int(a.get("default_level", a["level"])),
+                    home_access=list(a.get("home_access", [])),
                 )
                 for a in data.get("agents", [])
             ],

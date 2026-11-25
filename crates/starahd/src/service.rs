@@ -16,7 +16,7 @@ use zbus::message::Header;
 use zbus::object_server::SignalEmitter;
 use zbus::{fdo, interface, Connection};
 
-use crate::{polkit, systemd};
+use crate::{polkit, session, systemd};
 
 pub const BUS_NAME: &str = "org.starah.Broker1";
 pub const OBJECT_PATH: &str = "/org/starah/Broker1";
@@ -113,11 +113,11 @@ fn denied(msg: impl Into<String>) -> fdo::Error {
 
 impl Broker1 {
     async fn caller(&self, conn: &Connection, hdr: &Header<'_>) -> fdo::Result<(Caller, u32)> {
-        let sender = hdr.sender().ok_or_else(|| denied("message has no sender"))?;
+        let sender = hdr
+            .sender()
+            .ok_or_else(|| denied("message has no sender"))?;
         let dbus = fdo::DBusProxy::new(conn).await?;
-        let uid = dbus
-            .get_connection_unix_user(sender.clone().into())
-            .await?;
+        let uid = dbus.get_connection_unix_user(sender.clone().into()).await?;
         if uid == 0 {
             return Ok((Caller::Root, uid));
         }
@@ -205,6 +205,8 @@ impl Broker1 {
                     "level": level,
                     "level_name": level.name(),
                     "default_level": spec.level,
+                    // People who let this agent use their whole home.
+                    "home_access": b.policy.home_access.get(name).cloned().unwrap_or_default(),
                 })
             })
             .collect();
@@ -347,7 +349,9 @@ impl Broker1 {
     ) -> fdo::Result<String> {
         let (caller, _) = self.caller(conn, &hdr).await?;
         let b = self.broker.lock().await;
-        let r = b.request(id).ok_or_else(|| failed(format!("no request {id}")))?;
+        let r = b
+            .request(id)
+            .ok_or_else(|| failed(format!("no request {id}")))?;
         if let Caller::Agent(a) = &caller {
             if &r.agent != a {
                 return Err(denied("not your request"));
@@ -455,6 +459,180 @@ impl Broker1 {
         Ok(unit)
     }
 
+    /// The caller lets `agent` use their whole home in interactive sessions (their
+    /// logins, SSH keys and other projects), or takes that back. Asks for the
+    /// administrator password like changing a level.
+    async fn set_home_access(
+        &self,
+        agent: &str,
+        allow: bool,
+        #[zbus(connection)] conn: &Connection,
+        #[zbus(header)] hdr: Header<'_>,
+    ) -> fdo::Result<()> {
+        let caller = self.require_human(conn, &hdr, ACTION_CONFIGURE).await?;
+        let Caller::Human(person) = &caller else {
+            return Err(denied("only a person can share their home"));
+        };
+        let mut b = self.broker.lock().await;
+        b.set_home_access(agent, person, allow)
+            .map_err(|e| failed(e.to_string()))?;
+        self.save_policy(&b.policy)
+            .map_err(|e| failed(format!("cannot save the policy: {e}")))?;
+        self.audit(
+            "home-access",
+            json!({ "agent": agent, "person": person, "allow": allow }),
+        );
+        Ok(())
+    }
+
+    /// Starts `argv` as agent `agent` on the caller's terminal `tty` (a /dev/pts
+    /// the caller opened), in the caller's folder `cwd`, with the allowed variables
+    /// of `env`. The agent sees that folder (or, if the caller allowed it, their
+    /// whole home) through an idmapped mount: it works on the files as its own,
+    /// and they stay the caller's. Returns the unit name for `Wait`. The session
+    /// ends when the agent exits or the caller goes away.
+    #[allow(clippy::too_many_arguments)]
+    async fn run_interactive(
+        &self,
+        agent: &str,
+        argv: Vec<String>,
+        cwd: &str,
+        env: Vec<String>,
+        tty: &str,
+        #[zbus(connection)] conn: &Connection,
+        #[zbus(header)] hdr: Header<'_>,
+    ) -> fdo::Result<String> {
+        let caller = self.require_human(conn, &hdr, ACTION_RUN).await?;
+        let (_, uid) = self.caller(conn, &hdr).await?;
+        let spec = {
+            let b = self.broker.lock().await;
+            b.config
+                .agents
+                .get(agent)
+                .cloned()
+                .ok_or_else(|| failed(format!("no agent named {agent:?}")))?
+        };
+        if argv.is_empty() || !argv[0].starts_with('/') {
+            return Err(failed("the command must be an absolute path"));
+        }
+        // The terminal must be one the caller opened.
+        {
+            use std::os::unix::fs::MetadataExt;
+            let meta = std::fs::metadata(tty).map_err(|e| failed(format!("{tty}: {e}")))?;
+            if !session::is_pts(tty) || meta.uid() != uid {
+                return Err(denied(format!("{tty} is not your terminal")));
+            }
+        }
+        let person = session::account_by_uid(uid).ok_or_else(|| denied("unknown caller"))?;
+        let user = format!("{}{agent}", self.cfg.user_prefix);
+        let workspace = format!("{}/{agent}", self.cfg.workspaces);
+        let whole_home = self.broker.lock().await.home_access(agent, &person.name);
+
+        let n = self.next_unit.fetch_add(1, Ordering::Relaxed);
+        let stem = format!("starah-{agent}-{}-{n}", std::process::id());
+        let unit = format!("{stem}.service");
+        let staging = format!("{}/{stem}", session::SESSIONS);
+        let agent_home = format!("{workspace}/home/{}", person.name);
+        let mut helper = vec![
+            "--prepare-session".to_string(),
+            uid.to_string(),
+            user.clone(),
+            if whole_home { "home" } else { "project" }.to_string(),
+            cwd.to_string(),
+            staging.clone(),
+            agent_home.clone(),
+        ];
+        helper.extend(
+            spec.home_links
+                .iter()
+                .map(|(rel, target)| format!("{rel}={target}")),
+        );
+        let ok = systemd::run_root(conn, &format!("{stem}-prepare.service"), &helper)
+            .await
+            .map_err(|e| failed(format!("cannot prepare the session: {e}")))?;
+        if !ok {
+            let why = std::fs::read_to_string(format!("{staging}.error"))
+                .unwrap_or_else(|_| "see the journal".into());
+            let _ = systemd::run_root(
+                conn,
+                &format!("{stem}-end.service"),
+                &["--end-session".into(), staging.clone()],
+            )
+            .await;
+            return Err(failed(why.trim().to_string()));
+        }
+        // Where the agent sees the shared folder: where it really is.
+        let shared = if whole_home {
+            person.home.to_string_lossy().into_owned()
+        } else {
+            std::path::Path::new(cwd)
+                .canonicalize()
+                .map(|p| p.to_string_lossy().into_owned())
+                .unwrap_or_else(|_| cwd.to_string())
+        };
+        let mut vars: Vec<String> = env
+            .into_iter()
+            .filter(|kv| {
+                kv.split_once('=')
+                    .is_some_and(|(k, _)| session::allowed_env(k))
+            })
+            .collect();
+        vars.push(format!(
+            "HOME={}",
+            if whole_home {
+                shared.clone()
+            } else {
+                agent_home.clone()
+            }
+        ));
+        let started = systemd::start_interactive(
+            conn,
+            &systemd::Interactive {
+                unit: &unit,
+                agent,
+                user: &user,
+                workspace: &workspace,
+                argv: &argv,
+                path: &self.cfg.agent_path,
+                tty,
+                cwd,
+                staging: &staging,
+                shared: &shared,
+                env: &vars,
+            },
+        )
+        .await;
+        if let Err(e) = started {
+            let _ = systemd::run_root(
+                conn,
+                &format!("{stem}-end.service"),
+                &["--end-session".into(), staging.clone()],
+            )
+            .await;
+            return Err(failed(format!("cannot start the agent: {e}")));
+        }
+        self.units.lock().await.insert(unit.clone(), uid);
+        self.audit(
+            "run",
+            json!({ "agent": agent, "argv": argv, "unit": unit, "by": caller.name(),
+                    "interactive": true, "cwd": cwd, "whole_home": whole_home }),
+        );
+        // End the session when the agent exits, or stop it when the caller is gone.
+        let sender = hdr.sender().map(|s| s.to_string()).unwrap_or_default();
+        let (conn, unit_w, units) = (conn.clone(), unit.clone(), self.units.clone());
+        tokio::spawn(async move {
+            systemd::watch_session(&conn, &unit_w, &sender).await;
+            let _ = systemd::run_root(
+                &conn,
+                &format!("{stem}-end.service"),
+                &["--end-session".into(), staging],
+            )
+            .await;
+            units.lock().await.remove(&unit_w);
+        });
+        Ok(unit)
+    }
+
     /// Waits for an agent unit started by the caller; returns its exit status.
     async fn wait(
         &self,
@@ -493,7 +671,8 @@ impl Broker1 {
     }
 
     #[zbus(signal)]
-    async fn request_added(emitter: &SignalEmitter<'_>, id: u64, request: &str) -> zbus::Result<()>;
+    async fn request_added(emitter: &SignalEmitter<'_>, id: u64, request: &str)
+        -> zbus::Result<()>;
 
     #[zbus(signal)]
     async fn decided(

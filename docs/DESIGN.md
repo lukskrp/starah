@@ -122,7 +122,31 @@ operation behind a daemon that asks polkit, so it doesn't need one.
   on its stdin is the agent's.
 - **Agents started outside Starah.** A program the human runs as themselves has the
   human's privileges. Starah covers agents started with `starah run` (or as configured
-  services).
+  services). Distributions can wrap agent CLIs so they always start through it
+  (TulsiOS does, ADR 0028 there).
+
+## Interactive sessions
+
+`starah run --interactive --agent NAME -- CMD…` runs a terminal agent (a coding-agent
+CLI) as its own user, on the human's terminal, in their project folder.
+
+- **Terminal:** the client opens a pseudo-terminal and passes its name. starahd checks
+  it belongs to the caller, and systemd opens it as the unit's controlling terminal.
+  The client relays keys, output and the window size. If it goes away, the unit is
+  stopped.
+- **Files:** a root unit (`starahd --prepare-session`) checks that the current folder
+  is the caller's, inside their home and not the home itself. It mounts the folder at
+  `/run/starah/sessions/UNIT` with an idmapped bind mount (the caller's uid and gid
+  appear as the agent's), and the unit binds it back at the same path. The rest of
+  `/home` is an empty tmpfs. What the agent writes is stored as the caller's.
+  `--end-session` unmounts it.
+- **Home:** `/var/lib/starah-agents/NAME/home/PERSON` (0700, the agent's), with the
+  links in `agents.NAME.homeLinks`. Only `TERM`, `COLORTERM`, `LANG`, `LC_*`, `TZ`,
+  `NO_COLOR` and `*_API_KEY` / `*_BASE_URL` / `*_API_BASE` pass from the terminal.
+- **The whole home:** a person may let an agent use their whole home
+  (`SetHomeAccess`, `starah home AGENT on|off`, a switch in Agent Privileges; asks
+  for the administrator password, audited). The agent then gets their home, with
+  `HOME` set to it: their logins, settings and SSH keys.
 - **A human who approves everything.** Requests show what will happen. Rejecting is the
   default, but the decision is the human's.
 

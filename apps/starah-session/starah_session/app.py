@@ -11,7 +11,11 @@ Started at every login (a user service after graphical-session.target):
 
 from __future__ import annotations
 
+import getpass
 import json
+import os
+import shutil
+import subprocess
 import sys
 
 import gi
@@ -75,8 +79,27 @@ class LevelsWindow(Gtk.ApplicationWindow):
             "level does not allow on its own."
         ), False, False, 0)
 
-        grid = Gtk.Grid(column_spacing=12, row_spacing=6)
-        box.pack_start(grid, False, False, 6)
+        grid = Gtk.Grid(column_spacing=12, row_spacing=6, margin_end=12)
+        # Many agents scroll, so the window (and its Save button) stays on screen.
+        scroller = Gtk.ScrolledWindow(hscrollbar_policy=Gtk.PolicyType.NEVER,
+                                      propagate_natural_height=True, max_content_height=380)
+        scroller.add(grid)
+        box.pack_start(scroller, True, True, 6)
+
+        # Starah covers the agents the system starts through it; say so.
+        warning = wrap_label(
+            "⚠ This covers agents your system starts under Starah. An agent you installed "
+            "some other way (npm, pip, a script from a website, a downloaded program) runs "
+            "as you, with access to all your files.")
+        box.pack_start(warning, False, False, 0)
+        # (The session service's PATH may not include the system's programs.)
+        wiki = shutil.which("tulsi-wiki") or next(
+            (p for p in ("/run/current-system/sw/bin/tulsi-wiki",) if os.path.exists(p)), None)
+        if wiki:
+            more = Gtk.Button(label="Learn More", halign=Gtk.Align.START)
+            more.connect("clicked", lambda _b: subprocess.Popen(
+                [wiki, "ai-agents"], start_new_session=True))
+            box.pack_start(more, False, False, 0)
         self.combos: dict[str, Gtk.ComboBoxText] = {}
         self.initial: dict[str, int] = {}
         row = 0
@@ -97,6 +120,20 @@ class LevelsWindow(Gtk.ApplicationWindow):
                 grid.attach(wrap_label(agent.description), 0, row, 2, 1)
                 row += 1
             grid.attach(explain, 0, row, 2, 1)
+            row += 1
+            # What an agent started in a terminal may see of the person's files.
+            home = Gtk.CheckButton(label="May use my whole home folder")
+            home.set_active(getpass.getuser() in agent.home_access)
+            home_note = wrap_label(
+                "Off: it sees only the folder you start it in, and has its own logins. "
+                "On: it works as if it were you in your files — your logins and settings, "
+                "your SSH keys (it can push with git), your other projects. Its changes to "
+                "the system still follow its level.")
+            home_note.get_style_context().add_class("dim-label")
+            home.connect("toggled", self._on_home_toggled, agent.name)
+            grid.attach(home, 0, row, 2, 1)
+            row += 1
+            grid.attach(home_note, 0, row, 2, 1)
             row += 1
             self.combos[agent.name] = combo
             self.initial[agent.name] = agent.level
@@ -145,6 +182,21 @@ class LevelsWindow(Gtk.ApplicationWindow):
         explain.set_text(LEVELS[combo.get_active()][1])
         changed = any(c.get_active() != self.initial[n] for n, c in self.combos.items())
         self.save.set_sensitive(self.setup or changed)
+
+    def _on_home_toggled(self, check: Gtk.CheckButton, agent: str) -> None:
+        allow = check.get_active()
+
+        def done(err: str | None) -> None:
+            if err:
+                self.message.set_text(f"Not changed: {err}")
+                check.handler_block_by_func(self._on_home_toggled)
+                check.set_active(not allow)
+                check.handler_unblock_by_func(self._on_home_toggled)
+            else:
+                self.message.set_text(
+                    f"{agent} {'may now use' if allow else 'no longer uses'} your whole home folder.")
+
+        self.app.broker.set_home_access(agent, allow, done)
 
     def _on_show_login(self, check: Gtk.CheckButton) -> None:
         prefs = load_prefs()

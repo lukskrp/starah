@@ -59,6 +59,10 @@ class Broker:
         self._call_async("SetPolicy", GLib.Variant("(s)", (levels_json,)),
                          lambda _r, err: done(err))
 
+    def set_home_access(self, agent: str, allow: bool, done: Callable[[str | None], None]) -> None:
+        self._call_async("SetHomeAccess", GLib.Variant("(sb)", (agent, allow)),
+                         lambda _r, err: done(err))
+
     def decide(self, rid: int, approve: bool, minutes: int,
                done: Callable[[str | None], None]) -> None:
         self._call_async("Decide", GLib.Variant("(tbu)", (rid, approve, minutes)),
