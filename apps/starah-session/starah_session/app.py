@@ -22,12 +22,16 @@ from gi.repository import Gio, GLib, Otk as Gtk  # noqa: E402
 from .broker import Broker, BrokerError  # noqa: E402
 from .model import (  # noqa: E402
     LEVELS,
+    PACKAGING_CHOICES,
     Policy,
     Request,
     level_title,
+    load_packaging,
     load_prefs,
+    save_packaging,
     save_prefs,
     show_at_login,
+    tulsi_packaging_available,
 )
 
 APP_ID = "org.starah.Session"
@@ -96,6 +100,24 @@ class LevelsWindow(Gtk.ApplicationWindow):
             row += 1
             self.combos[agent.name] = combo
             self.initial[agent.name] = agent.level
+
+        # On TulsiOS: packaging software that has no package, with or without an agent.
+        if tulsi_packaging_available():
+            title = Gtk.Label(xalign=0)
+            title.set_markup("<b>When software you install has no TulsiOS package</b>")
+            box.pack_start(title, False, False, 0)
+            packaging = Gtk.ComboBoxText()
+            for key, label in PACKAGING_CHOICES:
+                packaging.append(key, label)
+            packaging.set_active_id(load_packaging())
+            packaging.connect(
+                "changed", lambda c: save_packaging(c.get_active_id() or "ask"))
+            box.pack_start(packaging, False, False, 0)
+            box.pack_start(wrap_label(
+                "A recipe packages common downloads (AppImages, .deb and .rpm files, "
+                "programs and source code in archives) from tested templates, without an "
+                "AI model. The Assistant can package almost anything, but needs one."
+            ), False, False, 0)
 
         self.message = wrap_label("")
         box.pack_start(self.message, False, False, 0)

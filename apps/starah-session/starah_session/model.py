@@ -143,3 +143,39 @@ def save_prefs(prefs: dict, path: Path | None = None) -> None:
 
 def show_at_login(prefs: dict) -> bool:
     return bool(prefs.get("show_at_login", True))
+
+
+# On TulsiOS, what to do when software someone installs has no package: package it
+# with a recipe (no AI model), ask the Assistant (an AI agent), or ask each time.
+# TulsiOS's tulsi-adopt reads this file; Starah only offers the setting there.
+PACKAGING_CHOICES = (
+    ("ask", "Ask me each time"),
+    ("recipe", "Package it with a recipe (no AI model)"),
+    ("assistant", "Ask the Assistant (an AI agent)"),
+)
+
+
+def packaging_path() -> Path:
+    base = os.environ.get("XDG_CONFIG_HOME") or os.path.expanduser("~/.config")
+    return Path(base) / "tulsi" / "packaging.json"
+
+
+def tulsi_packaging_available() -> bool:
+    """TulsiOS's tulsi-adopt is installed (the setting means nothing elsewhere)."""
+    import shutil
+
+    return shutil.which("tulsi-adopt") is not None
+
+
+def load_packaging(path: Path | None = None) -> str:
+    choice = load_prefs(path or packaging_path()).get("whenNoPackage", "ask")
+    return choice if choice in dict(PACKAGING_CHOICES) else "ask"
+
+
+def save_packaging(choice: str, path: Path | None = None) -> None:
+    if choice not in dict(PACKAGING_CHOICES):
+        raise ValueError(choice)
+    path = path or packaging_path()
+    data = load_prefs(path)
+    data["whenNoPackage"] = choice
+    save_prefs(data, path)

@@ -11,6 +11,19 @@ from starah_session.model import (
 )
 
 
+def test_tulsios_packaging_choice(tmp_path):
+    from starah_session.model import load_packaging, save_packaging
+
+    path = tmp_path / "packaging.json"
+    assert load_packaging(path) == "ask"
+    path.write_text('{"keep": true}')
+    save_packaging("recipe", path)
+    assert load_packaging(path) == "recipe"
+    assert json.loads(path.read_text()) == {"keep": True, "whenNoPackage": "recipe"}
+    path.write_text('{"whenNoPackage": "something"}')
+    assert load_packaging(path) == "ask"
+
+
 def test_five_levels_match_the_broker():
     assert [name for name, _ in LEVELS] == [
         "Observe", "Propose", "Routine", "Administer", "Delegate"
