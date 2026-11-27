@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starah\n"
 "Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-27 05:58+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: lo\n"
@@ -48,10 +48,7 @@ msgid ""
 "Starah answers each request from the agent's level. Your own rules (Edit "
 "Rules…) can change the answer for particular agents and actions, but never "
 "allow what the last row forbids."
-msgstr ""
-"Starah ຕອບສະໜອງແຕ່ລະຄຳຮ້ອງຂໍຈາກລະດັບຂອງເອເຈັງ. ກົດເກນຂອງທ່ານ (ແກ້ໄຂ "
-"ກົດເກນ…) ສາມາດປ່ຽນຄຳຕອບສຳລັບເອເຈັງ ແລະ ການກະທຳສະເພາະໄດ້, ແຕ່ບໍ່ອະນຸຍາດ "
-"ສິ່ງທີ່ແຖວສຸດທ້າຍຫ້າມ."
+msgstr "Starah ຕອບສະໜອງແຕ່ລະຄຳຮ້ອງຂໍຈາກລະດັບຂອງເອເຈັງ. ກົດເກນຂອງທ່ານ (ແກ້ໄຂກົດເກນ…) ສາມາດປ່ຽນຄຳຕອບສຳລັບເອເຈັງ ແລະ ການກະທຳສະເພາະໄດ້, ແຕ່ບໍ່ອະນຸຍາດ ສິ່ງທີ່ແຖວສຸດທ້າຍຫ້າມ."
 
 #: apps/starah-session/starah_session/app.py:115
 #: apps/starah-session/starah_session/app.py:271
@@ -78,8 +75,8 @@ msgstr "ເອເຈັງ AI ໃນຄອມພິວເຕີນີ້"
 msgid ""
 "Agents run as their own restricted accounts. When an agent needs a "
 "privilege, Starah answers for you from the level you choose here, and asks "
-"you whenever the level says so. You can change this at any time from \"Agent "
-"Privileges\"."
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
 msgstr ""
 "ເອເຈັງເຮັດວຽກເປັນບັນຊີຈຳກັດຂອງມັນເອງ. ເມື່ອເອເຈັງຕ້ອງການສິດ, Starah "
 "ຕອບແທນທ່ານຈາກລະດັບທີ່ທ່ານເລືອກແມ່ນນີ້ ແລະ ຖາມທ່ານເມື່ອລະດັບບອກ. "
@@ -405,7 +402,7 @@ msgstr "ບໍ່ອະນຸຍາດ"
 #. Translators: {agent} is an agent's name, {what} a technical permission name.
 #: apps/starah-session/starah_session/model.py:196
 #, python-brace-format
-msgid "Agent \"\"{agent}\"\" asks for: {what}"
+msgid "Agent “{agent}” asks for: {what}"
 msgstr "ເອເຈັງ \"\"{agent}\"\" ຖາມສຳລັບ: {what}"
 
 #. Translators: {level} is like "2 · Routine".

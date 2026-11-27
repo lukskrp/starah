@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starah\n"
 "Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-27 05:58+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -50,7 +50,7 @@ msgid ""
 "allow what the last row forbids."
 msgstr ""
 "Starah her isteği aracın seviyesinden yanıtlar. Kendi kurallarınız (Kuralları "
-"Düzenle…) bazı araçlar ve eylemler için yanıtı değiştirebilir, ancak son "
+"Düzenle…) bazı ajanlar ve eylemler için yanıtı değiştirebilir, ancak son "
 "satırın yasakladığı hiçbir şeyi asla izin vermez."
 
 #: apps/starah-session/starah_session/app.py:115
@@ -64,15 +64,15 @@ msgstr "Starah Kurulumu"
 
 #: apps/starah-session/starah_session/app.py:128
 msgid "Agent Privileges"
-msgstr "Araç Ayrılıkları"
+msgstr "Ajan Ayrıcalıkları"
 
 #: apps/starah-session/starah_session/app.py:137
 msgid "Choose what AI agents may do"
-msgstr "AI araçlarının ne yapabileceğini seçin"
+msgstr "AI ajanlarının ne yapabileceğini seçin"
 
 #: apps/starah-session/starah_session/app.py:137
 msgid "AI agents on this computer"
-msgstr "Bu bilgisayardaki AI araçları"
+msgstr "Bu bilgisayardaki AI ajanları"
 
 #: apps/starah-session/starah_session/app.py:140
 msgid ""
@@ -81,9 +81,9 @@ msgid ""
 "you whenever the level says so. You can change this at any time from “Agent "
 "Privileges”."
 msgstr ""
-"Araçlar kendi kısıtlı hesapları olarak çalışır. Bir araç ayrıcalık gerektirdiğinde, "
+"Ajanlar kendi kısıtlı hesapları olarak çalışır. Bir ajan ayrıcalık gerektirdiğinde, "
 "Starah burada seçtiğiniz seviyeden sizin adınıza yanıtlar ve seviye öyle "
-"diyorsa size sorar. Bunu istediğiniz zaman \"Araç Ayrıcalıkları\"ndan "
+"diyorsa size sorar. Bunu istediğiniz zaman \"Ajan Ayrıcalıkları\"ndan "
 "değiştirebilirsiniz."
 
 #: apps/starah-session/starah_session/app.py:145
@@ -91,7 +91,7 @@ msgid ""
 "These are the privilege levels you chose. Agents ask you for anything their "
 "level does not allow on its own."
 msgstr ""
-"Bunlar seçtiğiniz ayrıcalık seviyeleridir. Araçlar, seviyeleri tek başına "
+"Bunlar seçtiğiniz ayrıcalık seviyeleridir. Ajanlar, seviyeleri tek başına "
 "izin vermediği her şey için size sorar."
 
 #: apps/starah-session/starah_session/app.py:158
@@ -100,9 +100,9 @@ msgid ""
 "some other way (npm, pip, a script from a website, a downloaded program) "
 "runs as you, with access to all your files."
 msgstr ""
-"⚠ Bu, sisteminizin Starah altında başlattığı araçları kapsar. Başka bir "
+"⚠ Bu, sisteminizin Starah altında başlattığı ajanları kapsar. Başka bir "
 "yolla (npm, pip, bir web sitesinden komut dosyası, indirilmiş bir program) "
-"yüklediğiniz bir araç, tüm dosyalarınıza erişimle sizin olarak çalışır."
+"yüklediğiniz bir ajan, tüm dosyalarınıza erişimle sizin olarak çalışır."
 
 #: apps/starah-session/starah_session/app.py:167
 msgid "What each level lets an agent do, side by side"
@@ -197,7 +197,7 @@ msgstr "Kaydedilmedi: {error}"
 
 #: apps/starah-session/starah_session/app.py:346
 msgid "Agent Request"
-msgstr "Araç İsteği"
+msgstr "Ajan İsteği"
 
 #: apps/starah-session/starah_session/app.py:362
 msgid "Changes:"
@@ -412,13 +412,13 @@ msgstr "İzin verilmez"
 #: apps/starah-session/starah_session/model.py:196
 #, python-brace-format
 msgid "Agent “{agent}” asks for: {what}"
-msgstr "Araç \"{agent}\" şunu ister: {what}"
+msgstr "Ajan \"{agent}\" şunu ister: {what}"
 
 #. Translators: {level} is like "2 · Routine".
 #: apps/starah-session/starah_session/model.py:201
 #, python-brace-format
 msgid "Agent: {agent} (level {level})"
-msgstr "Araç: {agent} (seviye {level})"
+msgstr "Ajan: {agent} (seviye {level})"
 
 #. Translators: {action} is a technical name (org.tulsi.apply), {kind} one of
 #. "read-only", "low-risk", "administration", "sensitive", "never delegated".
@@ -477,8 +477,8 @@ msgstr "Bu seviyeleri kendi kurallarınızla iyileştirebilirsiniz (küçük bir
 
 #: apps/starah-session/data/org.starah.Session.desktop.in:4
 msgid "Choose what AI agents may do on this computer"
-msgstr "AI araçlarının bu bilgisayarda ne yapabileceğini seçin"
+msgstr "AI ajanlarının bu bilgisayarda ne yapabileceğini seçin"
 
 #: apps/starah-session/data/org.starah.Session.desktop.in:5
 msgid "AI;agent;privileges;permissions;Starah;security;"
-msgstr "AI;araç;ayrıcalıklar;izinler;Starah;güvenlik;"
+msgstr "AI;ajan;ayrıcalıklar;izinler;Starah;güvenlik;"

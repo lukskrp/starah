@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starah\n"
 "Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-27 05:58+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -78,8 +78,8 @@ msgstr "AI agents trên máy tính này"
 msgid ""
 "Agents run as their own restricted accounts. When an agent needs a "
 "privilege, Starah answers for you from the level you choose here, and asks "
-"you whenever the level says so. You can change this at any time from \"Agent "
-"Privileges\"."
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
 msgstr ""
 "Agents chạy dưới tài hạn chế riêng. Khi một agent cần đặc quyền, Starah trả "
 "lời thay bạn từ cấp bạn chọn ở đây, và hỏi bạn khi cấp yêu cầu. Bạn có thể "
@@ -406,7 +406,7 @@ msgstr "Không được phép"
 #. Translators: {agent} is an agent's name, {what} a technical permission name.
 #: apps/starah-session/starah_session/model.py:196
 #, python-brace-format
-msgid "Agent \"\"{agent}\"\" asks for: {what}"
+msgid "Agent “{agent}” asks for: {what}"
 msgstr "Agent \"\"{agent}\"\" yêu cầu: {what}"
 
 #. Translators: {level} is like "2 · Routine".

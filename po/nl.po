@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starah\n"
 "Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-27 05:58+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -78,8 +78,8 @@ msgstr "AI-agents op deze computer"
 msgid ""
 "Agents run as their own restricted accounts. When an agent needs a "
 "privilege, Starah answers for you from the level you choose here, and asks "
-"you whenever the level says so. You can change this at any time from \"Agent "
-"Privileges\"."
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
 msgstr ""
 "Agents draaien als hun eigen beperkte accounts. Wanneer een agent een "
 "privilege nodig heeft, beantwoordt Starah namens jou vanaf het niveau dat "
@@ -238,7 +238,7 @@ msgstr "Kan het systeem bekijken, maar kan niets veranderen."
 
 #: apps/starah-session/starah_session/model.py:17
 msgid "Propose"
-msgstr "Voorschijnen"
+msgstr "Voorstellen"
 
 #: apps/starah-session/starah_session/model.py:17
 msgid "Can suggest changes; you approve each one before it happens."
@@ -410,7 +410,7 @@ msgstr "Niet toegestaan"
 #. Translators: {agent} is an agent's name, {what} a technical permission name.
 #: apps/starah-session/starah_session/model.py:196
 #, python-brace-format
-msgid "Agent \"\"{agent}\"\" asks for: {what}"
+msgid "Agent “{agent}” asks for: {what}"
 msgstr "Agent \"\"{agent}\"\" vraagt om: {what}"
 
 #. Translators: {level} is like "2 · Routine".

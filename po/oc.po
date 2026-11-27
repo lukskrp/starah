@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starah\n"
 "Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-27 05:58+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: oc\n"
@@ -48,10 +48,7 @@ msgid ""
 "Starah answers each request from the agent's level. Your own rules (Edit "
 "Rules…) can change the answer for particular agents and actions, but never "
 "allow what the last row forbids."
-msgstr ""
-"Starah respond a cada demanda del nivèl de l'agent. Tòrtas pròprias (Editar "
-"las reglas...) pòdon cambiar la responsa per agents e accions particulars, "
-"mas jamai permeton çò que la darrièra linha prohibís."
+msgstr "Starah respond a cada demanda del nivèl de l'agent. Las toas reglas proprias (Editar las reglas…) pòdon cambiar la responsa per agents e accions particulars, mas jamai permeton çò que la darrièra linha prohibís."
 
 #: apps/starah-session/starah_session/app.py:115
 #: apps/starah-session/starah_session/app.py:271
@@ -78,8 +75,8 @@ msgstr "Agents d'IA sus aqueste ordenador"
 msgid ""
 "Agents run as their own restricted accounts. When an agent needs a "
 "privilege, Starah answers for you from the level you choose here, and asks "
-"you whenever the level says so. You can change this at any time from \"Agent "
-"Privileges\"."
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
 msgstr ""
 "Los agents s'executan coma sos pròpris comptes restrichs. Quand un agent "
 "a besonh d'un privilègi, Starah respond per tu dempuèi lo nivèl que causís "
@@ -412,7 +409,7 @@ msgstr "Pas permés"
 #. Translators: {agent} is an agent's name, {what} a technical permission name.
 #: apps/starah-session/starah_session/model.py:196
 #, python-brace-format
-msgid "Agent \"\"{agent}\"\" asks for: {what}"
+msgid "Agent “{agent}” asks for: {what}"
 msgstr "L'agent \"\"{agent}\"\" demanda : {what}"
 
 #. Translators: {level} is like "2 · Routine".

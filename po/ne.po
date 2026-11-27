@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starah\n"
 "Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-27 05:58+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ne\n"
@@ -78,8 +78,8 @@ msgstr "यस कम्प्युटरमा AI एजेन्टहरू"
 msgid ""
 "Agents run as their own restricted accounts. When an agent needs a "
 "privilege, Starah answers for you from the level you choose here, and asks "
-"you whenever the level says so. You can change this at any time from \"Agent "
-"Privileges\"."
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
 msgstr ""
 "एजेन्टहरू आफ्नै सीमित खाताहरूमा चल्छन्। जब एजेन्टलाई विशेषाधिकार "
 "लाग्छ, Starah ले यहाँ तपाईंले छान्नुभएको स्तरबाट तपाईंको लागि जवाफ दिन्छ, "
@@ -412,7 +412,7 @@ msgstr "अनुमति छैन"
 #. Translators: {agent} is an agent's name, {what} a technical permission name.
 #: apps/starah-session/starah_session/model.py:196
 #, python-brace-format
-msgid "Agent \"\"{agent}\"\" asks for: {what}"
+msgid "Agent “{agent}” asks for: {what}"
 msgstr "एजेन्ट \"\"{agent}\"\" को लागि सोध्छ: {what}"
 
 #. Translators: {level} is like \"2 · Routine\".

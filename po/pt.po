@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starah\n"
 "Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-27 05:58+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: pt\n"
@@ -48,10 +48,7 @@ msgid ""
 "Starah answers each request from the agent's level. Your own rules (Edit "
 "Rules…) can change the answer for particular agents and actions, but never "
 "allow what the last row forbids."
-msgstr ""
-"Starah responde a cada pedido do nível do agente. As suas regras (Editar "
-"regras…) podem alterar a resposta para agentes e ações específicas, mas "
-"nunca permitem o que a última linha proíbe."
+msgstr "Starah responde a cada pedido do nível do agente. As suas regras (Editar Regras…) podem alterar a resposta para agentes e ações específicas, mas nunca permitem o que a última linha proíbe."
 
 #: apps/starah-session/starah_session/app.py:115
 #: apps/starah-session/starah_session/app.py:271
@@ -78,8 +75,8 @@ msgstr "Agentes de IA neste computador"
 msgid ""
 "Agents run as their own restricted accounts. When an agent needs a "
 "privilege, Starah answers for you from the level you choose here, and asks "
-"you whenever the level says so. You can change this at any time from \"Agent "
-"Privileges\"."
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
 msgstr ""
 "Os agentes executam-se como contas restritas próprias. Quando um agente "
 "precisa de um privilégio, o Starah responde por si a partir do nível que "
@@ -331,7 +328,7 @@ msgstr "adicionar e remover extensões do navegador"
 
 #: apps/starah-session/starah_session/model.py:56
 msgid "mount and eject USB sticks and disks"
-msgstr "montar e expulsar pendrives e discos"
+msgstr "montar e expulsar pendrives USB e discos"
 
 #: apps/starah-session/starah_session/model.py:58
 msgid "System administration"
@@ -414,7 +411,7 @@ msgstr "Não permitido"
 #. Translators: {agent} is an agent's name, {what} a technical permission name.
 #: apps/starah-session/starah_session/model.py:196
 #, python-brace-format
-msgid "Agent \"{agent}\" asks for: {what}"
+msgid "Agent “{agent}” asks for: {what}"
 msgstr "Agente \"{agent}\" pede: {what}"
 
 #. Translators: {level} is like "2 · Routine".

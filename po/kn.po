@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starah\n"
 "Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-27 05:58+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: kn\n"
@@ -48,10 +48,7 @@ msgid ""
 "Starah answers each request from the agent's level. Your own rules (Edit "
 "Rules…) can change the answer for particular agents and actions, but never "
 "allow what the last row forbids."
-msgstr ""
-"Starah ಏಜೆಂಟ್‌ನ ಮಟ್ಟದಿಂದ ಪ್ರತಿ अनुरोधಕ್ಕೆ ಉತ್ತರಿಸುತ್ತದೆ. ನಿಮ್ಮ ನಿಯಮಗಳು (ನಿಯಮಗಳನ್ನು "
-"ಸಂಪಾದಿಸಿ…) ನಿರ್ದಿಷ್ಟ ಏಜೆಂಟ್‌ಗಳು ಮತ್ತು ಕ್ರಿಯೆಗಳಿಗೆ ಉತ್ತರವನ್ನು ಬದಲಾಯಿಸಬಹುದು, ಆದರೆ "
-"ಕೊನೆಯ ಸಾಲು ನಿಷೇಧಿಸಿದ್ದನ್ನು ಎಂದಿಗೂ ಅನುಮತಿಸಬಾರದು."
+msgstr "Starah ಏಜೆಂಟ್‌ನ ಮಟ್ಟದಿಂದ ವಿನಂತಿಗೆ ಉತ್ತರಿಸುತ್ತದೆ. ನಿಮ್ಮ ನಿಯಮಗಳು (ನಿಯಮಗಳನ್ನು ಸಂಪಾದಿಸಿ…) ನಿರ್ದಿಷ್ಟ ಏಜೆಂಟ್‌ಗಳು ಮತ್ತು ಕ್ರಿಯೆಗಳಿಗೆ ಉತ್ತರವನ್ನು ಬದಲಾಯಿಸಬಹುದು, ಆದರೆ ಕೊನೆಯ ಸಾಲು ನಿಷೇಧಿಸಿದ್ದನ್ನು ಎಂದಿಗೂ ಅನುಮತಿಸಬಾರದು."
 
 #: apps/starah-session/starah_session/app.py:115
 #: apps/starah-session/starah_session/app.py:271
@@ -64,7 +61,7 @@ msgstr "Starah ಸೆಟಪ್"
 
 #: apps/starah-session/starah_session/app.py:128
 msgid "Agent Privileges"
-msgstr "ಏಜೆಂಟ್ ವರದಿಗಳು"
+msgstr "ಏಜೆಂಟ್ ಸವಲತ್ತುಗಳು"
 
 #: apps/starah-session/starah_session/app.py:137
 msgid "Choose what AI agents may do"
@@ -78,12 +75,12 @@ msgstr "ಈ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ AI ಏಜೆಂಟ್�
 msgid ""
 "Agents run as their own restricted accounts. When an agent needs a "
 "privilege, Starah answers for you from the level you choose here, and asks "
-"you whenever the level says so. You can change this at any time from \"Agent "
-"Privileges\"."
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
 msgstr ""
 "ಏಜೆಂಟ್‌ಗಳು ತಮ್ಮ ಸ್ವಂತ ನಿರ್ಬಂಧಿತ ಖಾತೆಗಳಾಗಿ ಚಾಲನೆ ಮಾಡುತ್ತವೆ. ಏಜೆಂಟ್‌ಗೆ ವರದಿ "
 "ಅಗತ್ಯವಾದಾಗ, Starah ನಿಮ್ಮ ಇಲ್ಲಿ ಆರಿಸಿದ ಮಟ್ಟದಿಂದ ನಿಮಗಾಗಿ ಉತ್ತರಿಸುತ್ತದೆ ಮತ್ತು "
-"ಮಟ್ಟ ಹೇಳಿದಾಗ ನಿಮ್ಮನ್ನು ಕೇಳುತ್ತದೆ. ನೀವು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ \"ಏಜೆಂಟ್ ವರದಿಗಳಿಂದ\" "
+"ಮಟ್ಟ ಹೇಳಿದಾಗ ನಿಮ್ಮನ್ನು ಕೇಳುತ್ತದೆ. ನೀವು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ \"ಏಜೆಂಟ್ ಸವಲತ್ತುಗಳಿಂದ\" "
 "ಇದನ್ನು ಬದಲಾಯಿಸಬಹುದು."
 
 #: apps/starah-session/starah_session/app.py:145
@@ -411,7 +408,7 @@ msgstr "ಅನುಮತಿಯಿಲ್ಲ"
 #. Translators: {agent} is an agent's name, {what} a technical permission name.
 #: apps/starah-session/starah_session/model.py:196
 #, python-brace-format
-msgid "Agent \"\"{agent}\"\" asks for: {what}"
+msgid "Agent “{agent}” asks for: {what}"
 msgstr "ಏಜೆಂಟ್ \"\"{agent}\"\" ಬೇಡಿಕೆ ಇಟ್ಟಿದೆ: {what}"
 
 #. Translators: {level} is like "2 · Routine".

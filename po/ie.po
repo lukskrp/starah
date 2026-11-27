@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Starah\n"
 "Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-11-27 05:58+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ie\n"
@@ -45,9 +45,9 @@ msgstr "{level}: {verdict}"
 #. Translators: "Edit Rules…" is the button's name in Agent Privileges.
 #: apps/starah-session/starah_session/app.py:112
 msgid ""
-"Starah answers each request del nivel del agente. Vestre pròpri regulas (Editar "
-"regulas…) posset cambiar li risposta por agents e actiones specific, ma ne "
-"permette umquam quelque li ultim line interdice."
+"Starah answers each request from the agent's level. Your own rules (Edit "
+"Rules…) can change the answer for particular agents and actions, but never "
+"allow what the last row forbids."
 msgstr ""
 "Starah responde a chascun requisition del nivel del agente. Vestre propri "
 "regulas (Editar regulas…) posse cambiar li resposta por agents e actiones "
@@ -76,10 +76,10 @@ msgstr "Agents IA sur ti computer"
 
 #: apps/starah-session/starah_session/app.py:140
 msgid ""
-"Agents runs como lor propri restrictet contos. Quande un agente ha besognie de "
-"un privilegie, Starah responde por vos del nivel quel vos elege ací, e demanda "
-"vos quande li nivello dice. Vos posse cambiar ti cose omni tempore per \""
-"Privilegies del agente\"."
+"Agents run as their own restricted accounts. When an agent needs a "
+"privilege, Starah answers for you from the level you choose here, and asks "
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
 msgstr ""
 "Li agents exsecuta in lor propri restrictet contos. Quande un agente besonia "
 "un privilegie, Starah responde por vos dal nivel quel vos elege aci, e demanda "
@@ -88,17 +88,17 @@ msgstr ""
 
 #: apps/starah-session/starah_session/app.py:145
 msgid ""
-"Ti es li nivellos de privilegie quel vos electet. Agents demanda vos por "
-"quelque lor nivello ne permisse per se."
+"These are the privilege levels you chose. Agents ask you for anything their "
+"level does not allow on its own."
 msgstr ""
 "Ti es li nivellos de privilegie quel vos electet. Agents demanda vos por "
 "quedel lor nivello ne permisse per se."
 
 #: apps/starah-session/starah_session/app.py:158
 msgid ""
-"⚠ Ti cobri agents quel li systema comense sub Starah. Un agente quel vos "
-"installat li altri maniere (npm, pip, un script ex un webseite, un programma "
-"downloadat) exsequi como vos, con accesse a omni vestre files."
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) "
+"runs as you, with access to all your files."
 msgstr ""
 "⚠ Ti cobri agents quel li systema comensa sub Starah. Un agente quel vos "
 "installat per altri maneres (npm, pip, un script ex un website, un programa "
@@ -118,8 +118,8 @@ msgstr "Editar regulas…"
 
 #: apps/starah-session/starah_session/app.py:181
 msgid ""
-"Openi li regulas (/etc/starah/rules.rhai) in un editor del terminal; ili es "
-"verificate ante li usage e li salvar demanda li password del administratör."
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are "
+"checked before they are used, and saving asks for the administrator password."
 msgstr ""
 "It openi li regulas (/etc/starah/rules.rhai) in un editor del terminal; ili es "
 "verificate ante li usage e li saver demanda li password del administratör."
@@ -129,15 +129,15 @@ msgid "What exactly?"
 msgstr "Quo exactmen?"
 
 #: apps/starah-session/starah_session/app.py:224
-msgid "May use mi home tot folder"
+msgid "May use my whole home folder"
 msgstr "Posse usar mi home tot carpeta"
 
 #: apps/starah-session/starah_session/app.py:227
 msgid ""
-"Off: il vide solmen li carpeta quel vos comensa il e have su propri loggines. "
-"On: il funciona como esset vos in vestre files — vestre loggines e settings, "
-"vestre claves SSH (il posse push per git), vestre altri projectes. Su changes "
-"al systema anc sequi su nivello."
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH "
+"keys (it can push with git), your other projects. Its changes to the system "
+"still follow its level."
 msgstr ""
 "Desactivat: il vide solmen li carpeta quel vos comensa il e have su propri "
 "loggines. Activat: il funciona quam si il esset vos in vestre files — "
@@ -145,21 +145,21 @@ msgstr ""
 "vestre altri projectes. Su changes al systema anc sequi su nivello."
 
 #: apps/starah-session/starah_session/app.py:244
-msgid "When software installat ne have un TulsiOS package"
+msgid "When software you install has no TulsiOS package"
 msgstr "Quande li software installat ne have un TulsiOS package"
 
 #: apps/starah-session/starah_session/app.py:254
 msgid ""
-"Un ricetta package downloades comun (AppImages, files .deb e .rpm, programas "
-"e codice fonte in archivies) ex tested templates, sin un model IA. Li Assistant "
-"posse package quasi omni cose, ma besonia un."
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
 msgstr ""
 "Un ricetta package downloads comun (AppImages, files .deb e .rpm, programas "
 "e codice fonte in archivies) ex testat templates, sin un model IA. Li Assistant "
 "posse package quasi omni cose, ma besonia un."
 
 #: apps/starah-session/starah_session/app.py:262
-msgid "Monstrar ti quande io me connecte"
+msgid "Show this when I log in"
 msgstr "Monstrar ti quande me connecte"
 
 #: apps/starah-session/starah_session/app.py:276
@@ -249,9 +249,9 @@ msgstr "Routine"
 
 #: apps/starah-session/starah_session/model.py:18
 msgid ""
-"Makes changes que li re-comencar al precedent systema reverti per se "
-"(installar software, activar o desactivar functiones, browser extensiones); "
-"demanda vos ante quelque to atinge contos o discos."
+"Makes changes that a restart into the previous system can undo on its own "
+"(installing software, turning features on or off, browser extensions); asks "
+"you before anything that touches accounts or disks."
 msgstr ""
 "Face cambies quel li restart al precedent systema reverti per "
 "se (installar software, activar o desactivar functiones, extensiones del "
@@ -263,8 +263,8 @@ msgstr "Administrer"
 
 #: apps/starah-session/starah_session/model.py:21
 msgid ""
-"Also edits li configuration libremente e gestir services per se; demanda "
-"vos ante sensitive changes."
+"Also edits the configuration freely and manages services on its own; asks "
+"you before sensitive changes."
 msgstr ""
 "Anque edita li configuration li liermemente e gestir services per se; demanda "
 "vos ante sensitive changes."
@@ -275,8 +275,8 @@ msgstr "Delegar"
 
 #: apps/starah-session/starah_session/model.py:23
 msgid ""
-"Does omni quel li administrator posse facer per se, excepte cambiar Starah, "
-"li user contos e passwords."
+"Does everything an administrator can on its own, except changing Starah, "
+"user accounts and passwords."
 msgstr ""
 "Face omni quel li administrator posse facer per se, excepte cambiar Starah, "
 "li usantes e passwords."
@@ -318,7 +318,7 @@ msgid "install and remove software"
 msgstr "installar e remover software"
 
 #: apps/starah-session/starah_session/model.py:54
-msgid "turn features and services on or off (a NixOS rollback undo it)"
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
 msgstr "activar o desactivar functiones e services (un rollback de NixOS reverti il)"
 
 #: apps/starah-session/starah_session/model.py:55
@@ -335,7 +335,8 @@ msgstr "Administration del systema"
 
 #: apps/starah-session/starah_session/model.py:59
 msgid ""
-"edit li system configuration beyond ti: user groups, boot, file systems, scripts"
+"edit the system configuration beyond that: user groups, boot, file systems, "
+"scripts"
 msgstr ""
 "edit li system configuration ultra ti: user grupos, boot, file systems, scripts"
 
@@ -348,7 +349,7 @@ msgid "network and Wi-Fi settings, the time, the computer's name and language"
 msgstr "network e Wi-Fi settings, li tempore, li nom e lingue del computer"
 
 #: apps/starah-session/starah_session/model.py:63
-msgid "power off, restart or suspend li computer"
+msgid "power off, restart or suspend the computer"
 msgstr "extinser, restarter o suspender li computer"
 
 #: apps/starah-session/starah_session/model.py:65
@@ -406,7 +407,7 @@ msgstr "Ne permisset"
 #. Translators: {agent} is an agent's name, {what} a technical permission name.
 #: apps/starah-session/starah_session/model.py:196
 #, python-brace-format
-msgid "Agent \"\"{agent}\"\" asks for: {what}"
+msgid "Agent “{agent}” asks for: {what}"
 msgstr "Agent \"\"{agent}\"\" demanda por: {what}"
 
 #. Translators: {level} is like "2 · Routine".
@@ -449,8 +450,8 @@ msgstr "Demandar li Assistant (un agent IA)"
 #: apps/starah-session/starah_session/model.py:338
 #, python-brace-format
 msgid ""
-"Vestre regulas have un error in li line {line}: {message}. Li regulas ante il "
-"anc es in usage."
+"Your rules have an error at line {line}: {message}. The rules before it are "
+"still in use."
 msgstr ""
 "Vestre regulas have un error in li line {line}: {message}. Li regulas ante il "
 "anc es in usage."
@@ -458,15 +459,15 @@ msgstr ""
 #: apps/starah-session/starah_session/model.py:340
 #, python-brace-format
 msgid ""
-"Vestre regulas have un error: {message}. Li regulas ante il anc es in usage."
+"Your rules have an error: {message}. The rules before it are still in use."
 msgstr "Vestre regulas have un error: {message}. Li regulas ante il anc es in usage."
 
 #: apps/starah-session/starah_session/model.py:343
-msgid "Vestre propri regulas refina ti nivellos (ili es in usage)."
+msgid "Your own rules refine these levels (they are in use)."
 msgstr "Vestre propri regulas refina ti nivellos (ili es in usage)."
 
 #: apps/starah-session/starah_session/model.py:344
-msgid "Vos posse refinar li nivellos per vestre propri regulas (un small script)."
+msgid "You can refine these levels with your own rules (a small script)."
 msgstr "Vos posse refinar li nivellos per vestre propri regulas (un small script)."
 
 #: apps/starah-session/data/org.starah.Session.desktop.in:4
