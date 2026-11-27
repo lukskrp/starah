@@ -42,6 +42,22 @@
         cd "$1"
         exec script -qec "stty rows 33 cols 101; starah run --interactive --agent tester -- /run/current-system/sw/bin/sh -c 'id -un; pwd; echo HOME=\$HOME; stty size; echo made > made.txt; ls -A /home/alice; readlink \$HOME/.config/test/linked; echo ARGS:\$#' " /dev/null
       '';
+      # Editors for `starah rules edit`: each writes a prepared script into the
+      # file it is given, as a person would in their editor.
+      environment.etc."starah-test/edit-deny".source = pkgs.writeShellScript "edit-deny" ''
+        cat > "$1" <<'RULES'
+        // tester may not touch services, whatever its level.
+        fn decide(req) {
+            if req.agent == "tester" && req.action.starts_with("org.freedesktop.systemd1.") {
+                return "deny";
+            }
+            "default"
+        }
+        RULES
+      '';
+      environment.etc."starah-test/edit-broken".source = pkgs.writeShellScript "edit-broken" ''
+        echo 'fn decide(req) { if req.agent == ' > "$1"
+      '';
       # Asks polkit whether the calling process may perform an action.
       environment.etc."starah-test/pk".source = pkgs.writeShellScript "pk" ''
         exec ${pkgs.polkit.bin}/bin/pkcheck --action-id "$1" --process $$
@@ -212,5 +228,65 @@
           machine.succeed("systemctl stop alice-terminal.service")
           machine.wait_until_fails("systemctl list-units --no-legend 'starah-tester-*.service' | grep -v prepare | grep -v end | grep -q starah", timeout=30)
           machine.wait_until_succeeds("test -z \"$(ls -A /run/starah/sessions 2>/dev/null)\"", timeout=30)
+
+      def rules_hash():
+          r = json.loads(machine.succeed("busctl --json=short call org.starah.Broker1 /org/starah/Broker1 "
+                                         "org.starah.Broker1 GetRules | jq -r .data[0]"))
+          return r["status"]
+
+      with subtest("rules: a new system has commented examples that change nothing"):
+          machine.succeed("test -f /var/lib/starah/rules.rhai")
+          assert machine.succeed("stat -c %a /var/lib/starah/rules.rhai").strip() == "600"
+          machine.succeed("grep -q 'Starah rules' /etc/starah/rules.rhai")
+          shown = machine.succeed(alice("starah rules show 2>&1"))
+          assert "levels alone decide" in shown, shown
+          # The rules are the person's: agents can neither read nor change them.
+          machine.fail(agent("tester", "starah rules show"))
+          machine.fail(agent("tester", "busctl call org.starah.Broker1 /org/starah/Broker1 "
+                                       "org.starah.Broker1 SetRules s x"))
+
+      with subtest("rules: edited and checked like visudo, then they decide"):
+          # tester has level 4: services are allowed by the level...
+          assert "allow" in machine.succeed(alice("starah rules test tester org.freedesktop.systemd1.manage-units"))
+          out = machine.succeed(alice("EDITOR=/etc/starah-test/edit-deny starah rules edit 2>&1"))
+          machine.log(out)
+          assert "in use" in out, out
+          # ...and denied by the rules, with no restart.
+          verdict = machine.succeed(alice("starah rules test tester org.freedesktop.systemd1.manage-units"))
+          assert verdict.startswith("deny: your rules"), verdict
+          machine.fail(agent("tester", "systemctl start demo.service"))
+          machine.fail("systemctl is-active demo.service")
+          # Other agents and actions: still their levels.
+          assert "allow" in machine.succeed(alice("starah rules test tester org.tulsi.apply"))
+          deny_hash = rules_hash()["hash"]
+
+      with subtest("rules: a broken edit is refused and nothing changes"):
+          out = machine.fail(alice("echo n | EDITOR=/etc/starah-test/edit-broken starah rules edit 2>&1"))
+          assert "don't compile" in out and "line" in out, out
+          assert rules_hash()["hash"] == deny_hash
+          machine.fail(agent("tester", "systemctl start demo.service"))
+
+      with subtest("rules: edited by hand as root, reloaded at once; a broken file keeps the last good rules"):
+          machine.succeed("echo 'fn decide(req) { if req.agent == \"helper\" && "
+                          "req.action == \"org.tulsi.configure\" { return \"allow\"; } \"default\" }' "
+                          "> /var/lib/starah/rules.rhai")
+          # helper has level 2, which asks about configure; its rules allow it.
+          machine.succeed("starah run --agent helper -- starah ask org.tulsi.configure 'add user bob' '+ user bob'")
+          machine.succeed("echo 'fn decide(req) {' > /var/lib/starah/rules.rhai")
+          shown = machine.succeed(alice("starah rules show 2>&1"))
+          assert "has an error" in shown and "still in use" in shown, shown
+          machine.succeed("starah run --agent helper -- starah ask org.tulsi.configure 'add user eve' '+ user eve'")
+
+      with subtest("rules: undo goes back; every change is audited"):
+          machine.succeed(alice("starah rules undo"))
+          # The version before the visudo-style edit: the examples.
+          shown = machine.succeed(alice("starah rules show 2>&1"))
+          assert "levels alone decide" in shown, shown
+          machine.succeed(agent("tester", "systemctl start demo.service"))
+          machine.succeed("systemctl stop demo.service")
+          audit = machine.succeed(alice("starah audit 500"))
+          for needle in ['"event":"set-rules"', '"event":"undo-rules"', '"event":"rules-error"',
+                         '"event":"rules-loaded"', f'"rules":"{deny_hash}"']:
+              assert needle in audit, needle
   '';
 }

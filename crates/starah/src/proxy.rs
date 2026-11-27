@@ -34,6 +34,17 @@ pub trait Broker1 {
     fn set_home_access(&self, agent: &str, allow: bool) -> zbus::Result<()>;
     fn wait(&self, unit: &str) -> zbus::Result<i32>;
     fn audit_log(&self, limit: u32) -> zbus::Result<String>;
+    fn get_rules(&self) -> zbus::Result<String>;
+    fn check_rules(&self, text: &str) -> zbus::Result<String>;
+    fn set_rules(&self, text: &str) -> zbus::Result<String>;
+    fn undo_rules(&self) -> zbus::Result<String>;
+    fn try_rules(
+        &self,
+        agent: &str,
+        action: &str,
+        detail: &str,
+        description: &str,
+    ) -> zbus::Result<String>;
 
     #[zbus(signal)]
     fn request_added(&self, id: u64, request: &str) -> zbus::Result<()>;

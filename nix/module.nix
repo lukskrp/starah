@@ -17,18 +17,21 @@ let
   workspace = name: "/var/lib/starah-agents/${name}";
 
   configFile = pkgs.writeText "starah-config.json" (
-    builtins.toJSON {
-      agents = lib.mapAttrs (_: a: {
-        inherit (a) level description;
-        home_links = a.homeLinks;
-      }) cfg.agents;
-      classes = lib.recursiveUpdate (lib.importJSON cfg.classesFile) cfg.extraClasses;
-      grant_minutes = cfg.grantMinutes;
-      user_prefix = "starah-";
-      workspaces = "/var/lib/starah-agents";
-      polkit_user = "polkituser";
-      agent_path = "/run/current-system/sw/bin";
-    }
+    builtins.toJSON (
+      {
+        agents = lib.mapAttrs (_: a: {
+          inherit (a) level description;
+          home_links = a.homeLinks;
+        }) cfg.agents;
+        classes = lib.recursiveUpdate (lib.importJSON cfg.classesFile) cfg.extraClasses;
+        grant_minutes = cfg.grantMinutes;
+        user_prefix = "starah-";
+        workspaces = "/var/lib/starah-agents";
+        polkit_user = "polkituser";
+        agent_path = "/run/current-system/sw/bin";
+      }
+      // lib.optionalAttrs (cfg.rules.initial != null) { initial_rules = cfg.rules.initial; }
+    )
   );
 
   rules = ''
@@ -130,6 +133,17 @@ in
       description = "How long an approved request stays granted by default.";
     };
 
+    rules.initial = lib.mkOption {
+      type = lib.types.nullOr lib.types.lines;
+      default = null;
+      description = ''
+        The rules file (`/var/lib/starah/rules.rhai`, a Rhai script) a new system
+        starts with; null: commented examples that change nothing. Only used when
+        the file doesn't exist: afterwards the person owns it (`starah rules edit`,
+        Agent Privileges › Edit Rules…, or `sudoedit /etc/starah/rules.rhai`).
+      '';
+    };
+
     adminsWithoutPassword = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -177,6 +191,8 @@ in
     ) cfg.agents;
 
     environment.etc."starah/config.json".source = configFile;
+    # The person's rules, where people look for them (`sudoedit /etc/starah/rules.rhai`).
+    environment.etc."starah/rules.rhai".source = "/var/lib/starah/rules.rhai";
     environment.etc."polkit-1/rules.d/00-starah.rules".text = rules;
     environment.systemPackages = [ cfg.package ] ++ lib.optional cfg.session.enable cfg.session.package;
     services.dbus.packages = [ cfg.package ];

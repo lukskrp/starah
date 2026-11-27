@@ -57,6 +57,55 @@ operation behind a daemon that asks polkit, so it doesn't need one.
 
   Requests expire after 15 minutes. Changing levels drops all grants.
 
+## Rules: the person's own refinements
+
+The level table is the same for everyone. A person who wants more, such as "Codex may
+install packages on its own, but nothing else" or "no administration at night",
+writes it as a script: `/var/lib/starah/rules.rhai` (root, 0600; `/etc/starah/rules.rhai`
+points to it), in [Rhai](https://rhai.rs), a small scripting language made for
+embedding.
+
+```rhai
+fn decide(req) {
+    if req.agent == "codex" && req.action == "org.tulsi.apply"
+        && req.changes.len() > 0
+        && req.changes.all(|c| c.starts_with("+ package")) {
+        return "allow";
+    }
+    if req.class == "admin" && (req.hour >= 22 || req.hour < 7) {
+        return "deny";
+    }
+    "default"
+}
+```
+
+- **What it decides:** every check and ask about an agent calls `decide(req)`.
+  - It answers `"allow"`, `"ask"` (a request, as usual), `"deny"`, or `"default"`,
+    which hands the decision to the level table.
+  - `req` has `agent`, `level` and `level_name`, `action`, `class`, `detail` (the
+    systemd unit or tulsi's summary), `title`, `reason` and `changes` (what a
+    cooperating agent described), `hour` and `weekday` (local time), and `table`
+    (the level table's verdict).
+- **What it can't change:**
+  - The forbidden class is denied whatever the script says.
+  - A script that fails or runs too long (100,000 operations) counts as the stricter of
+    the table's verdict and "ask", and the failure is audited.
+  - The engine has no files, network, processes, modules or `eval`.
+- **Editing:**
+  - **`starah rules edit`** (also Agent Privileges › Edit Rules…) works like visudo.
+    The person edits a private copy in `$VISUAL`/`$EDITOR`, then starahd compiles it
+    and tries it on each agent (`CheckRules`).
+    - A script that doesn't compile or fails is never installed: it reopens, or is
+      dropped.
+    - Installing (`SetRules`) asks for the administrator password, keeps the version
+      before for `starah rules undo`, drops existing grants, and is audited.
+  - **Root can also edit the file directly** (`sudoedit /etc/starah/rules.rhai`).
+    starahd notices the change before the next decision. A file that doesn't compile is
+    refused: the last good rules stay, and `starah rules show` and the window say so.
+- **Who can see them:** agents can neither read nor change the rules. Every check and
+  ask in the audit log carries the hash of the rules that decided it. Try a decision
+  with `starah rules test AGENT ACTION [--change C]…`.
+
 ## Components
 
 ```

@@ -37,6 +37,7 @@ starah run --agent assistant -- my-agent --flag   # run an agent, sandboxed, as 
 starah status                                     # agents and levels
 starah requests; starah approve 3                 # answer requests from a terminal
 starah audit 50                                   # what agents asked and what was decided
+starah rules edit                                 # your own rules (a Rhai script), checked before use
 ```
 
 In a graphical session, `starah-session` handles all of this. It shows the setup at first

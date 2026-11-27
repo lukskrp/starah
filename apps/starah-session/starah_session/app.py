@@ -6,7 +6,8 @@ Started at every login (a user service after graphical-session.target):
 - it stays running and shows an **Agent Request** window whenever an agent asks for
   something its level does not allow on its own.
 
-`starah-session --show` (the menu entry) opens the summary in the running instance.
+`starah-session --show` (the menu entry) opens the summary in the running instance;
+`starah-session --compare` shows what each level allows, side by side.
 """
 
 from __future__ import annotations
@@ -24,18 +25,26 @@ gi.require_version("Otk", "3.0")
 from gi.repository import Gio, GLib, Otk as Gtk  # noqa: E402
 
 from .broker import Broker, BrokerError  # noqa: E402
+from .i18n import _  # noqa: E402
 from .model import (  # noqa: E402
+    CLASSES,
     LEVELS,
     PACKAGING_CHOICES,
+    VERDICT_MARK,
+    VERDICT_TEXT,
     Policy,
     Request,
+    breakdown_markup,
+    edit_rules_command,
     level_title,
     load_packaging,
     load_prefs,
+    rules_summary,
     save_packaging,
     save_prefs,
     show_at_login,
     tulsi_packaging_available,
+    verdict,
 )
 
 APP_ID = "org.starah.Session"
@@ -50,6 +59,65 @@ def wrap_label(text: str, css: str | None = None) -> Gtk.Label:
     return label
 
 
+class CompareWindow(Gtk.Window):
+    """All five levels side by side: what each lets an agent do."""
+
+    def __init__(self, parent: Gtk.Window | None):
+        super().__init__(title=_("Compare Levels"), transient_for=parent)
+        # Fits a 1024×768 screen; the table scrolls if the screen is smaller.
+        self.set_default_size(960, 600)
+        self.set_border_width(16)
+        self.set_position(Gtk.WindowPosition.CENTER_ON_PARENT if parent
+                          else Gtk.WindowPosition.CENTER)
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        self.add(box)
+        heading = Gtk.Label(xalign=0)
+        heading.set_markup("<big><b>{}</b></big>".format(
+            GLib.markup_escape_text(_("What each level lets an agent do"))))
+        box.pack_start(heading, False, False, 0)
+        box.pack_start(wrap_label(
+            # Translators: the table's legend; keep {allow}, {ask} and {deny} (the
+            # marks ✓, ? and ✗).
+            _("{allow} on its own   ·   {ask} asks you first (you approve or reject each "
+              "time)   ·   {deny} not allowed").format(
+                allow=VERDICT_MARK["allow"], ask=VERDICT_MARK["ask"],
+                deny=VERDICT_MARK["deny"])),
+            False, False, 0)
+
+        grid = Gtk.Grid(column_spacing=18, row_spacing=10, margin_end=12)
+        scroller = Gtk.ScrolledWindow(hscrollbar_policy=Gtk.PolicyType.NEVER, vexpand=True)
+        scroller.add(grid)
+        box.pack_start(scroller, True, True, 0)
+        for col, (name, _text) in enumerate(LEVELS, start=1):
+            head = Gtk.Label()
+            head.set_markup(f"<b>{col - 1} · {GLib.markup_escape_text(name)}</b>")
+            grid.attach(head, col, 0, 1, 1)
+        for row, (klass, title, examples) in enumerate(CLASSES, start=1):
+            what = wrap_label("")
+            what.set_max_width_chars(48)
+            items = "\n".join(f"•  {GLib.markup_escape_text(e)}" for e in examples)
+            what.set_markup(f"<b>{GLib.markup_escape_text(title)}</b>\n<small>{items}</small>")
+            grid.attach(what, 0, row, 1, 1)
+            for col in range(1, len(LEVELS) + 1):
+                v = verdict(col - 1, klass)
+                cell = Gtk.Label()
+                cell.set_markup(f"<big>{VERDICT_MARK[v]}</big>\n<small>{VERDICT_TEXT[v]}</small>")
+                cell.set_justify(Gtk.Justification.CENTER)
+                # Translators: a table cell's tooltip, e.g. "Routine: Asks you first".
+                cell.set_tooltip_text(_("{level}: {verdict}").format(
+                    level=LEVELS[col - 1][0], verdict=VERDICT_TEXT[v]))
+                grid.attach(cell, col, row, 1, 1)
+        box.pack_start(wrap_label(
+            # Translators: "Edit Rules…" is the button's name in Agent Privileges.
+            _("Starah answers each request from the agent's level. Your own rules (Edit "
+              "Rules…) can change the answer for particular agents and actions, but never "
+              "allow what the last row forbids.")), False, False, 0)
+        close = Gtk.Button.new_with_mnemonic(_("_Close"))
+        close.set_halign(Gtk.Align.END)
+        close.connect("clicked", lambda _b: self.destroy())
+        box.pack_start(close, False, False, 0)
+
+
 class LevelsWindow(Gtk.ApplicationWindow):
     """First-login setup (setup=True) or the login summary."""
 
@@ -57,7 +125,7 @@ class LevelsWindow(Gtk.ApplicationWindow):
         super().__init__(application=app)
         self.app = app
         self.setup = setup
-        self.set_title("Starah Setup" if setup else "Agent Privileges")
+        self.set_title(_("Starah Setup") if setup else _("Agent Privileges"))
         self.set_default_size(620, -1)
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_border_width(20)
@@ -65,18 +133,17 @@ class LevelsWindow(Gtk.ApplicationWindow):
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
         self.add(box)
         heading = Gtk.Label(xalign=0)
-        heading.set_markup(
-            "<big><b>Choose what AI agents may do</b></big>" if setup
-            else "<big><b>AI agents on this computer</b></big>"
-        )
+        heading.set_markup("<big><b>{}</b></big>".format(GLib.markup_escape_text(
+            _("Choose what AI agents may do") if setup else _("AI agents on this computer"))))
         box.pack_start(heading, False, False, 0)
         box.pack_start(wrap_label(
-            "Agents run as their own restricted accounts. When an agent needs a privilege, "
-            "Starah answers for you from the level you choose here, and asks you whenever "
-            "the level says so. You can change this at any time from “Agent Privileges”."
+            _("Agents run as their own restricted accounts. When an agent needs a "
+              "privilege, Starah answers for you from the level you choose here, and asks "
+              "you whenever the level says so. You can change this at any time from "
+              "“Agent Privileges”.")
             if setup else
-            "These are the privilege levels you chose. Agents ask you for anything their "
-            "level does not allow on its own."
+            _("These are the privilege levels you chose. Agents ask you for anything their "
+              "level does not allow on its own.")
         ), False, False, 0)
 
         grid = Gtk.Grid(column_spacing=12, row_spacing=6, margin_end=12)
@@ -88,18 +155,42 @@ class LevelsWindow(Gtk.ApplicationWindow):
 
         # Starah covers the agents the system starts through it; say so.
         warning = wrap_label(
-            "⚠ This covers agents your system starts under Starah. An agent you installed "
-            "some other way (npm, pip, a script from a website, a downloaded program) runs "
-            "as you, with access to all your files.")
+            _("⚠ This covers agents your system starts under Starah. An agent you installed "
+              "some other way (npm, pip, a script from a website, a downloaded program) "
+              "runs as you, with access to all your files."))
         box.pack_start(warning, False, False, 0)
         # (The session service's PATH may not include the system's programs.)
         wiki = shutil.which("tulsi-wiki") or next(
             (p for p in ("/run/current-system/sw/bin/tulsi-wiki",) if os.path.exists(p)), None)
+        links = Gtk.Box(spacing=8)
+        compare = Gtk.Button(label=_("Compare Levels"))
+        compare.set_tooltip_text(_("What each level lets an agent do, side by side"))
+        compare.connect("clicked", lambda _b: CompareWindow(self).show_all())
+        links.pack_start(compare, False, False, 0)
         if wiki:
-            more = Gtk.Button(label="Learn More", halign=Gtk.Align.START)
+            more = Gtk.Button(label=_("Learn More"))
             more.connect("clicked", lambda _b: subprocess.Popen(
                 [wiki, "ai-agents"], start_new_session=True))
-            box.pack_start(more, False, False, 0)
+            links.pack_start(more, False, False, 0)
+        # The person's own rules (a Rhai script) refine the levels.
+        self.rules_label = None
+        edit_cmd = edit_rules_command()
+        if not setup and edit_cmd:
+            edit = Gtk.Button(label=_("Edit Rules…"))
+            edit.set_tooltip_text(
+                _("Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are "
+                  "checked before they are used, and saving asks for the administrator "
+                  "password."))
+            edit.connect("clicked", lambda _b: subprocess.Popen(edit_cmd, start_new_session=True))
+            links.pack_start(edit, False, False, 0)
+            self.rules_label = wrap_label("")
+            self.rules_label.get_style_context().add_class("dim-label")
+            self._refresh_rules()
+            # After editing in the terminal, the status shows the result.
+            self.connect("focus-in-event", lambda *_a: self._refresh_rules())
+        box.pack_start(links, False, False, 0)
+        if self.rules_label is not None:
+            box.pack_start(self.rules_label, False, False, 0)
         self.combos: dict[str, Gtk.ComboBoxText] = {}
         self.initial: dict[str, int] = {}
         row = 0
@@ -114,21 +205,29 @@ class LevelsWindow(Gtk.ApplicationWindow):
             grid.attach(combo, 1, row, 1, 1)
             explain = wrap_label(LEVELS[agent.level][1])
             explain.get_style_context().add_class("dim-label")
-            combo.connect("changed", self._on_level_changed, explain)
+            # What exactly the chosen level lets it do, ask about, and never do.
+            details = wrap_label("")
+            details.set_margin_start(12)
+            details.set_markup(breakdown_markup(agent.level))
+            exactly = Gtk.Expander(label=_("What exactly?"))
+            exactly.add(details)
+            combo.connect("changed", self._on_level_changed, explain, details)
             row += 1
             if agent.description:
                 grid.attach(wrap_label(agent.description), 0, row, 2, 1)
                 row += 1
             grid.attach(explain, 0, row, 2, 1)
             row += 1
+            grid.attach(exactly, 0, row, 2, 1)
+            row += 1
             # What an agent started in a terminal may see of the person's files.
-            home = Gtk.CheckButton(label="May use my whole home folder")
+            home = Gtk.CheckButton(label=_("May use my whole home folder"))
             home.set_active(getpass.getuser() in agent.home_access)
             home_note = wrap_label(
-                "Off: it sees only the folder you start it in, and has its own logins. "
-                "On: it works as if it were you in your files — your logins and settings, "
-                "your SSH keys (it can push with git), your other projects. Its changes to "
-                "the system still follow its level.")
+                _("Off: it sees only the folder you start it in, and has its own logins. "
+                  "On: it works as if it were you in your files — your logins and "
+                  "settings, your SSH keys (it can push with git), your other projects. Its "
+                  "changes to the system still follow its level."))
             home_note.get_style_context().add_class("dim-label")
             home.connect("toggled", self._on_home_toggled, agent.name)
             grid.attach(home, 0, row, 2, 1)
@@ -141,7 +240,8 @@ class LevelsWindow(Gtk.ApplicationWindow):
         # On TulsiOS: packaging software that has no package, with or without an agent.
         if tulsi_packaging_available():
             title = Gtk.Label(xalign=0)
-            title.set_markup("<b>When software you install has no TulsiOS package</b>")
+            title.set_markup("<b>{}</b>".format(GLib.markup_escape_text(
+                _("When software you install has no TulsiOS package"))))
             box.pack_start(title, False, False, 0)
             packaging = Gtk.ComboBoxText()
             for key, label in PACKAGING_CHOICES:
@@ -151,15 +251,15 @@ class LevelsWindow(Gtk.ApplicationWindow):
                 "changed", lambda c: save_packaging(c.get_active_id() or "ask"))
             box.pack_start(packaging, False, False, 0)
             box.pack_start(wrap_label(
-                "A recipe packages common downloads (AppImages, .deb and .rpm files, "
-                "programs and source code in archives) from tested templates, without an "
-                "AI model. The Assistant can package almost anything, but needs one."
+                _("A recipe packages common downloads (AppImages, .deb and .rpm files, "
+                  "programs and source code in archives) from tested templates, without an "
+                  "AI model. The Assistant can package almost anything, but needs one.")
             ), False, False, 0)
 
         self.message = wrap_label("")
         box.pack_start(self.message, False, False, 0)
 
-        self.show_login = Gtk.CheckButton(label="Show this when I log in")
+        self.show_login = Gtk.CheckButton(label=_("Show this when I log in"))
         self.show_login.set_active(show_at_login(load_prefs()))
         self.show_login.connect("toggled", self._on_show_login)
         if not setup:
@@ -168,18 +268,32 @@ class LevelsWindow(Gtk.ApplicationWindow):
         buttons = Gtk.ButtonBox(layout_style=Gtk.ButtonBoxStyle.END, spacing=8)
         box.pack_end(buttons, False, False, 0)
         if not setup:
-            close = Gtk.Button.new_with_mnemonic("_Close")
+            close = Gtk.Button.new_with_mnemonic(_("_Close"))
             close.connect("clicked", lambda _b: self.destroy())
             buttons.add(close)
-        self.save = Gtk.Button.new_with_mnemonic("_Save" if not setup else "_Save and continue")
+        # Translators: buttons; the _ marks the access key (Alt+S).
+        self.save = Gtk.Button.new_with_mnemonic(
+            _("_Save") if not setup else _("_Save and continue"))
         self.save.get_style_context().add_class("suggested-action")
         self.save.connect("clicked", self._on_save)
         self.save.set_sensitive(setup)
         buttons.add(self.save)
         self.show_all()
 
-    def _on_level_changed(self, combo: Gtk.ComboBoxText, explain: Gtk.Label) -> None:
+    def _refresh_rules(self) -> bool:
+        if self.rules_label is None:
+            return False
+        try:
+            status = json.loads(self.app.broker.get_rules()).get("status", {})
+        except (BrokerError, ValueError):
+            status = {}
+        self.rules_label.set_text(rules_summary(status))
+        return False
+
+    def _on_level_changed(self, combo: Gtk.ComboBoxText, explain: Gtk.Label,
+                          details: Gtk.Label) -> None:
         explain.set_text(LEVELS[combo.get_active()][1])
+        details.set_markup(breakdown_markup(combo.get_active()))
         changed = any(c.get_active() != self.initial[n] for n, c in self.combos.items())
         self.save.set_sensitive(self.setup or changed)
 
@@ -188,13 +302,16 @@ class LevelsWindow(Gtk.ApplicationWindow):
 
         def done(err: str | None) -> None:
             if err:
-                self.message.set_text(f"Not changed: {err}")
+                # Translators: {error} is a system message, often in English.
+                self.message.set_text(_("Not changed: {error}").format(error=err))
                 check.handler_block_by_func(self._on_home_toggled)
                 check.set_active(not allow)
                 check.handler_unblock_by_func(self._on_home_toggled)
             else:
                 self.message.set_text(
-                    f"{agent} {'may now use' if allow else 'no longer uses'} your whole home folder.")
+                    (_("{agent} may now use your whole home folder.") if allow
+                     else _("{agent} no longer uses your whole home folder.")).format(
+                        agent=agent))
 
         self.app.broker.set_home_access(agent, allow, done)
 
@@ -206,11 +323,11 @@ class LevelsWindow(Gtk.ApplicationWindow):
     def _on_save(self, _button) -> None:
         levels = {name: c.get_active() for name, c in self.combos.items()}
         self.save.set_sensitive(False)
-        self.message.set_text("Saving… (you may be asked for your password)")
+        self.message.set_text(_("Saving… (you may be asked for your password)"))
 
         def done(err: str | None) -> None:
             if err:
-                self.message.set_text(f"Not saved: {err}")
+                self.message.set_text(_("Not saved: {error}").format(error=err))
                 self.save.set_sensitive(True)
             else:
                 print(f"starah-session: levels saved: {json.dumps(levels)}", flush=True)
@@ -226,7 +343,7 @@ class RequestWindow(Gtk.ApplicationWindow):
         super().__init__(application=app)
         self.app = app
         self.req = req
-        self.set_title("Agent Request")
+        self.set_title(_("Agent Request"))
         self.set_default_size(560, -1)
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_keep_above(True)
@@ -242,7 +359,7 @@ class RequestWindow(Gtk.ApplicationWindow):
         for line in req.summary_lines():
             box.pack_start(wrap_label(line), False, False, 0)
         if req.changes:
-            box.pack_start(wrap_label("Changes:"), False, False, 0)
+            box.pack_start(wrap_label(_("Changes:")), False, False, 0)
             for change in req.changes:
                 box.pack_start(wrap_label(f"   • {change}"), False, False, 0)
         if req.diff:
@@ -256,18 +373,19 @@ class RequestWindow(Gtk.ApplicationWindow):
         self.minutes.set_value(10)
         if req.timed:
             row = Gtk.Box(spacing=6)
-            row.pack_start(Gtk.Label(label="Allow for"), False, False, 0)
+            # Translators: "Allow for [10] minutes", around a number field.
+            row.pack_start(Gtk.Label(label=_("Allow for")), False, False, 0)
             row.pack_start(self.minutes, False, False, 0)
-            row.pack_start(Gtk.Label(label="minutes"), False, False, 0)
+            row.pack_start(Gtk.Label(label=_("minutes")), False, False, 0)
             box.pack_start(row, False, False, 0)
 
         self.message = wrap_label("")
         box.pack_start(self.message, False, False, 0)
         buttons = Gtk.ButtonBox(layout_style=Gtk.ButtonBoxStyle.END, spacing=8)
         box.pack_end(buttons, False, False, 0)
-        reject = Gtk.Button.new_with_mnemonic("_Reject")
+        reject = Gtk.Button.new_with_mnemonic(_("_Reject"))
         reject.connect("clicked", lambda _b: self._decide(False))
-        approve = Gtk.Button.new_with_mnemonic("_Approve")
+        approve = Gtk.Button.new_with_mnemonic(_("_Approve"))
         approve.get_style_context().add_class("suggested-action")
         approve.connect("clicked", lambda _b: self._decide(True))
         buttons.add(reject)
@@ -280,7 +398,7 @@ class RequestWindow(Gtk.ApplicationWindow):
 
         def done(err: str | None) -> None:
             if err:
-                self.message.set_text(f"Could not answer: {err}")
+                self.message.set_text(_("Could not answer: {error}").format(error=err))
             else:
                 print(f"starah-session: request {self.req.id} "
                       f"{'approved' if approve else 'rejected'}", flush=True)
@@ -356,8 +474,25 @@ class StarahApp(Gtk.Application):
             window.destroy()
 
 
+def compare_main() -> int:
+    """`starah-session --compare`: the levels table on its own (no broker needed)."""
+    app = Gtk.Application(application_id=APP_ID + ".Compare",
+                          flags=Gio.ApplicationFlags.NON_UNIQUE)
+
+    def activate(a: Gtk.Application) -> None:
+        window = CompareWindow(None)
+        a.add_window(window)
+        window.show_all()
+        window.present()
+
+    app.connect("activate", activate)
+    return app.run([sys.argv[0]])
+
+
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
+    if "--compare" in argv:
+        return compare_main()
     first = "show" if "--show" in argv else "login"
     app = StarahApp(first)
     return app.run([sys.argv[0]])

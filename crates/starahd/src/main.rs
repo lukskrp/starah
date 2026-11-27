@@ -9,6 +9,7 @@
 //! usage: starahd [--config /etc/starah/config.json] [--state /var/lib/starah]
 
 mod polkit;
+mod rules_file;
 mod service;
 mod session;
 mod systemd;

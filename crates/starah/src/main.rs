@@ -13,9 +13,11 @@
 //!                                      sessions (logins, SSH keys, other projects)
 //!   starah ask ACTION TITLE [CHANGE…]  (inside an agent) ask before acting; waits
 //!   starah audit [N]                   the last N audit entries
+//!   starah rules show|check|edit|undo|test   your own rules (a Rhai script)
 
 mod interactive;
 mod proxy;
+mod rules;
 
 use std::process::ExitCode;
 
@@ -28,7 +30,8 @@ fn usage() -> ExitCode {
     eprintln!(
         "usage: starah status | set AGENT LEVEL… | requests | approve ID [MINUTES] | reject ID\n\
          \x20      | run [--interactive] --agent NAME -- CMD… | home AGENT on|off\n\
-         \x20      | ask ACTION TITLE [CHANGE…] | audit [N]"
+         \x20      | ask ACTION TITLE [CHANGE…] | audit [N]\n\
+         \x20      | rules show | check [FILE] | edit | undo | test AGENT ACTION …"
     );
     ExitCode::from(2)
 }
@@ -191,6 +194,7 @@ async fn run(args: &[String]) -> Result<ExitCode, String> {
             eprintln!("starah: {msg}");
             Ok(code)
         }
+        ("rules", rest) => rules::run(&broker, rest).await,
         ("audit", rest) if rest.len() <= 1 => {
             let n: u32 = rest.first().and_then(|n| n.parse().ok()).unwrap_or(20);
             println!("{}", broker.audit_log(n).await.map_err(err)?);

@@ -3,11 +3,16 @@
 //! An agent has a **level** (0–4). Every privileged action (a polkit action id) has a
 //! **class**. The level and the class give a verdict: allow, ask the human, or deny.
 //! "Ask" turns into a pending **request**; when the human approves it, the agent gets
-//! a **grant** for that action, and its next attempt is allowed.
+//! a **grant** for that action, and its next attempt is allowed. The person's own
+//! **rules** (a Rhai script, see `rules`) can refine any verdict except "forbidden".
 
 use std::collections::BTreeMap;
 
 use serde::{Deserialize, Serialize};
+
+pub mod rules;
+
+pub use rules::{RuleVerdict, Rules, RulesError};
 
 /// How much an agent may do on its own.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
@@ -296,7 +301,39 @@ pub struct Broker {
     pub policy: Policy,
     pub grants: Vec<Grant>,
     pub requests: Vec<Request>,
+    /// The person's own rules (rules.rhai), if any.
+    pub rules: Option<Rules>,
+    /// The local time zone's offset from UTC (seconds), for the rules' `hour`.
+    pub utc_offset: i64,
+    /// The last time the rules failed while deciding (taken by the caller, for the
+    /// audit log).
+    pub rules_failure: Option<String>,
     next_id: u64,
+}
+
+/// The stricter of two verdicts.
+pub fn stricter(a: Verdict, b: Verdict) -> Verdict {
+    let rank = |v| match v {
+        Verdict::Allow => 0,
+        Verdict::Ask => 1,
+        Verdict::Deny => 2,
+    };
+    if rank(a) >= rank(b) {
+        a
+    } else {
+        b
+    }
+}
+
+/// A decision and why.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct Decision {
+    pub verdict: Verdict,
+    pub why: String,
+    pub level: Level,
+    pub class: Class,
+    /// Whether the person's rules decided (rather than the level table).
+    pub by_rules: bool,
 }
 
 impl Broker {
@@ -306,8 +343,83 @@ impl Broker {
             policy,
             grants: Vec::new(),
             requests: Vec::new(),
+            rules: None,
+            utc_offset: 0,
+            rules_failure: None,
             next_id: 1,
         }
+    }
+
+    /// What the level table and the person's rules say about `agent` doing
+    /// `action`; files nothing. None for an unknown agent.
+    pub fn evaluate(
+        &mut self,
+        agent: &str,
+        action: &str,
+        detail: Option<&str>,
+        description: &Description,
+        now: u64,
+    ) -> Option<Decision> {
+        let level = self.level(agent)?;
+        let class = self.config.classes.class_of(action);
+        let table = verdict(level, class);
+        let table_why = |v: Verdict| {
+            let says = match v {
+                Verdict::Allow => "which allows this",
+                Verdict::Ask => "which asks you first",
+                Verdict::Deny => "which does not allow this",
+            };
+            format!(
+                "{agent} has level {} ({}), {says}",
+                level as u8,
+                level.name()
+            )
+        };
+        let decision = |verdict, why, by_rules| Decision {
+            verdict,
+            why,
+            level,
+            class,
+            by_rules,
+        };
+        // Starah itself, accounts, polkit and sudo rules: no rule changes that.
+        if class == Class::Forbidden {
+            return Some(decision(
+                Verdict::Deny,
+                "no agent may do this (Starah keeps it for people)".into(),
+                false,
+            ));
+        }
+        let Some(rules) = &self.rules else {
+            return Some(decision(table, table_why(table), false));
+        };
+        let input = rules::RuleInput {
+            agent,
+            level,
+            action,
+            class,
+            detail,
+            description,
+            default: table,
+            now,
+            utc_offset: self.utc_offset,
+        };
+        Some(match rules.decide(&input) {
+            Ok(RuleVerdict::Default) => decision(table, table_why(table), false),
+            Ok(RuleVerdict::Allow) => {
+                decision(Verdict::Allow, "your rules allow this".into(), true)
+            }
+            Ok(RuleVerdict::Ask) => decision(Verdict::Ask, "your rules ask you first".into(), true),
+            Ok(RuleVerdict::Deny) => {
+                decision(Verdict::Deny, "your rules do not allow this".into(), true)
+            }
+            Err(e) => {
+                let v = stricter(table, Verdict::Ask);
+                let why = format!("your rules failed ({e}), so: {}", table_why(v));
+                self.rules_failure = Some(e);
+                decision(v, why, true)
+            }
+        })
     }
 
     /// The agent's effective level: the human's choice, else the configured default.
@@ -320,19 +432,15 @@ impl Broker {
     /// answers no; after approval the agent's retry finds the grant.
     pub fn check(&mut self, agent: &str, action: &str, detail: Option<&str>, now: u64) -> Outcome {
         self.expire(now);
-        let Some(level) = self.level(agent) else {
+        let Some(d) = self.evaluate(agent, action, detail, &Description::default(), now) else {
             return Outcome::Deny {
                 why: format!("{agent:?} is not a Starah agent"),
             };
         };
-        let class = self.config.classes.class_of(action);
-        match verdict(level, class) {
-            Verdict::Allow => Outcome::Allow {
-                why: format!("level {} allows {class:?}", level as u8),
-            },
-            Verdict::Deny => Outcome::Deny {
-                why: format!("level {} denies {class:?}", level as u8),
-            },
+        let (level, class) = (d.level, d.class);
+        match d.verdict {
+            Verdict::Allow => Outcome::Allow { why: d.why },
+            Verdict::Deny => Outcome::Deny { why: d.why },
             Verdict::Ask => {
                 if self.use_grant(agent, action, detail) {
                     return Outcome::Allow {
@@ -374,27 +482,15 @@ impl Broker {
         now: u64,
     ) -> Outcome {
         self.expire(now);
-        let Some(level) = self.level(agent) else {
+        let Some(d) = self.evaluate(agent, action, None, &description, now) else {
             return Outcome::Deny {
                 why: format!("{agent:?} is not a Starah agent"),
             };
         };
-        let class = self.config.classes.class_of(action);
-        match verdict(level, class) {
-            Verdict::Allow => Outcome::Allow {
-                why: format!(
-                    "{agent} has level {} ({}), which allows this",
-                    level as u8,
-                    level.name()
-                ),
-            },
-            Verdict::Deny => Outcome::Deny {
-                why: format!(
-                    "{agent} has level {} ({}), which does not allow this",
-                    level as u8,
-                    level.name()
-                ),
-            },
+        let (level, class) = (d.level, d.class);
+        match d.verdict {
+            Verdict::Allow => Outcome::Allow { why: d.why },
+            Verdict::Deny => Outcome::Deny { why: d.why },
             Verdict::Ask => {
                 let id = self.file(
                     agent,
@@ -873,5 +969,118 @@ mod tests {
     fn level_json_is_a_number() {
         assert_eq!(serde_json::to_string(&Level::Administer).unwrap(), "3");
         assert!(serde_json::from_str::<Level>("7").is_err());
+    }
+
+    // ---------------------------------------------------------------- rules
+
+    fn with_rules(level: Level, src: &str) -> Broker {
+        let mut b = broker(level);
+        b.rules = Some(Rules::compile(src).unwrap());
+        b
+    }
+
+    #[test]
+    fn rules_refine_the_table() {
+        let src = r#"fn decide(req) {
+            if req.action == "org.tulsi.apply" { return "allow"; }
+            if req.action == "org.tulsi.extensions" { return "deny"; }
+            "default"
+        }"#;
+        let mut b = with_rules(Level::Propose, src);
+        // Admin at level 1 would ask; the rules allow it.
+        let out = b.check("assistant", "org.tulsi.apply", None, 0);
+        assert_eq!(
+            out,
+            Outcome::Allow {
+                why: "your rules allow this".into()
+            }
+        );
+        // Routine at level 1 would ask; the rules deny it.
+        assert!(matches!(
+            b.check("assistant", "org.tulsi.extensions", None, 0),
+            Outcome::Deny { .. }
+        ));
+        // Everything else: the table (ask).
+        assert!(matches!(
+            b.check(
+                "assistant",
+                "org.freedesktop.systemd1.manage-units",
+                None,
+                0
+            ),
+            Outcome::Pending { .. }
+        ));
+    }
+
+    #[test]
+    fn rules_never_open_the_forbidden_class() {
+        let mut b = with_rules(Level::Delegate, r#"fn decide(req) { "allow" }"#);
+        assert!(matches!(
+            b.check("assistant", "org.freedesktop.policykit.exec", None, 0),
+            Outcome::Deny { .. }
+        ));
+        assert!(matches!(
+            b.check("assistant", "org.starah.configure", None, 0),
+            Outcome::Deny { .. }
+        ));
+    }
+
+    #[test]
+    fn failing_rules_count_as_the_stricter_of_the_table_and_ask() {
+        let mut b = with_rules(Level::Delegate, "fn decide(req) { loop {} }");
+        // The table would allow: a failure asks.
+        assert!(matches!(
+            b.check("assistant", "org.tulsi.apply", None, 0),
+            Outcome::Pending { .. }
+        ));
+        assert!(b.rules_failure.take().unwrap().contains("operations"));
+        let mut b = with_rules(Level::Observe, "fn decide(req) { 1/0 }");
+        // The table would deny: still deny.
+        assert!(matches!(
+            b.check("assistant", "org.tulsi.apply", None, 0),
+            Outcome::Deny { .. }
+        ));
+    }
+
+    #[test]
+    fn rules_see_what_a_cooperating_agent_asks() {
+        let src = r#"fn decide(req) {
+            if req.changes.len() > 0 && req.changes.all(|c| c.starts_with("+ package")) { "allow" } else { "default" }
+        }"#;
+        let mut b = with_rules(Level::Propose, src);
+        let installs = Description {
+            title: "Install vlc".into(),
+            changes: vec!["+ package vlc".into()],
+            ..Default::default()
+        };
+        assert!(b.ask("assistant", "org.tulsi.apply", installs, 0).allowed());
+        let other = Description {
+            changes: vec!["- package vlc".into()],
+            ..Default::default()
+        };
+        assert!(matches!(
+            b.ask("assistant", "org.tulsi.apply", other, 0),
+            Outcome::Pending { .. }
+        ));
+    }
+
+    #[test]
+    fn evaluate_files_nothing() {
+        let mut b = broker(Level::Propose);
+        let d = b
+            .evaluate(
+                "assistant",
+                "org.tulsi.apply",
+                None,
+                &Description::default(),
+                0,
+            )
+            .unwrap();
+        assert_eq!(d.verdict, Verdict::Ask);
+        assert!(!d.by_rules);
+        assert!(b.pending().is_empty());
+        assert!(b
+            .evaluate("nobody", "x", None, &Description::default(), 0)
+            .is_none());
     }
 }

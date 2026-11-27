@@ -52,6 +52,10 @@ class Broker:
     def get_policy(self) -> str:
         return self._call_sync("GetPolicy", None).unpack()[0]
 
+    def get_rules(self) -> str:
+        """The person's rules and their status (JSON), see starahd's GetRules."""
+        return self._call_sync("GetRules", None).unpack()[0]
+
     def requests(self) -> str:
         return self._call_sync("Requests", None).unpack()[0]
 

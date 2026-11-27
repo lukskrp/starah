@@ -16,6 +16,7 @@ use zbus::message::Header;
 use zbus::object_server::SignalEmitter;
 use zbus::{fdo, interface, Connection};
 
+use crate::rules_file::{Loaded, RulesFile};
 use crate::{polkit, session, systemd};
 
 pub const BUS_NAME: &str = "org.starah.Broker1";
@@ -41,6 +42,9 @@ pub struct DaemonConfig {
     /// PATH inside agent processes.
     #[serde(default = "default_agent_path")]
     pub agent_path: String,
+    /// The rules file a new system starts with (the commented example if unset).
+    #[serde(default)]
+    pub initial_rules: Option<String>,
 }
 
 fn default_prefix() -> String {
@@ -83,6 +87,8 @@ pub struct Broker1 {
     /// Running agent units → the uid that started them (only it may Wait).
     units: Arc<Mutex<HashMap<String, u32>>>,
     next_unit: AtomicU64,
+    /// The person's rules (rules.rhai). Locked after `broker` when both are held.
+    rules: Arc<Mutex<RulesFile>>,
 }
 
 fn now() -> u64 {
@@ -224,6 +230,44 @@ impl Broker1 {
         .to_string()
     }
 
+    /// Loads the rules file again if it changed (before each decision).
+    async fn refresh_rules(&self, b: &mut Broker) {
+        let mut rules = self.rules.lock().await;
+        match rules.refresh(b) {
+            Loaded::Same => {}
+            Loaded::New(hash) => self.audit("rules-loaded", json!({ "hash": hash })),
+            Loaded::Refused(e) => self.audit(
+                "rules-error",
+                json!({ "error": e.to_string(), "kept": rules.status.hash }),
+            ),
+        }
+    }
+
+    /// The hash of the rules in use, for audit entries ("" without rules).
+    fn rules_hash(b: &Broker) -> String {
+        b.rules.as_ref().map(|r| r.hash.clone()).unwrap_or_default()
+    }
+
+    /// A failure of the rules while deciding, for the audit log.
+    fn audit_rules_failure(&self, b: &mut Broker, agent: &str, action: &str) {
+        if let Some(e) = b.rules_failure.take() {
+            self.audit(
+                "rules-error",
+                json!({ "agent": agent, "action": action, "error": e,
+                        "hash": Broker1::rules_hash(b) }),
+            );
+        }
+    }
+
+    /// Refuses agents (the rules are the person's).
+    async fn not_agent(&self, conn: &Connection, hdr: &Header<'_>) -> fdo::Result<Caller> {
+        let (caller, _) = self.caller(conn, hdr).await?;
+        if matches!(caller, Caller::Agent(_)) {
+            return Err(denied("agents cannot see or change the rules"));
+        }
+        Ok(caller)
+    }
+
     async fn announce(emitter: &SignalEmitter<'_>, outcome: &Outcome, b: &Broker) {
         if let Outcome::Pending { id } = outcome {
             if let Some(r) = b.request(*id) {
@@ -290,10 +334,13 @@ impl Broker1 {
         };
         let detail = (!detail.is_empty()).then_some(detail);
         let mut b = self.broker.lock().await;
+        self.refresh_rules(&mut b).await;
         let outcome = b.check(&agent, action, detail, now());
+        self.audit_rules_failure(&mut b, &agent, action);
         self.audit(
             "check",
-            json!({ "agent": agent, "action": action, "detail": detail, "result": outcome }),
+            json!({ "agent": agent, "action": action, "detail": detail, "result": outcome,
+                    "rules": Broker1::rules_hash(&b) }),
         );
         Broker1::announce(&emitter, &outcome, &b).await;
         let message = match &outcome {
@@ -321,11 +368,14 @@ impl Broker1 {
         let description: Description = serde_json::from_str(description)
             .map_err(|e| failed(format!("invalid description: {e}")))?;
         let mut b = self.broker.lock().await;
+        self.refresh_rules(&mut b).await;
         let outcome = b.ask(&agent, action, description.clone(), now());
+        self.audit_rules_failure(&mut b, &agent, action);
         self.audit(
             "ask",
             json!({ "agent": agent, "action": action, "title": description.title,
-                    "changes": description.changes, "result": outcome }),
+                    "changes": description.changes, "result": outcome,
+                    "rules": Broker1::rules_hash(&b) }),
         );
         Broker1::announce(&emitter, &outcome, &b).await;
         Ok(match outcome {
@@ -653,6 +703,148 @@ impl Broker1 {
         Ok(status)
     }
 
+    /// The rules file and its status (JSON `{text, path, status}`; status: state
+    /// "ok", "error" (with error: message, line, column; the last good rules are
+    /// in use) or "none", hash, active, changed). Not for agents.
+    async fn get_rules(
+        &self,
+        #[zbus(connection)] conn: &Connection,
+        #[zbus(header)] hdr: Header<'_>,
+    ) -> fdo::Result<String> {
+        self.not_agent(conn, &hdr).await?;
+        let mut b = self.broker.lock().await;
+        self.refresh_rules(&mut b).await;
+        let rules = self.rules.lock().await;
+        Ok(json!({ "text": rules.text(), "path": rules.path, "status": rules.status }).to_string())
+    }
+
+    /// Whether `text` would work as rules, without installing it: JSON `{ok, error,
+    /// runtime_error, samples}`, where samples are what it decides for each agent
+    /// on a few common actions. Not for agents.
+    async fn check_rules(
+        &self,
+        text: &str,
+        #[zbus(connection)] conn: &Connection,
+        #[zbus(header)] hdr: Header<'_>,
+    ) -> fdo::Result<String> {
+        self.not_agent(conn, &hdr).await?;
+        let rules = match starah_policy::Rules::compile(text) {
+            Ok(r) => r,
+            Err(e) => return Ok(json!({ "ok": false, "error": e }).to_string()),
+        };
+        let (config, policy) = {
+            let b = self.broker.lock().await;
+            (b.config.clone(), b.policy.clone())
+        };
+        // A scratch broker with the same agents, levels and classes.
+        let mut scratch = Broker::new(config, policy);
+        scratch.rules = Some(rules);
+        scratch.utc_offset = crate::rules_file::utc_offset();
+        let agents: Vec<String> = scratch.config.agents.keys().cloned().collect();
+        let mut samples = Vec::new();
+        let mut runtime_error = None;
+        for agent in &agents {
+            for action in SAMPLE_ACTIONS {
+                if let Some(d) =
+                    scratch.evaluate(agent, action, None, &Description::default(), now())
+                {
+                    if let Some(e) = scratch.rules_failure.take() {
+                        runtime_error.get_or_insert(e);
+                    }
+                    samples.push(json!({ "agent": agent, "action": action,
+                                         "verdict": d.verdict, "why": d.why }));
+                }
+            }
+        }
+        Ok(
+            json!({ "ok": runtime_error.is_none(), "runtime_error": runtime_error,
+                   "samples": samples })
+            .to_string(),
+        )
+    }
+
+    /// Installs `text` as the rules, after checking that it compiles; the version
+    /// before is kept for `UndoRules`. Asks for the administrator password like
+    /// changing a level. Returns the new rules' hash.
+    async fn set_rules(
+        &self,
+        text: &str,
+        #[zbus(connection)] conn: &Connection,
+        #[zbus(header)] hdr: Header<'_>,
+    ) -> fdo::Result<String> {
+        let caller = self.require_human(conn, &hdr, ACTION_CONFIGURE).await?;
+        let hash = starah_policy::Rules::compile(text)
+            .map_err(|e| failed(format!("the rules don't compile: {e}")))?
+            .hash;
+        let mut b = self.broker.lock().await;
+        {
+            let mut rules = self.rules.lock().await;
+            rules
+                .install(text)
+                .map_err(|e| failed(format!("cannot save the rules: {e}")))?;
+        }
+        self.refresh_rules(&mut b).await;
+        // Approvals given under other rules don't carry over.
+        b.grants.clear();
+        self.audit("set-rules", json!({ "by": caller.name(), "hash": hash }));
+        Ok(hash)
+    }
+
+    /// Puts the rules before the last change back. Returns their hash.
+    async fn undo_rules(
+        &self,
+        #[zbus(connection)] conn: &Connection,
+        #[zbus(header)] hdr: Header<'_>,
+    ) -> fdo::Result<String> {
+        let caller = self.require_human(conn, &hdr, ACTION_CONFIGURE).await?;
+        let mut b = self.broker.lock().await;
+        let text = {
+            let mut rules = self.rules.lock().await;
+            rules
+                .undo()
+                .map_err(|e| failed(format!("cannot restore the rules: {e}")))?
+                .ok_or_else(|| failed("there are no earlier rules"))?
+        };
+        self.refresh_rules(&mut b).await;
+        b.grants.clear();
+        let hash = starah_policy::rules::hash(&text);
+        self.audit("undo-rules", json!({ "by": caller.name(), "hash": hash }));
+        Ok(hash)
+    }
+
+    /// What the level and the rules decide for `agent` doing `action` (with an
+    /// optional detail and description JSON), without asking anyone or filing a
+    /// request: JSON `{verdict, why, level, class, by_rules}`. Not for agents.
+    async fn try_rules(
+        &self,
+        agent: &str,
+        action: &str,
+        detail: &str,
+        description: &str,
+        #[zbus(connection)] conn: &Connection,
+        #[zbus(header)] hdr: Header<'_>,
+    ) -> fdo::Result<String> {
+        self.not_agent(conn, &hdr).await?;
+        let description: Description = if description.is_empty() {
+            Description::default()
+        } else {
+            serde_json::from_str(description)
+                .map_err(|e| failed(format!("invalid description: {e}")))?
+        };
+        let detail = (!detail.is_empty()).then_some(detail);
+        let mut b = self.broker.lock().await;
+        self.refresh_rules(&mut b).await;
+        let d = b
+            .evaluate(agent, action, detail, &description, now())
+            .ok_or_else(|| failed(format!("no agent named {agent:?}")))?;
+        let failure = b.rules_failure.take();
+        Ok(
+            json!({ "verdict": d.verdict, "why": d.why, "level": d.level,
+                   "class": d.class, "by_rules": d.by_rules, "rules_error": failure })
+            .to_string(),
+        )
+    }
+
     /// The last `limit` audit entries (JSON lines).
     async fn audit_log(
         &self,
@@ -683,6 +875,14 @@ impl Broker1 {
     ) -> zbus::Result<()>;
 }
 
+/// What `CheckRules` tries a new script on, for each agent.
+const SAMPLE_ACTIONS: [&str; 4] = [
+    "org.tulsi.apply",
+    "org.tulsi.configure",
+    "org.freedesktop.systemd1.manage-units",
+    "org.freedesktop.NetworkManager.settings.modify.system",
+];
+
 pub async fn run(config: &Path, state_dir: &Path) -> Result<(), String> {
     let text = std::fs::read_to_string(config)
         .map_err(|e| format!("cannot read {}: {e}", config.display()))?;
@@ -694,13 +894,28 @@ pub async fn run(config: &Path, state_dir: &Path) -> Result<(), String> {
         .ok()
         .and_then(|t| serde_json::from_str(&t).ok())
         .unwrap_or_default();
-    let broker = Arc::new(Mutex::new(Broker::new(cfg.policy.clone(), policy)));
+    let mut broker = Broker::new(cfg.policy.clone(), policy);
+    let mut rules = RulesFile::new(state_dir);
+    if let Err(e) = rules.seed(
+        cfg.initial_rules
+            .as_deref()
+            .unwrap_or(starah_policy::rules::EXAMPLE),
+    ) {
+        eprintln!("starahd: cannot create {}: {e}", rules.path.display());
+    }
+    match rules.refresh(&mut broker) {
+        Loaded::Refused(e) => eprintln!("starahd: the rules don't compile ({e}); none in use"),
+        Loaded::New(hash) if !hash.is_empty() => eprintln!("starahd: rules {hash}"),
+        _ => {}
+    }
+    let broker = Arc::new(Mutex::new(broker));
     let service = Broker1 {
         cfg: Arc::new(cfg),
         state_dir: state_dir.to_path_buf(),
         broker: broker.clone(),
         units: Arc::new(Mutex::new(HashMap::new())),
         next_unit: AtomicU64::new(1),
+        rules: Arc::new(Mutex::new(rules)),
     };
     let conn = zbus::connection::Builder::system()
         .map_err(|e| e.to_string())?
