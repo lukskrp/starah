@@ -1,0 +1,468 @@
+# Ganda translations for Starah package.
+# Copyright (C) 2026 THE Starah'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Starah package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Starah\n"
+"Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: lg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/starah-session/starah_session/app.py:66
+#: apps/starah-session/starah_session/app.py:166
+msgid "Compare Levels"
+msgstr "Teekawulo wakubala"
+
+#: apps/starah-session/starah_session/app.py:76
+msgid "What each level lets an agent do"
+msgstr "Ekintu ekyo kyokka ekintu ekisooke okukola"
+
+#. Translators: the table's legend; keep {allow}, {ask} and {deny} (the
+#. marks ✓, ? and ✗).
+#: apps/starah-session/starah_session/app.py:81
+#, python-brace-format
+msgid ""
+"{allow} on its own   ·   {ask} asks you first (you approve or reject each "
+"time)   ·   {deny} not allowed"
+msgstr ""
+"{allow} mu bwangu bwagyo · {ask} kukusaba olabula (olaba oba olukka buli "
+"sekaato) · {deny} tekirina okukkirizibwa"
+
+#. Translators: a table cell's tooltip, e.g. "Routine: Asks you first".
+#: apps/starah-session/starah_session/app.py:107
+#, python-brace-format
+msgid "{level}: {verdict}"
+msgstr "{level}: {verdict}"
+
+#. Translators: "Edit Rules…" is the button's name in Agent Privileges.
+#: apps/starah-session/starah_session/app.py:112
+msgid ""
+"Starah answers each request from the agent's level. Your own rules (Edit "
+"Rules…) can change the answer for particular agents and actions, but never "
+"allow what the last row forbids."
+msgstr ""
+"Starah akisubiza buli kusaba okuva mu mulembe gw'omukozi. Enkola yo "
+"(Edike Enkola…) ekozesa kusubiza mu basale abalala n'emikono gyo, naye "
+"tekirina kukkiriza ekyo eky'omukono gwa maanyi."
+
+#: apps/starah-session/starah_session/app.py:115
+#: apps/starah-session/starah_session/app.py:271
+msgid "_Close"
+msgstr "_Gala"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Starah Setup"
+msgstr "Sengerawo Starah"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Agent Privileges"
+msgstr "Ebirungi by'omukozi"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "Choose what AI agents may do"
+msgstr "Londa eky'okola omukozi gw'obwenge bw'ensimbi"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "AI agents on this computer"
+msgstr "Abakozi b'obwenge bw'ensimbi ku kompyuta eno"
+
+#: apps/starah-session/starah_session/app.py:140
+msgid ""
+"Agents run as their own restricted accounts. When an agent needs a "
+"privilege, Starah answers for you from the level you choose here, and asks "
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
+msgstr ""
+"Abakozi bakola mu bifo byabwe eby'obwerere. Omukozi ategesa ekirungi, "
+"Starah akisubira ku mulembe olukusa, era kukusaba buli mulembe. Olukusa "
+"olwo kulowooza ku 'Abakozi Ba Kirungi'."
+
+#: apps/starah-session/starah_session/app.py:145
+msgid ""
+"These are the privilege levels you chose. Agents ask you for anything their "
+"level does not allow on its own."
+msgstr "Bino ni emitembe gy'obukulembe eyo londa. Abakozi bakusaba ekyonna."
+
+#: apps/starah-session/starah_session/app.py:158
+msgid ""
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) "
+"runs as you, with access to all your files."
+msgstr ""
+"⚠ Eno yetaaga abakozi abo sistemyo gyayo yagyo mu Starah. Ekintu ekolebwa "
+"amu (npm, pip, ekintu ekisembayo ku mukono, ekintu eky'okwerinda) kukola "
+"ng'oliwo."
+
+#: apps/starah-session/starah_session/app.py:167
+msgid "What each level lets an agent do, side by side"
+msgstr "Ekyo kyokka ekintu ekisooke okukola, ku nkomerero"
+
+#: apps/starah-session/starah_session/app.py:171
+msgid "Learn More"
+msgstr "Menya Eby'enjawulo"
+
+#: apps/starah-session/starah_session/app.py:179
+msgid "Edit Rules…"
+msgstr "Edike Enkola…"
+
+#: apps/starah-session/starah_session/app.py:181
+msgid ""
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are "
+"checked before they are used, and saving asks for the administrator password."
+msgstr ""
+"Gula enkola zo (/etc/starah/rules.rhai) mu ddukiro ly'ekintu; bikolebwa "
+"mbere n'okubikozesa, n'okubika kukusaba erinnya ly'omukwano."
+
+#: apps/starah-session/starah_session/app.py:212
+msgid "What exactly?"
+msgstr "Kye kintu ki?"
+
+#: apps/starah-session/starah_session/app.py:224
+msgid "May use my whole home folder"
+msgstr "Nkoleteranga olukoba olwange"
+
+#: apps/starah-session/starah_session/app.py:227
+msgid ""
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH "
+"keys (it can push with git), your other projects. Its changes to the system "
+"still follow its level."
+msgstr ""
+"Ku ku nnyama: tekisoma ku mukono gw'omukono gw'omukono. Ku ku maaso: "
+"tekola ng'oliwo ku mikono go."
+
+#: apps/starah-session/starah_session/app.py:244
+msgid "When software you install has no TulsiOS package"
+msgstr "Kale software ekolebwa tekina TulsiOS package"
+
+#: apps/starah-session/starah_session/app.py:254
+msgid ""
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
+msgstr ""
+"Ekintu ekisembayo ekozesa enkola ez'enjawulo (AppImages, .deb n'.rpm files, "
+"ebikozesa n'ebintu ebikozesebwa mu bikozesebwa) ku mikono egya maanyi, "
+"eweddwemu AI model."
+
+#: apps/starah-session/starah_session/app.py:262
+msgid "Show this when I log in"
+msgstr "Kulaba ekyo nze njiramu"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save"
+msgstr "_Bika"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save and continue"
+msgstr "_Bika era ogende kimu"
+
+#. Translators: {error} is a system message, often in English.
+#: apps/starah-session/starah_session/app.py:306
+#, python-brace-format
+msgid "Not changed: {error}"
+msgstr "Tegezekkeddwa: {error}"
+
+#: apps/starah-session/starah_session/app.py:312
+#, python-brace-format
+msgid "{agent} may now use your whole home folder."
+msgstr "{agent} asobola kusembeza olukoba lwawe olwamu."
+
+#: apps/starah-session/starah_session/app.py:313
+#, python-brace-format
+msgid "{agent} no longer uses your whole home folder."
+msgstr "{agent} tekisembaza luuka lwawe olwamu."
+
+#: apps/starah-session/starah_session/app.py:326
+msgid "Saving… (you may be asked for your password)"
+msgstr "Kubika… (olaba lwe kukusabirwa)"
+
+#: apps/starah-session/starah_session/app.py:330
+#, python-brace-format
+msgid "Not saved: {error}"
+msgstr "Tebikusiddwa: {error}"
+
+#: apps/starah-session/starah_session/app.py:346
+msgid "Agent Request"
+msgstr "Okusaba kw'omukozi"
+
+#: apps/starah-session/starah_session/app.py:362
+msgid "Changes:"
+msgstr "Ebigezesebwa:"
+
+#. Translators: "Allow for [10] minutes", around a number field.
+#: apps/starah-session/starah_session/app.py:377
+msgid "Allow for"
+msgstr "Kukkirira"
+
+#: apps/starah-session/starah_session/app.py:379
+msgid "minutes"
+msgstr "eminyita"
+
+#: apps/starah-session/starah_session/app.py:386
+msgid "_Reject"
+msgstr "_Lugendo"
+
+#: apps/starah-session/starah_session/app.py:388
+msgid "_Approve"
+msgstr "_Kkiriza"
+
+#: apps/starah-session/starah_session/app.py:401
+#, python-brace-format
+msgid "Could not answer: {error}"
+msgstr "Tekisobola kusubiza: {error}"
+
+#. Translators: the five privilege levels; short names shown in a menu and as
+#. table headings ("2 · Routine").
+#: apps/starah-session/starah_session/model.py:16
+msgid "Observe"
+msgstr "Labako"
+
+#: apps/starah-session/starah_session/model.py:16
+msgid "Can look at the system, but cannot change anything."
+msgstr "Asobola kulaba sistem, naye tasobola kugezesa."
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Propose"
+msgstr "Kuwo"
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Can suggest changes; you approve each one before it happens."
+msgstr "Asobola kukusaba ebigenzebwa; olaba buli kimu mbere."
+
+#: apps/starah-session/starah_session/model.py:18
+msgid "Routine"
+msgstr "Eky'omulembe"
+
+#: apps/starah-session/starah_session/model.py:18
+msgid ""
+"Makes changes that a restart into the previous system can undo on its own "
+"(installing software, turning features on or off, browser extensions); asks "
+"you before anything that touches accounts or disks."
+msgstr ""
+"Kugezese ebigenzebwa bwe sistem ekendeezewo (okukozesa software, okukendeeza "
+"ebikozesebwa, okutereeza browser extensions); kukusaba mbere."
+
+#: apps/starah-session/starah_session/model.py:21
+msgid "Administer"
+msgstr "Kukendeeza"
+
+#: apps/starah-session/starah_session/model.py:21
+msgid ""
+"Also edits the configuration freely and manages services on its own; asks "
+"you before sensitive changes."
+msgstr "Naye n'edike configuration n'okukendeeza services."
+
+#: apps/starah-session/starah_session/model.py:23
+msgid "Delegate"
+msgstr "Kutereka"
+
+#: apps/starah-session/starah_session/model.py:23
+msgid ""
+"Does everything an administrator can on its own, except changing Starah, "
+"user accounts and passwords."
+msgstr "Koleka byonna eby'omukwano, okusinga okukyusa Starah, abakozesa n'ebibala."
+
+#: apps/starah-session/starah_session/model.py:29
+msgid "read-only"
+msgstr "Kusoma kelyo"
+
+#: apps/starah-session/starah_session/model.py:30
+msgid "low-risk"
+msgstr "Obutakwatagana"
+
+#: apps/starah-session/starah_session/model.py:31
+msgid "administration"
+msgstr "Okukendeeza"
+
+#: apps/starah-session/starah_session/model.py:32
+msgid "sensitive"
+msgstr "Eby'enjawulo"
+
+#: apps/starah-session/starah_session/model.py:33
+msgid "never delegated"
+msgstr "Tekekka kutereka"
+
+#: apps/starah-session/starah_session/model.py:49
+msgid "Look around"
+msgstr "Laba ekitundu"
+
+#: apps/starah-session/starah_session/model.py:50
+msgid "read logs, settings and the system's status"
+msgstr "kusoma logs, settings n'ekisobosebwa ky'ekitundu"
+
+#: apps/starah-session/starah_session/model.py:52
+msgid "Changes a restart can undo"
+msgstr "Ebigezesebwa by'okukendeeza"
+
+#: apps/starah-session/starah_session/model.py:53
+msgid "install and remove software"
+msgstr "okukozesa ne kusazaamu software"
+
+#: apps/starah-session/starah_session/model.py:54
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
+msgstr "okukendeeza eby'enjawulo n'obukulembe (NixOS rollback ekendeeza)"
+
+#: apps/starah-session/starah_session/model.py:55
+msgid "add and remove browser extensions"
+msgstr "okukendeeza browser extensions"
+
+#: apps/starah-session/starah_session/model.py:56
+msgid "mount and eject USB sticks and disks"
+msgstr "okutereeza ne kusazaamu USB"
+
+#: apps/starah-session/starah_session/model.py:58
+msgid "System administration"
+msgstr "Okukendeeza sistem"
+
+#: apps/starah-session/starah_session/model.py:59
+msgid ""
+"edit the system configuration beyond that: user groups, boot, file systems, "
+"scripts"
+msgstr "edike system configuration."
+
+#: apps/starah-session/starah_session/model.py:61
+msgid "start, stop and restart services"
+msgstr "okutandika, okusembeza n'okukendeeza services"
+
+#: apps/starah-session/starah_session/model.py:62
+msgid "network and Wi-Fi settings, the time, the computer's name and language"
+msgstr "network n'Wi-Fi settings, ekiseera, erinnya n'ekikula"
+
+#: apps/starah-session/starah_session/model.py:63
+msgid "power off, restart or suspend the computer"
+msgstr "okukendeeza, okukendeeza oba okusembeza komputeri"
+
+#: apps/starah-session/starah_session/model.py:65
+msgid "Sensitive"
+msgstr "Eby'enjawulo"
+
+#: apps/starah-session/starah_session/model.py:66
+msgid ""
+"write service definitions (systemd unit files) and system environment "
+"variables"
+msgstr "okulembera service definitions (systemd unit files)"
+
+#: apps/starah-session/starah_session/model.py:68
+msgid "format and partition disks"
+msgstr "okutereeza n'okukendeeza disiki"
+
+#: apps/starah-session/starah_session/model.py:69
+msgid "virtual machines and containers"
+msgstr "ebikozesebwa n'ebintu eby'enjawulo"
+
+#: apps/starah-session/starah_session/model.py:70
+msgid "anything Starah doesn't recognise"
+msgstr "ekintu ekyonna ekisobosebwa Starah"
+
+#: apps/starah-session/starah_session/model.py:72
+msgid "Never, at any level"
+msgstr "Tekekka, mu mulembe gwonna"
+
+#: apps/starah-session/starah_session/model.py:73
+msgid "change Starah or its levels"
+msgstr "okugezesa Starah oba emitembe gyayo"
+
+#: apps/starah-session/starah_session/model.py:74
+msgid "create or change user accounts and passwords"
+msgstr "okukola oba okugezesa abakozi n'erinyo"
+
+#: apps/starah-session/starah_session/model.py:75
+msgid "run programs as an administrator (pkexec)"
+msgstr "okukola programs ng'omukwano (pkexec)"
+
+#. Translators: the cells of the Compare Levels table and the headings of
+#. "What exactly?"; short (they sit under a ✓, ? or ✗ in a narrow column).
+#: apps/starah-session/starah_session/model.py:101
+msgid "On its own"
+msgstr "Mu bwangu bwagyo"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Asks you first"
+msgstr "Kkusaba mbere"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Not allowed"
+msgstr "Tekkiriziddwa"
+
+#. Translators: {agent} is an agent's name, {what} a technical permission name.
+#: apps/starah-session/starah_session/model.py:196
+#, python-brace-format
+msgid "Agent “{agent}” asks for: {what}"
+msgstr "Omukozi \"{agent}\" akusaba: {what}"
+
+#. Translators: {level} is like "2 · Routine".
+#: apps/starah-session/starah_session/model.py:201
+#, python-brace-format
+msgid "Agent: {agent} (level {level})"
+msgstr "Omukozi: {agent} (mulembe {level})"
+
+#. Translators: {action} is a technical name (org.tulsi.apply), {kind} one of
+#. "read-only", "low-risk", "administration", "sensitive", "never delegated".
+#: apps/starah-session/starah_session/model.py:205
+#, python-brace-format
+msgid "Permission: {action} — {kind}"
+msgstr "Okukkiriziganya: {action} — {kind}"
+
+#. Translators: what the permission is for, e.g. a service's name.
+#: apps/starah-session/starah_session/model.py:210
+#, python-brace-format
+msgid "On: {detail}"
+msgstr "Ku: {detail}"
+
+#: apps/starah-session/starah_session/model.py:212
+#, python-brace-format
+msgid "Reason given: {reason}"
+msgstr "Obuuzi bwa maaso: {reason}"
+
+#: apps/starah-session/starah_session/model.py:251
+msgid "Ask me each time"
+msgstr "Nsaba buli kiseera"
+
+#: apps/starah-session/starah_session/model.py:252
+msgid "Package it with a recipe (no AI model)"
+msgstr "Kipaketi na recipe (ta AI model)"
+
+#: apps/starah-session/starah_session/model.py:253
+msgid "Ask the Assistant (an AI agent)"
+msgstr "Nsaba Assistant (omukozi gw'obwenge)"
+
+#. Translators: {message} is the script error, in English.
+#: apps/starah-session/starah_session/model.py:338
+#, python-brace-format
+msgid ""
+"Your rules have an error at line {line}: {message}. The rules before it are "
+"still in use."
+msgstr ""
+"Enkola zo zirina error ku {line}: {message}. Enkola mbere zaakozesebwa."
+
+#: apps/starah-session/starah_session/model.py:340
+#, python-brace-format
+msgid ""
+"Your rules have an error: {message}. The rules before it are still in use."
+msgstr ""
+"Enkola zo zirina error: {message}. Enkola mbere zaakozesebwa."
+
+#: apps/starah-session/starah_session/model.py:343
+msgid "Your own rules refine these levels (they are in use)."
+msgstr "Enkola zo ziraga emitembe eno (zaakozesebwa)."
+
+#: apps/starah-session/starah_session/model.py:344
+msgid "You can refine these levels with your own rules (a small script)."
+msgstr "Olukusa olw'enjawulo olukozesa enkola zo."
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:4
+msgid "Choose what AI agents may do on this computer"
+msgstr "Londa eky'okola omukozi gw'obwenge ku kompyuta eno"
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:5
+msgid "AI;agent;privileges;permissions;Starah;security;"
+msgstr "AI;omukozi;ebirungi;okukkiriziganya;Starah;amaanyi;"

@@ -1,0 +1,362 @@
+# Arabic translations
+# Copyright (C) 2026 THE Starah'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Starah package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Starah\n"
+"Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
+"PO-Revision-Date: 2026-01-01 00:00+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+msgid "Compare Levels"
+msgstr "مقارنة المستويات"
+
+msgid "What each level lets an agent do"
+msgstr "ما يسمح به كل مستوى للوكيل"
+
+#, python-brace-format
+msgid ""
+"{allow} on its own   ·   {ask} asks you first (you approve or reject each tim"
+"e)   ·   {deny} not allowed"
+msgstr "{allow} بمفرده   ·   {ask} يطلب منك أولاً   ·   {deny} غير مسموح"
+
+#, python-brace-format
+msgid "{level}: {verdict}"
+msgstr "{level}: {verdict}"
+
+msgid ""
+"Starah answers each request from the agent's level. Your own rules (Edit Rule"
+"s…) can change the answer for particular agents and actions, but never allow "
+"what the last row forbids."
+msgstr ""
+"Starah يجيب على كل طلب من الوكيل حسب مستواه. قوانينك (تعديل القوانين…) يمكنها"
+" تغيير الإجابة لوكلاء وإجراءات معينة، لكن لا تسمح أبداً بما تحظره آخر صف."
+
+msgid "_Close"
+msgstr "إ_غلاق"
+
+msgid "Starah Setup"
+msgstr "إعداد Starah"
+
+msgid "Agent Privileges"
+msgstr "امتيازات الوكلاء"
+
+msgid "Choose what AI agents may do"
+msgstr "اختر ما يمكن أن تفعله وكلاء الذكاء الاصطناعي"
+
+msgid "AI agents on this computer"
+msgstr "وكلاء الذكاء الاصطناعي على هذا الحاسوب"
+
+msgid ""
+"Agents run as their own restricted accounts. When an agent needs a privilege,"
+" Starah answers for you from the level you choose here, and asks you whenever"
+" the level says so. You can change this at any time from “Agent Privileges”."
+msgstr ""
+"تعمل الوكلاء باسم حسابات محدودة خاصة بها. عندما يحتاج وكيل إلى امتياز، يرد St"
+"arah نيابةً عنك حسب المستوى الذي تختاره هنا، ويسألك كلما طلب المستوى ذلك. يمك"
+"نك تغيير هذا في أي وقت من \"امتيازات الوكلاء\"."
+
+msgid ""
+"These are the privilege levels you chose. Agents ask you for anything their l"
+"evel does not allow on its own."
+msgstr ""
+"هذه هي مستويات الامتياز التي اخترتها. تطلب الوكلاء منك الموافقة على أي شيء لا"
+" يسمح به مستوى وكيلها بمفرده."
+
+msgid ""
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) runs"
+" as you, with access to all your files."
+msgstr ""
+"⚠ هذا يغطي الوكلاء الذين يبدأهم نظامك تحت Starah. الوكيل الذي تثبته بطريقة أخ"
+"رى (npm، pip، سكريبت من موقع إنترنت، برنامج مُنزّل) يعمل باسمك، مع الوصول إلى"
+" جميع ملفاتك."
+
+msgid "What each level lets an agent do, side by side"
+msgstr "ما يسمح به كل مستوى للوكيل، جنباً إلى جنب"
+
+msgid "Learn More"
+msgstr "اعرف المزيد"
+
+msgid "Edit Rules…"
+msgstr "تعديل القوانين…"
+
+msgid ""
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are chec"
+"ked before they are used, and saving asks for the administrator password."
+msgstr ""
+"يفتح قوانينك (/etc/starah/rules.rhai) في محرر طرفي؛ تُفحص قبل استخدامها، وحفظ"
+" السجل يطلب كلمة مرور المسؤول."
+
+msgid "What exactly?"
+msgstr "ماذا بالضبط؟"
+
+msgid "May use my whole home folder"
+msgstr "قد يستخدم مجلد المنزل بأكمله"
+
+msgid ""
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH ke"
+"ys (it can push with git), your other projects. Its changes to the system sti"
+"ll follow its level."
+msgstr ""
+"إيقاف: يرى فقط المجلد الذي تبدأ فيه، ولديه تسجيلات دخول خاصة به. تشغيل: يعمل "
+"وكأنه أنت في ملفاتك — تسجيلات الدخول والإعدادات ومفاتيح SSH (يمكنه push بـ gi"
+"t) ومشاريعك الأخرى. تتبع تغييراته للنظام المستوى الخاص به."
+
+msgid "When software you install has no TulsiOS package"
+msgstr "عندما لا يكون للبرنامج الذي تثبته حزمة TulsiOS"
+
+msgid ""
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
+msgstr ""
+"يقوم الوصفة بتعبئة التنزيلات الشائعة (AppImages، ملفات .deb و .rpm، البرامج و"
+"مصادر البرامج في أرشيفات) من قوالب مختبرة، دون نموذج ذكاء اصطناعي. يمكن للمسا"
+"عد تعبئة تقريباً أي شيء، لكنه يحتاج إلى واحدة."
+
+msgid "Show this when I log in"
+msgstr "أظهر هذا عند تسجيل الدخول"
+
+msgid "_Save"
+msgstr "_حفظ"
+
+msgid "_Save and continue"
+msgstr "_حفظ ومتابعة"
+
+#, python-brace-format
+msgid "Not changed: {error}"
+msgstr "لم يتغير: {error}"
+
+#, python-brace-format
+msgid "{agent} may now use your whole home folder."
+msgstr "يمكن لـ {agent} الآن استخدام مجلد المنزل بأكمله."
+
+#, python-brace-format
+msgid "{agent} no longer uses your whole home folder."
+msgstr "لم يعد {agent} يستخدم مجلد المنزل بأكمله."
+
+msgid "Saving… (you may be asked for your password)"
+msgstr "جارٍ الحفظ… (قد تُطلب كلمة مرورك)"
+
+#, python-brace-format
+msgid "Not saved: {error}"
+msgstr "لم يُحفظ: {error}"
+
+msgid "Agent Request"
+msgstr "طلب وكيل"
+
+msgid "Changes:"
+msgstr "التغييرات:"
+
+msgid "Allow for"
+msgstr "سماح لمدة"
+
+msgid "minutes"
+msgstr "دقائق"
+
+msgid "_Reject"
+msgstr "_رفض"
+
+msgid "_Approve"
+msgstr "_موافقة"
+
+#, python-brace-format
+msgid "Could not answer: {error}"
+msgstr "لم أتمكن من الرد: {error}"
+
+msgid "Observe"
+msgstr "مراقبة"
+
+msgid "Can look at the system, but cannot change anything."
+msgstr "يمكنه عرض النظام، لكنه لا يستطيع تغيير أي شيء."
+
+msgid "Propose"
+msgstr "اقتراح"
+
+msgid "Can suggest changes; you approve each one before it happens."
+msgstr "يمكنه اقتراح تغييرات؛ توافق عليها كل واحدة قبل حدوثها."
+
+msgid "Routine"
+msgstr "روتيني"
+
+msgid ""
+"Makes changes that a restart into the previous system can undo on its own (in"
+"stalling software, turning features on or off, browser extensions); asks you "
+"before anything that touches accounts or disks."
+msgstr ""
+"يحدث تغييرات يمكن لنظام إعادة التشغيل استرجاعها تلقائياً (تثبيت البرامج، تشغي"
+"ل أو إيقاف الميزات، ملحقات المتصفح)؛ يسألك قبل أي شيء يمس الحسابات أو الأقراص"
+"."
+
+msgid "Administer"
+msgstr "إدارة"
+
+msgid ""
+"Also edits the configuration freely and manages services on its own; asks you"
+" before sensitive changes."
+msgstr "يحرر التكوين بحرية ويدير الخدمات بمفرده أيضاً؛ يسألك قبل التغييرات الحساسة."
+
+msgid "Delegate"
+msgstr "تفويض"
+
+msgid ""
+"Does everything an administrator can on its own, except changing Starah, user"
+" accounts and passwords."
+msgstr ""
+"يفعل كل ما يمكن لمدير النظام فعله بمفرده، باستثناء تغيير Starah وحسابات المست"
+"خدمين وكلمات المرور."
+
+msgid "read-only"
+msgstr "قراءة فقط"
+
+msgid "low-risk"
+msgstr "مخاطر منخفضة"
+
+msgid "administration"
+msgstr "إدارة"
+
+msgid "sensitive"
+msgstr "حساس"
+
+msgid "never delegated"
+msgstr "مفوض أبداً"
+
+msgid "Look around"
+msgstr "التجول"
+
+msgid "read logs, settings and the system's status"
+msgstr "قراءة السجلات والإعدادات وحالة النظام"
+
+msgid "Changes a restart can undo"
+msgstr "تغييرات يمكن لإعادة التشغيل التراجع عنها"
+
+msgid "install and remove software"
+msgstr "تثبيت وإزالة البرامج"
+
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
+msgstr "تشغيل أو إيقاف الميزات والخدمات (تُلغيها استرجاع NixOS)"
+
+msgid "add and remove browser extensions"
+msgstr "إضافة وإزالة ملحقات المتصفح"
+
+msgid "mount and eject USB sticks and disks"
+msgstr "ربط وإزالة أقراص USB والأقراص"
+
+msgid "System administration"
+msgstr "إدارة النظام"
+
+msgid ""
+"edit the system configuration beyond that: user groups, boot, file systems, s"
+"cripts"
+msgstr ""
+"تحرير تكوين النظام بما يتجاوز ذلك: مجموعات المستخدمين، والإقلاع، وأنظمة الملف"
+"ات، والسكريبتات"
+
+msgid "start, stop and restart services"
+msgstr "بدء وإيقاف وإعادة تشغيل الخدمات"
+
+msgid "network and Wi-Fi settings, the time, the computer's name and language"
+msgstr "إعدادات الشبكة وWi-Fi، والوقت، واسم الحاسوب واللغة"
+
+msgid "power off, restart or suspend the computer"
+msgstr "إيقاف الحاسوب أو إعادة تشغيله أو وضعه في وضع السكون"
+
+msgid "Sensitive"
+msgstr "حساس"
+
+msgid ""
+"write service definitions (systemd unit files) and system environment variabl"
+"es"
+msgstr "كتابة تعريفات الخدمات (وحدات systemd) ومتغيرات البيئة للنظام"
+
+msgid "format and partition disks"
+msgstr "تنسيق وتقسيم الأقراص"
+
+msgid "virtual machines and containers"
+msgstr "الآلات الافتراضية والأوعية"
+
+msgid "anything Starah doesn't recognise"
+msgstr "أي شيء لا يعرفيه Starah"
+
+msgid "Never, at any level"
+msgstr "أبداً، على أي مستوى"
+
+msgid "change Starah or its levels"
+msgstr "تغيير Starah أو مستوياته"
+
+msgid "create or change user accounts and passwords"
+msgstr "إنشاء أو تغيير حسابات المستخدمين وكلمات المرور"
+
+msgid "run programs as an administrator (pkexec)"
+msgstr "تشغيل البرامج كمسؤول (pkexec)"
+
+msgid "On its own"
+msgstr "بمفرده"
+
+msgid "Asks you first"
+msgstr "يسألك أولاً"
+
+msgid "Not allowed"
+msgstr "غير مسموح"
+
+#, python-brace-format
+msgid "Agent “{agent}” asks for: {what}"
+msgstr "يسأل الوكيل \"{agent}\" عن: {what}"
+
+#, python-brace-format
+msgid "Agent: {agent} (level {level})"
+msgstr "الوكيل: {agent} (المستوى {level})"
+
+#, python-brace-format
+msgid "Permission: {action} — {kind}"
+msgstr "الإذن: {action} — {kind}"
+
+#, python-brace-format
+msgid "On: {detail}"
+msgstr "على: {detail}"
+
+#, python-brace-format
+msgid "Reason given: {reason}"
+msgstr "السبب المُعطى: {reason}"
+
+msgid "Ask me each time"
+msgstr "اسألني في كل مرة"
+
+msgid "Package it with a recipe (no AI model)"
+msgstr "عبّئه بوصفة (بدون نموذج ذكاء اصطناعي)"
+
+msgid "Ask the Assistant (an AI agent)"
+msgstr "اسأل المساعد (وكيل ذكاء اصطناعي)"
+
+#, python-brace-format
+msgid ""
+"Your rules have an error at line {line}: {message}. The rules before it are s"
+"till in use."
+msgstr ""
+"لديك خطأ في قوانينك عند السطر {line}: {message}. القوانين قبله لا تزال مستخدم"
+"ة."
+
+#, python-brace-format
+msgid "Your rules have an error: {message}. The rules before it are still in use."
+msgstr "لديك خطأ في قوانينك: {message}. القوانين قبله لا تزال مستخدمة."
+
+msgid "Your own rules refine these levels (they are in use)."
+msgstr "قوانينك الخاصة تُحسن هذه المستويات (هي مستخدمة)."
+
+msgid "You can refine these levels with your own rules (a small script)."
+msgstr "يمكنك تحسين هذه المستويات بقوانينك الخاصة (سكريبت صغير)."
+
+msgid "Choose what AI agents may do on this computer"
+msgstr "اختر ما يمكن أن تفعله وكلاء الذكاء الاصطناعي على هذا الحاسوب"
+
+msgid "AI;agent;privileges;permissions;Starah;security;"
+msgstr "ذكاء اصطناعي;وكيل;امتيازات;أذونات;Starah;أمن;"
+

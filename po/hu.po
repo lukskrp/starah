@@ -1,0 +1,487 @@
+# Hungarian translations for Starah package.
+# Copyright (C) 2026 THE Starah'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Starah package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Starah\n"
+"Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/starah-session/starah_session/app.py:66
+#: apps/starah-session/starah_session/app.py:166
+msgid "Compare Levels"
+msgstr "Szintek összehasonlítása"
+
+#: apps/starah-session/starah_session/app.py:76
+msgid "What each level lets an agent do"
+msgstr "Mit tehet egy ügynök az egyes szinteken"
+
+#. Translators: the table's legend; keep {allow}, {ask} and {deny} (the
+#. marks ✓, ? and ✗).
+#: apps/starah-session/starah_session/app.py:81
+#, python-brace-format
+msgid ""
+"{allow} on its own   ·   {ask} asks you first (you approve or reject each "
+"time)   ·   {deny} not allowed"
+msgstr ""
+"{allow} önállóan · {ask} először megkérdezi (te jóváhagyod vagy elutasítod "
+"mindig) · {deny} nem megengedett"
+
+#. Translators: a table cell's tooltip, e.g. "Routine: Asks you first".
+#: apps/starah-session/starah_session/app.py:107
+#, python-brace-format
+msgid "{level}: {verdict}"
+msgstr "{level}: {verdict}"
+
+#. Translators: "Edit Rules…" is the button's name in Agent Privileges.
+#: apps/starah-session/starah_session/app.py:112
+msgid ""
+"Starah answers each request from the agent's level. Your own rules (Edit "
+"Rules…) can change the answer for particular agents and actions, but never "
+"allow what the last row forbids."
+msgstr ""
+"Starah az ügynök szintje alapján válaszol minden kérésre. A saját "
+"szabályaid (Szabályok szerkesztése…) megváltoztathatják a választ egyes "
+"ügynökök és műveletek esetén, de soha nem engedhetik meg, amit az utolsó "
+"sor tilt."
+
+#: apps/starah-session/starah_session/app.py:115
+#: apps/starah-session/starah_session/app.py:271
+msgid "_Close"
+msgstr "_Bezárás"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Starah Setup"
+msgstr "Starah beállítás"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Agent Privileges"
+msgstr "Ügynök jogosultságok"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "Choose what AI agents may do"
+msgstr "Válaszd ki, mit tehetnek a mesterséges intelligencia ügynökök"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "AI agents on this computer"
+msgstr "AI ügynökök ezen a számítógépen"
+
+#: apps/starah-session/starah_session/app.py:140
+msgid ""
+"Agents run as their own restricted accounts. When an agent needs a "
+"privilege, Starah answers for you from the level you choose here, and asks "
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
+msgstr ""
+"Az ügynökök saját, korlátozott fiókokként futnak. Ha egy ügynök jogosultságot "
+"szükségeltetik, Starah válaszol helyetted az itt választott szintből, és "
+"megkérdez, ha a szint úgy rendelkezik. Ezt bármikor megváltoztathatod a "
+"\"Ügynök jogosultságok\" menüből."
+
+#: apps/starah-session/starah_session/app.py:145
+msgid ""
+"These are the privilege levels you chose. Agents ask you for anything their "
+"level does not allow on its own."
+msgstr ""
+"Ezek a választott jogosultsági szintek. Az ügynökök megkérdeznak, amit a "
+"szintjükön önállóan nem engedhetnek meg."
+
+#: apps/starah-session/starah_session/app.py:158
+msgid ""
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) "
+"runs as you, with access to all your files."
+msgstr ""
+"⚠ Ez lefedi azokat az ügynököket, amelyeket a rendszered a Starah alatt "
+"indít. Egy ügynök, amelyet más módon telepítettél (npm, pip, egy weboldal "
+"ról származó script, egy letöltött program), a te fiókodban fut, és "
+"hozzáférése van minden fájlodhoz."
+
+#: apps/starah-session/starah_session/app.py:167
+msgid "What each level lets an agent do, side by side"
+msgstr "Mit tehet egy ügynök az egyes szinteken, egymás mellett"
+
+#: apps/starah-session/starah_session/app.py:171
+msgid "Learn More"
+msgstr "További információk"
+
+#: apps/starah-session/starah_session/app.py:179
+msgid "Edit Rules…"
+msgstr "Szabályok szerkesztése…"
+
+#: apps/starah-session/starah_session/app.py:181
+msgid ""
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are "
+"checked before they are used, and saving asks for the administrator password."
+msgstr ""
+"Megnyitja a szabályokat (/etc/starah/rules.rhai) terminál szerkesztőben; a "
+"felhasználás előtt ellenőrzésre kerülnek, a mentéshez rendszergazda "
+"jelszóra van szükség."
+
+#: apps/starah-session/starah_session/app.py:212
+msgid "What exactly?"
+msgstr "Pontosan mit?"
+
+#: apps/starah-session/starah_session/app.py:224
+msgid "May use my whole home folder"
+msgstr "Használhatja az egész otthoni könyvtáramat"
+
+#: apps/starah-session/starah_session/app.py:227
+msgid ""
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH "
+"keys (it can push with git), your other projects. Its changes to the system "
+"still follow its level."
+msgstr ""
+"Ki: csak a mappát látja, amelyben elindítod, és saját bejelentkezései "
+"vannak. Be: úgy dolgozik, mintha te lennél a fájljaiddal — a bejelentkezési "
+"adataid és beállításaid, SSH kulcsaid (git-tel pusholhat), egyéb projektjeid. "
+"Rendszer módosításai még mindig a szintjének megfelelően történnek."
+
+#: apps/starah-session/starah_session/app.py:244
+msgid "When software you install has no TulsiOS package"
+msgstr "Ha az installált szoftvernek nincs TulsiOS csomagja"
+
+#: apps/starah-session/starah_session/app.py:254
+msgid ""
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
+msgstr ""
+"Egy recept csomagolja a gyakori letöltéseket (AppImages, .deb és .rpm fájlok, "
+"programok és forráskód archivumokból) tesztelt sablonokból, AI modell nélkül. "
+"Az Asszisztent majdnem bármit becsomagolhat, de szüksége van egyre."
+
+#: apps/starah-session/starah_session/app.py:262
+msgid "Show this when I log in"
+msgstr "Jelentkezéskor megjelenítés"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save"
+msgstr "_Mentés"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save and continue"
+msgstr "_Mentés és folytatás"
+
+#. Translators: {error} is a system message, often in English.
+#: apps/starah-session/starah_session/app.py:306
+#, python-brace-format
+msgid "Not changed: {error}"
+msgstr "Nem változott: {error}"
+
+#: apps/starah-session/starah_session/app.py:312
+#, python-brace-format
+msgid "{agent} may now use your whole home folder."
+msgstr "{agent} mostantól használhatja az egész otthoni könyvtáradat."
+
+#: apps/starah-session/starah_session/app.py:313
+#, python-brace-format
+msgid "{agent} no longer uses your whole home folder."
+msgstr "{agent} már nem használja az egész otthoni könyvtáradat."
+
+#: apps/starah-session/starah_session/app.py:326
+msgid "Saving… (you may be asked for your password)"
+msgstr "Mentés… (jelszóra lehet, hogy kérdezni fognak)"
+
+#: apps/starah-session/starah_session/app.py:330
+#, python-brace-format
+msgid "Not saved: {error}"
+msgstr "Nem mentve: {error}"
+
+#: apps/starah-session/starah_session/app.py:346
+msgid "Agent Request"
+msgstr "Ügynök kérése"
+
+#: apps/starah-session/starah_session/app.py:362
+msgid "Changes:"
+msgstr "Módosítások:"
+
+#. Translators: "Allow for [10] minutes", around a number field.
+#: apps/starah-session/starah_session/app.py:377
+msgid "Allow for"
+msgstr "Engedélyezett ennyi ideig:"
+
+#: apps/starah-session/starah_session/app.py:379
+msgid "minutes"
+msgstr "perc"
+
+#: apps/starah-session/starah_session/app.py:386
+msgid "_Reject"
+msgstr "_Elutasítás"
+
+#: apps/starah-session/starah_session/app.py:388
+msgid "_Approve"
+msgstr "_Jóváhagyás"
+
+#: apps/starah-session/starah_session/app.py:401
+#, python-brace-format
+msgid "Could not answer: {error}"
+msgstr "Nem lehetett válaszolni: {error}"
+
+#. Translators: the five privilege levels; short names shown in a menu and as
+#. table headings ("2 · Routine").
+#: apps/starah-session/starah_session/model.py:16
+msgid "Observe"
+msgstr "Megfigyelés"
+
+#: apps/starah-session/starah_session/model.py:16
+msgid "Can look at the system, but cannot change anything."
+msgstr "Megtekintheti a rendszert, de semmit sem módosíthat."
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Propose"
+msgstr "Javaslat"
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Can suggest changes; you approve each one before it happens."
+msgstr "Javasolhat módosításokat; te jóváhagyod mindegyiket a bekövetkezte előtt."
+
+#: apps/starah-session/starah_session/model.py:18
+msgid "Routine"
+msgstr "Szabványos"
+
+#: apps/starah-session/starah_session/model.py:18
+msgid ""
+"Makes changes that a restart into the previous system can undo on its own "
+"(installing software, turning features on or off, browser extensions); asks "
+"you before anything that touches accounts or disks."
+msgstr ""
+"Módosításokat hajt végre, amelyeket egy előző rendszerre való újraindítás "
+"önállóan visszavonhat (szoftver telepítése, funkciók ki- vagy bekapcsolása, "
+"böngésző bővítmények); megkérdez, mielőtt bármilyen fiókokat vagy lemezeket "
+"érintő műveletet végrehajtana."
+
+#: apps/starah-session/starah_session/model.py:21
+msgid "Administer"
+msgstr "Adminisztráció"
+
+#: apps/starah-session/starah_session/model.py:21
+msgid ""
+"Also edits the configuration freely and manages services on its own; asks "
+"you before sensitive changes."
+msgstr ""
+"A konfigurációt szabadon szerkeszti és a szolgáltatásokat önállóan kezeli; "
+"megkérdez, mielőtt érzékeny módosításokat hajt végre."
+
+#: apps/starah-session/starah_session/model.py:23
+msgid "Delegate"
+msgstr "Letiltás"
+
+#: apps/starah-session/starah_session/model.py:23
+msgid ""
+"Does everything an administrator can on its own, except changing Starah, "
+"user accounts and passwords."
+msgstr ""
+"Mindent megtesz, amit egy rendszergazda önállóan, kivéve a Starah, a "
+"felhasználói fiókok és jelszavak módosítását."
+
+#: apps/starah-session/starah_session/model.py:29
+msgid "read-only"
+msgstr "Csak olvasás"
+
+#: apps/starah-session/starah_session/model.py:30
+msgid "low-risk"
+msgstr "Alacsony kockázat"
+
+#: apps/starah-session/starah_session/model.py:31
+msgid "administration"
+msgstr "Adminisztráció"
+
+#: apps/starah-session/starah_session/model.py:32
+msgid "sensitive"
+msgstr "Érzékeny"
+
+#: apps/starah-session/starah_session/model.py:33
+msgid "never delegated"
+msgstr "Soha nem delegált"
+
+#: apps/starah-session/starah_session/model.py:49
+msgid "Look around"
+msgstr "Tájékozódás"
+
+#: apps/starah-session/starah_session/model.py:50
+msgid "read logs, settings and the system's status"
+msgstr "naplók, beállítások és a rendszer állapota"
+
+#: apps/starah-session/starah_session/model.py:52
+msgid "Changes a restart can undo"
+msgstr "Újraindítással visszavonható módosítások"
+
+#: apps/starah-session/starah_session/model.py:53
+msgid "install and remove software"
+msgstr "szoftverek telepítése és eltávolítása"
+
+#: apps/starah-session/starah_session/model.py:54
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
+msgstr "funkciók és szolgáltatások be- vagy kikapcsolása (NixOS visszaállítás visszavonja)"
+
+#: apps/starah-session/starah_session/model.py:55
+msgid "add and remove browser extensions"
+msgstr "böngészőbővítmények hozzáadása és eltávolítása"
+
+#: apps/starah-session/starah_session/model.py:56
+msgid "mount and eject USB sticks and disks"
+msgstr "USB-stick-ek és lemezek csatlakoztatása és leválasztása"
+
+#: apps/starah-session/starah_session/model.py:58
+msgid "System administration"
+msgstr "Rendszeradminisztráció"
+
+#: apps/starah-session/starah_session/model.py:59
+msgid ""
+"edit the system configuration beyond that: user groups, boot, file systems, "
+"scripts"
+msgstr ""
+"rendszerkonfiguráció szerkesztése azon túl: felhasználói csoportok, boot, "
+"fájlokrendszerek, scriptek"
+
+#: apps/starah-session/starah_session/model.py:61
+msgid "start, stop and restart services"
+msgstr "szolgáltatások indítása, leállítása és újraindítása"
+
+#: apps/starah-session/starah_session/model.py:62
+msgid "network and Wi-Fi settings, the time, the computer's name and language"
+msgstr "hálózati és Wi-Fi beállítások, idő, számítógép neve és nyelve"
+
+#: apps/starah-session/starah_session/model.py:63
+msgid "power off, restart or suspend the computer"
+msgstr "számítógép kikapcsolása, újraindítása vagy felfüggesztése"
+
+#: apps/starah-session/starah_session/model.py:65
+msgid "Sensitive"
+msgstr "Érzékeny"
+
+#: apps/starah-session/starah_session/model.py:66
+msgid ""
+"write service definitions (systemd unit files) and system environment "
+"variables"
+msgstr ""
+"szolgáltatásdefiníciók (systemd egységfájlok) és rendszerkörnyezet "
+"változók írása"
+
+#: apps/starah-session/starah_session/model.py:68
+msgid "format and partition disks"
+msgstr "lemezek formázása és partícionálása"
+
+#: apps/starah-session/starah_session/model.py:69
+msgid "virtual machines and containers"
+msgstr "virtuális gépek és konténerek"
+
+#: apps/starah-session/starah_session/model.py:70
+msgid "anything Starah doesn't recognise"
+msgstr "bármi, amit a Starah nem ismer fel"
+
+#: apps/starah-session/starah_session/model.py:72
+msgid "Never, at any level"
+msgstr "Soha, semmilyen szinten"
+
+#: apps/starah-session/starah_session/model.py:73
+msgid "change Starah or its levels"
+msgstr "Starah vagy szintjeinek módosítása"
+
+#: apps/starah-session/starah_session/model.py:74
+msgid "create or change user accounts and passwords"
+msgstr "felhasználói fiókok és jelszavak létrehozása vagy módosítása"
+
+#: apps/starah-session/starah_session/model.py:75
+msgid "run programs as an administrator (pkexec)"
+msgstr "programok futtatása rendszergazdaként (pkexec)"
+
+#. Translators: the cells of the Compare Levels table and the headings of
+#. "What exactly?"; short (they sit under a ✓, ? or ✗ in a narrow column).
+#: apps/starah-session/starah_session/model.py:101
+msgid "On its own"
+msgstr "Önállóan"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Asks you first"
+msgstr "Először megkérdezi"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Not allowed"
+msgstr "Nem megengedett"
+
+#. Translators: {agent} is an agent's name, {what} a technical permission name.
+#: apps/starah-session/starah_session/model.py:196
+#, python-brace-format
+msgid "Agent “{agent}” asks for: {what}"
+msgstr "\"{agent}\" ügynök kérése: {what}"
+
+#. Translators: {level} is like "2 · Routine".
+#: apps/starah-session/starah_session/model.py:201
+#, python-brace-format
+msgid "Agent: {agent} (level {level})"
+msgstr "Ügynök: {agent} (szint: {level})"
+
+#. Translators: {action} is a technical name (org.tulsi.apply), {kind} one of
+#. "read-only", "low-risk", "administration", "sensitive", "never delegated".
+#: apps/starah-session/starah_session/model.py:205
+#, python-brace-format
+msgid "Permission: {action} — {kind}"
+msgstr "Jogosultság: {action} — {kind}"
+
+#. Translators: what the permission is for, e.g. a service's name.
+#: apps/starah-session/starah_session/model.py:210
+#, python-brace-format
+msgid "On: {detail}"
+msgstr "Szolgáltatás: {detail}"
+
+#: apps/starah-session/starah_session/model.py:212
+#, python-brace-format
+msgid "Reason given: {reason}"
+msgstr "Megadott ok: {reason}"
+
+#: apps/starah-session/starah_session/model.py:251
+msgid "Ask me each time"
+msgstr "Kérdezz meg minden alkalommal"
+
+#: apps/starah-session/starah_session/model.py:252
+msgid "Package it with a recipe (no AI model)"
+msgstr "Csomagolás recepttel (AI modell nélkül)"
+
+#: apps/starah-session/starah_session/model.py:253
+msgid "Ask the Assistant (an AI agent)"
+msgstr "Kérdezd meg az Asszisztenst (AI ügynök)"
+
+#. Translators: {message} is the script error, in English.
+#: apps/starah-session/starah_session/model.py:338
+#, python-brace-format
+msgid ""
+"Your rules have an error at line {line}: {message}. The rules before it are "
+"still in use."
+msgstr ""
+"A szabályaidban hiba van a(z) {line}. sorban: {message}. Az előző szabályok "
+"még használva vannak."
+
+#: apps/starah-session/starah_session/model.py:340
+#, python-brace-format
+msgid ""
+"Your rules have an error: {message}. The rules before it are still in use."
+msgstr ""
+"A szabályaidban hiba van: {message}. Az előző szabályok még használva vannak."
+
+#: apps/starah-session/starah_session/model.py:343
+msgid "Your own rules refine these levels (they are in use)."
+msgstr "A saját szabályaid finomítják ezeket a szinteket (használják)."
+
+#: apps/starah-session/starah_session/model.py:344
+msgid "You can refine these levels with your own rules (a small script)."
+msgstr "Ezeket a szinteket a saját szabályaidkal finomíthatod (egy kis script)."
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:4
+msgid "Choose what AI agents may do on this computer"
+msgstr "Válaszd ki, mit tehetnek az AI ügynökök ezen a számítógépen"
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:5
+msgid "AI;agent;privileges;permissions;Starah;security;"
+msgstr "AI;ügynök;jogosultságok;engedélyek;Starah;biztonság;"

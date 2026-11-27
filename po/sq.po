@@ -1,0 +1,485 @@
+# Albanian translations for Starah package.
+# Copyright (C) 2026 THE Starah'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Starah package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Starah\n"
+"Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: sq\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/starah-session/starah_session/app.py:66
+#: apps/starah-session/starah_session/app.py:166
+msgid "Compare Levels"
+msgstr "Krahaso Nivelet"
+
+#: apps/starah-session/starah_session/app.py:76
+msgid "What each level lets an agent do"
+msgstr "Çfarë lejon çdo nivel që një agjent të bëjë"
+
+#. Translators: the table's legend; keep {allow}, {ask} and {deny} (the
+#. marks ✓, ? and ✗).
+#: apps/starah-session/starah_session/app.py:81
+#, python-brace-format
+msgid ""
+"{allow} on its own   ·   {ask} asks you first (you approve or reject each "
+"time)   ·   {deny} not allowed"
+msgstr ""
+"{allow} vetë · {ask} të pyet fillimisht (miraton ose refuzon "
+"çdo herë) · {deny} nuk lejohet"
+
+#. Translators: a table cell's tooltip, e.g. "Routine: Asks you first".
+#: apps/starah-session/starah_session/app.py:107
+#, python-brace-format
+msgid "{level}: {verdict}"
+msgstr "{level}: {verdict}"
+
+#. Translators: "Edit Rules…" is the button's name in Agent Privileges.
+#: apps/starah-session/starah_session/app.py:112
+msgid ""
+"Starah answers each request from the agent's level. Your own rules (Edit "
+"Rules…) can change the answer for particular agents and actions, but never "
+"allow what the last row forbids."
+msgstr ""
+"Starah përgjigjet në çdo kërkesë nga niveli i agjentit. Rregullat tuaja "
+"(Redakto rregullat…) mund të ndryshojnë përgjigjen për agjentë dhe veprime "
+"të caktuara, por kurrë nuk lejojnë atë që rreshti i fundit ndalon."
+
+#: apps/starah-session/starah_session/app.py:115
+#: apps/starah-session/starah_session/app.py:271
+msgid "_Close"
+msgstr "_Mbyll"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Starah Setup"
+msgstr "Konfigurimi i Starah"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Agent Privileges"
+msgstr "Privilegjet e Agjentit"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "Choose what AI agents may do"
+msgstr "Zgjidhni se çfarë mund të bëjnë agjentët AI"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "AI agents on this computer"
+msgstr "Agjentët AI në këtë kompjuter"
+
+#: apps/starah-session/starah_session/app.py:140
+msgid ""
+"Agents run as their own restricted accounts. When an agent needs a "
+"privilege, Starah answers for you from the level you choose here, and asks "
+"you whenever the level says so. You can change this at any time from \"Agent "
+"Privileges\"."
+msgstr ""
+"Agjentët veprojnë si llogaritë e tyre të kufizuara. Kur një agjent ka "
+"nevojë për një privilegj, Starah përgjigjet për ju nga niveli që zgjidhni "
+"këtu, dhe ju pyet sa herë niveli e kërkon. Mund ta ndryshoni këtë në "
+"çdo kohë nga \"Privilegjet e Agjentit\"."
+
+#: apps/starah-session/starah_session/app.py:145
+msgid ""
+"These are the privilege levels you chose. Agents ask you for anything their "
+"level does not allow on its own."
+msgstr ""
+"Këto janë nivelet e privilegjeve që zgjodhët. Agjentët ju pyesin për "
+"çfarëdo gjë që niveli i tyre nuk e lejon vetë."
+
+#: apps/starah-session/starah_session/app.py:158
+msgid ""
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) "
+"runs as you, with access to all your files."
+msgstr ""
+"⚠ Këtu përfshihen agjentët që sistemi juaj fillon nën Starah. Një agjent "
+"që keni instaluar në një mënyrë tjetër (npm, pip, një skript nga një uebsajt, "
+"një program i shkarkuar) veproi si ju, me hyrje në të gjitha skedarët tuaj."
+
+#: apps/starah-session/starah_session/app.py:167
+msgid "What each level lets an agent do, side by side"
+msgstr "Çfarë lejon çdo nivel që një agjent të bëjë, njëri pas tjetrit"
+
+#: apps/starah-session/starah_session/app.py:171
+msgid "Learn More"
+msgstr "Mëso më shumë"
+
+#: apps/starah-session/starah_session/app.py:179
+msgid "Edit Rules…"
+msgstr "Redakto rregullat…"
+
+#: apps/starah-session/starah_session/app.py:181
+msgid ""
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are "
+"checked before they are used, and saving asks for the administrator password."
+msgstr ""
+"Hap rregullat tuaja (/etc/starah/rules.rhai) në një redaktor terminali; "
+"kontrollohen para se të përdoren, dhe ruajtja kërkon fjalëkalimin e "
+"administruesit."
+
+#: apps/starah-session/starah_session/app.py:212
+msgid "What exactly?"
+msgstr "Saktësisht çfarë?"
+
+#: apps/starah-session/starah_session/app.py:224
+msgid "May use my whole home folder"
+msgstr "Mund të përdor të gjithë dosjen time home"
+
+#: apps/starah-session/starah_session/app.py:227
+msgid ""
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH "
+"keys (it can push with git), your other projects. Its changes to the system "
+"still follow its level."
+msgstr ""
+"Jo: shihet vetëm dosja ku e filloni, dhe ka hyrjet e veta. Po: vepron sikur "
+"të ishit ju në skedarët tuaj — hyrjet dhe rregullimet tuaja, çelësat SSH "
+"(mund të push me git), projektet tuaja të tjera. Ndryshimet e tij në sistem "
+"nuk ndjekin nivelin e tij."
+
+#: apps/starah-session/starah_session/app.py:244
+msgid "When software you install has no TulsiOS package"
+msgstr "Kur software që instaloni nuk ka paketë TulsiOS"
+
+#: apps/starah-session/starah_session/app.py:254
+msgid ""
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
+msgstr ""
+"Receta paketon shkarkimet e zakonshme (AppImages, skedarë .deb dhe .rpm, "
+"programe dhe kod burimor në arkiva) nga template të testuara, pa një model "
+"AI. Asistenti mund të paketës çdo gjë, por ka nevojë për një."
+
+#: apps/starah-session/starah_session/app.py:262
+msgid "Show this when I log in"
+msgstr "Shfaq këtë kur unë hyj"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save"
+msgstr "_Ruaj"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save and continue"
+msgstr "_Ruaj dhe vazhdo"
+
+#. Translators: {error} is a system message, often in English.
+#: apps/starah-session/starah_session/app.py:306
+#, python-brace-format
+msgid "Not changed: {error}"
+msgstr "Nuk u ndryshua: {error}"
+
+#: apps/starah-session/starah_session/app.py:312
+#, python-brace-format
+msgid "{agent} may now use your whole home folder."
+msgstr "{agent} tani mund të përdorë të gjithë dosjen tuaj home."
+
+#: apps/starah-session/starah_session/app.py:313
+#, python-brace-format
+msgid "{agent} no longer uses your whole home folder."
+msgstr "{agent} nuk e përdor më të gjithë dosjen tuaj home."
+
+#: apps/starah-session/starah_session/app.py:326
+msgid "Saving… (you may be asked for your password)"
+msgstr "Duke ruajtur… (mund t'ju kërkohet fjalëkalimi juaj)"
+
+#: apps/starah-session/starah_session/app.py:330
+#, python-brace-format
+msgid "Not saved: {error}"
+msgstr "Nuk u ruajt: {error}"
+
+#: apps/starah-session/starah_session/app.py:346
+msgid "Agent Request"
+msgstr "Kërkesa e Agjentit"
+
+#: apps/starah-session/starah_session/app.py:362
+msgid "Changes:"
+msgstr "Ndryshime:"
+
+#. Translators: \"Allow for [10] minutes\", around a number field.
+#: apps/starah-session/starah_session/app.py:377
+msgid "Allow for"
+msgstr "Lejo për"
+
+#: apps/starah-session/starah_session/app.py:379
+msgid "minutes"
+msgstr " minuta"
+
+#: apps/starah-session/starah_session/app.py:386
+msgid "_Reject"
+msgstr "_Refuzo"
+
+#: apps/starah-session/starah_session/app.py:388
+msgid "_Approve"
+msgstr "_Mirato"
+
+#: apps/starah-session/starah_session/app.py:401
+#, python-brace-format
+msgid "Could not answer: {error}"
+msgstr "Nuk u përgjigj: {error}"
+
+#. Translators: the five privilege levels; short names shown in a menu and as
+#. table headings ("2 · Routine").
+#: apps/starah-session/starah_session/model.py:16
+msgid "Observe"
+msgstr "Vëzhgo"
+
+#: apps/starah-session/starah_session/model.py:16
+msgid "Can look at the system, but cannot change anything."
+msgstr "Mund të shohë sistemin, por nuk mund të ndryshojë asgjë."
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Propose"
+msgstr "Propozon"
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Can suggest changes; you approve each one before it happens."
+msgstr "Mund të sugjerojë ndryshime; ju miraton secilin para se të ndodhë."
+
+#: apps/starah-session/starah_session/model.py:18
+msgid "Routine"
+msgstr "Rutina"
+
+#: apps/starah-session/starah_session/model.py:18
+msgid ""
+"Makes changes that a restart into the previous system can undo on its own "
+"(installing software, turning features on or off, browser extensions); asks "
+"you before anything that touches accounts or disks."
+msgstr ""
+"Bën ndryshime që një rilancim në sistemin e mëparshëm mund të anulojë "
+"vetë (instalimi i softverit, ndezja ose fikja e veçorive, shtesat "
+"e shfletuesit); ju pyet para çdo gjëje që prek llogaritë ose diskat."
+
+#: apps/starah-session/starah_session/model.py:21
+msgid "Administer"
+msgstr "Administro"
+
+#: apps/starah-session/starah_session/model.py:21
+msgid ""
+"Also edits the configuration freely and manages services on its own; asks "
+"you before sensitive changes."
+msgstr ""
+"Edhe e redakton konfigurimin lirshëm dhe menaxhon shërbimet vetë; ju "
+"pyet para ndryshimeve të ndjeshme."
+
+#: apps/starah-session/starah_session/model.py:23
+msgid "Delegate"
+msgstr "Delego"
+
+#: apps/starah-session/starah_session/model.py:23
+msgid ""
+"Does everything an administrator can on its own, except changing Starah, "
+"user accounts and passwords."
+msgstr ""
+"Bën gjithçka një administrues mund të bëjë vetë, përveç ndryshimit të "
+"Starah, llogarive të përdoruesve dhe fjalëkalimeve."
+
+#: apps/starah-session/starah_session/model.py:29
+msgid "read-only"
+msgstr "Vetëm lexim"
+
+#: apps/starah-session/starah_session/model.py:30
+msgid "low-risk"
+msgstr "Risk i ulët"
+
+#: apps/starah-session/starah_session/model.py:31
+msgid "administration"
+msgstr "Administrimi"
+
+#: apps/starah-session/starah_session/model.py:32
+msgid "sensitive"
+msgstr "i ndjeshëm"
+
+#: apps/starah-session/starah_session/model.py:33
+msgid "never delegated"
+msgstr "Kurrë i deleguar"
+
+#: apps/starah-session/starah_session/model.py:49
+msgid "Look around"
+msgstr "Shiko për rreth"
+
+#: apps/starah-session/starah_session/model.py:50
+msgid "read logs, settings and the system's status"
+msgstr "lexo logs, rregullime dhe statusin e sistemit"
+
+#: apps/starah-session/starah_session/model.py:52
+msgid "Changes a restart can undo"
+msgstr "Ndryshime që një rilancim mund të anulojë"
+
+#: apps/starah-session/starah_session/model.py:53
+msgid "install and remove software"
+msgstr "instalo dhe hiq softverin"
+
+#: apps/starah-session/starah_session/model.py:54
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
+msgstr "ndezja dhe fikja e veçorive dhe shërbimeve (një NixOS rollback anulojë)"
+
+#: apps/starah-session/starah_session/model.py:55
+msgid "add and remove browser extensions"
+msgstr "shto dhe hiq shtesat e shfletuesit"
+
+#: apps/starah-session/starah_session/model.py:56
+msgid "mount and eject USB sticks and disks"
+msgstr "monto dhe shkëput shufrat USB dhe diskat"
+
+#: apps/starah-session/starah_session/model.py:58
+msgid "System administration"
+msgstr "Administrimi i Sistemit"
+
+#: apps/starah-session/starah_session/model.py:59
+msgid ""
+"edit the system configuration beyond that: user groups, boot, file systems, "
+"scripts"
+msgstr ""
+"redakto konfigurimin e sistemit përtej atij: grupe përdoruesish, boot, "
+"sisteme skedarësh, skripte"
+
+#: apps/starah-session/starah_session/model.py:61
+msgid "start, stop and restart services"
+msgstr "filloni, ndaloni dhe rilanconi shërbimet"
+
+#: apps/starah-session/starah_session/model.py:62
+msgid "network and Wi-Fi settings, the time, the computer's name and language"
+msgstr "rregullime rrjeti dhe Wi-Fi, ora, emri dhe gjuha e kompjuterit"
+
+#: apps/starah-session/starah_session/model.py:63
+msgid "power off, restart or suspend the computer"
+msgstr "fik, rilancio ose pezullo kompjuterin"
+
+#: apps/starah-session/starah_session/model.py:65
+msgid "Sensitive"
+msgstr "i ndjeshëm"
+
+#: apps/starah-session/starah_session/model.py:66
+msgid ""
+"write service definitions (systemd unit files) and system environment "
+"variables"
+msgstr ""
+"shkruaj definicionet e shërbimeve (skedarë systemd) dhe variablat e "
+"mjedisit të sistemit"
+
+#: apps/starah-session/starah_session/model.py:68
+msgid "format and partition disks"
+msgstr "format dhe partition diskave"
+
+#: apps/starah-session/starah_session/model.py:69
+msgid "virtual machines and containers"
+msgstr "makina virtuale dhe kontejnerë"
+
+#: apps/starah-session/starah_session/model.py:70
+msgid "anything Starah doesn't recognise"
+msgstr "çfarëdo gjëje që Starah nuk e njeh"
+
+#: apps/starah-session/starah_session/model.py:72
+msgid "Never, at any level"
+msgstr "Kurrë, në çdo nivel"
+
+#: apps/starah-session/starah_session/model.py:73
+msgid "change Starah or its levels"
+msgstr "ndrysho Starah ose nivelet e tij"
+
+#: apps/starah-session/starah_session/model.py:74
+msgid "create or change user accounts and passwords"
+msgstr "krijo ose ndrysho llogaritë e përdoruesve dhe fjalëkalimet"
+
+#: apps/starah-session/starah_session/model.py:75
+msgid "run programs as an administrator (pkexec)"
+msgstr "vazhdo programe si administrues (pkexec)"
+
+#. Translators: the cells of the Compare Levels table and the headings of
+#. "What exactly?"; short (they sit under a ✓, ? or ✗ in a narrow column).
+#: apps/starah-session/starah_session/model.py:101
+msgid "On its own"
+msgstr "Vetë"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Asks you first"
+msgstr "Të pyet fillimisht"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Not allowed"
+msgstr "Nuk lejohet"
+
+#. Translators: {agent} is an agent's name, {what} a technical permission name.
+#: apps/starah-session/starah_session/model.py:196
+#, python-brace-format
+msgid "Agent \"{agent}\" asks for: {what}"
+msgstr "Agjenti \"{agent}\" kërkon: {what}"
+
+#. Translators: {level} is like "2 · Routine".
+#: apps/starah-session/starah_session/model.py:201
+#, python-brace-format
+msgid "Agent: {agent} (level {level})"
+msgstr "Agjenti: {agent} (niveli {level})"
+
+#. Translators: {action} is a technical name (org.tulsi.apply), {kind} one of
+#. "read-only", "low-risk", "administration", "sensitive", "never delegated".
+#: apps/starah-session/starah_session/model.py:205
+#, python-brace-format
+msgid "Permission: {action} — {kind}"
+msgstr "Leje: {action} — {kind}"
+
+#. Translators: what the permission is for, e.g. a service's name.
+#: apps/starah-session/starah_session/model.py:210
+#, python-brace-format
+msgid "On: {detail}"
+msgstr "Mbi: {detail}"
+
+#: apps/starah-session/starah_session/model.py:212
+#, python-brace-format
+msgid "Reason given: {reason}"
+msgstr "Arsyeja e dhënë: {reason}"
+
+#: apps/starah-session/starah_session/model.py:251
+msgid "Ask me each time"
+msgstr "Pyet mua çdo herë"
+
+#: apps/starah-session/starah_session/model.py:252
+msgid "Package it with a recipe (no AI model)"
+msgstr "Paketoje me një recetë (pa model AI)"
+
+#: apps/starah-session/starah_session/model.py:253
+msgid "Ask the Assistant (an AI agent)"
+msgstr "Pyet Asistentin (një agjent AI)"
+
+#. Translators: {message} is the script error, in English.
+#: apps/starah-session/starah_session/model.py:338
+#, python-brace-format
+msgid ""
+"Your rules have an error at line {line}: {message}. The rules before it are "
+"still in use."
+msgstr ""
+"Rregullat tuaja kanë një gabim në rreshtin {line}: {message}. Rregullat "
+"para tij janë ende në përdorim."
+
+#: apps/starah-session/starah_session/model.py:340
+#, python-brace-format
+msgid ""
+"Your rules have an error: {message}. The rules before it are still in use."
+msgstr ""
+"Rregullat tuaja kanë një gabim: {message}. Rregullat para tij janë ende "
+"në përdorim."
+
+#: apps/starah-session/starah_session/model.py:343
+msgid "Your own rules refine these levels (they are in use)."
+msgstr "Rregullat tuaja i rafinojnë këto nivele (janë në përdorim)."
+
+#: apps/starah-session/starah_session/model.py:344
+msgid "You can refine these levels with your own rules (a small script)."
+msgstr "Mund i rafinojë këto nivele me rregullat tuaja (një skript i vogël)."
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:4
+msgid "Choose what AI agents may do on this computer"
+msgstr "Zgjidhni se çfarë mund të bëjnë agjentët AI në këtë kompjuter"
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:5
+msgid "AI;agent;privileges;permissions;Starah;security;"
+msgstr "AI;agjenti;privilegjet;lejet;Starah;siguria;"

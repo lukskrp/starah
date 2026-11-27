@@ -1,0 +1,482 @@
+# Latvian translations for Starah package.
+# Copyright (C) 2026 THE Starah'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Starah package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Starah\n"
+"Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#: apps/starah-session/starah_session/app.py:66
+#: apps/starah-session/starah_session/app.py:166
+msgid "Compare Levels"
+msgstr "Salīdzināt līmeņus"
+
+#: apps/starah-session/starah_session/app.py:76
+msgid "What each level lets an agent do"
+msgstr "Ko katrs līmenis ļauj aģentam darīt"
+
+#. Translators: the table's legend; keep {allow}, {ask} and {deny} (the
+#. marks <U+2705>, <U+003F> and <U+274C>).
+#: apps/starah-session/starah_session/app.py:81
+#, python-brace-format
+msgid ""
+"{allow} on its own   ·   {ask} asks you first (you approve or reject each "
+"time)   ·   {deny} not allowed"
+msgstr ""
+"{allow} pats · {ask} vispirms jautā jums (jūs apstiprināt vai noraidāt "
+"katru reizi) · {deny} nav atļauts"
+
+#. Translators: a table cell's tooltip, e.g. "Routine: Asks you first".
+#: apps/starah-session/starah_session/app.py:107
+#, python-brace-format
+msgid "{level}: {verdict}"
+msgstr "{level}: {verdict}"
+
+#. Translators: "Edit Rules…" is the button's name in Agent Privileges.
+#: apps/starah-session/starah_session/app.py:112
+msgid ""
+"Starah answers each request from the agent's level. Your own rules (Edit "
+"Rules…) can change the answer for particular agents and actions, but never "
+"allow what the last row forbids."
+msgstr ""
+"Starah atbild uz katru pieprasījumu no aģenta līmeņa. Jūsu pašu noteikumi "
+"(Labot noteikumus…) var mainīt atbildi konkrētiem aģentiem un darbībām, "
+"bet nekad neatļaut to, ko aizliedz pēdējā rinda."
+
+#: apps/starah-session/starah_session/app.py:115
+#: apps/starah-session/starah_session/app.py:271
+msgid "_Close"
+msgstr "_Aizvērt"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Starah Setup"
+msgstr "Starah iestatīšana"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Agent Privileges"
+msgstr "Aģenta privilēģijas"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "Choose what AI agents may do"
+msgstr "Izvēlēties, ko AI aģenti var darīt"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "AI agents on this computer"
+msgstr "AI aģenti šajā datorā"
+
+#: apps/starah-session/starah_session/app.py:140
+msgid ""
+"Agents run as their own restricted accounts. When an agent needs a "
+"privilege, Starah answers for you from the level you choose here, and asks "
+"you whenever the level says so. You can change this at any time from \"Agent "
+"Privileges\"."
+msgstr ""
+"Aģenti darbojas kā to pašu ierobežotās kontos. Kad aģentam vajag "
+"privilēģiju, Starah atbild jūsu vārdā no līmeņa, ko jūs izvēlaties šeit, "
+"un jautā jums, kad līmenis to saka. Jūs varat mainīt jebkurā laikā no "
+"\"Aģenta privilēģijām\"."
+
+#: apps/starah-session/starah_session/app.py:145
+msgid ""
+"These are the privilege levels you chose. Agents ask you for anything their "
+"level does not allow on its own."
+msgstr "Tie ir privilēģiju līmeņi, ko jūs izvēlējāties. Aģenti jautā jums par "
+"jau visu, ko to līmenis pats neatļauj."
+
+#: apps/starah-session/starah_session/app.py:158
+msgid ""
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) "
+"runs as you, with access to all your files."
+msgstr ""
+"⚠ Šis aptver aģentus, ko jūsu sistēma sāk ar Starah. Aģents, ko jūs "
+"instalējāt citādāk (npm, pip, skripts no tīmekļa vietnes, lejupielādēts "
+"programma) darbojas kā jūs, ar piekļuvi visiem jūsu failiem."
+
+#: apps/starah-session/starah_session/app.py:167
+msgid "What each level lets an agent do, side by side"
+msgstr "Ko katrs līmenis ļauj aģentam darīt, viens blakus otram"
+
+#: apps/starah-session/starah_session/app.py:171
+msgid "Learn More"
+msgstr "Uzzināt vairāk"
+
+#: apps/starah-session/starah_session/app.py:179
+msgid "Edit Rules…"
+msgstr "Labot noteikumus…"
+
+#: apps/starah-session/starah_session/app.py:181
+msgid ""
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are "
+"checked before they are used, and saving asks for the administrator password."
+msgstr ""
+"Atver jūsu noteikumus (/etc/starah/rules.rhai) termināla redaktorā; tie tiek "
+"pārbaudīti pirms lietošanas, un saglabāšana prasa administratora paroli."
+
+#: apps/starah-session/starah_session/app.py:212
+msgid "What exactly?"
+msgstr "Ko tieši?"
+
+#: apps/starah-session/starah_session/app.py:224
+msgid "May use my whole home folder"
+msgstr "Var izmantot manu visu mājas mapi"
+
+#: apps/starah-session/starah_session/app.py:227
+msgid ""
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH "
+"keys (it can push with git), your other projects. Its changes to the system "
+"still follow its level."
+msgstr ""
+"Izslēgts: tas redz tikai mapi, kurā jūs to sākat, un ir tā paša pieteikumi. "
+"Ieslēgts: tas darbojas it kā jūs būtu savos failos — jūsu pieteikumi un "
+"iestatījumi, jūsu SSH atslēgas (tas var push ar git), jūsu citi projekti. "
+"Tā izmaiņas sistēmā joprojām seko tā līmenim."
+
+#: apps/starah-session/starah_session/app.py:244
+msgid "When software you install has no TulsiOS package"
+msgstr "Kad instalētā programmatūra nav TulsiOS pakotne"
+
+#: apps/starah-session/starah_session/app.py:254
+msgid ""
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
+msgstr ""
+"Recepte iepakoj izplatītās lejupielādes (AppImages, .deb un .rpm faili, "
+"programmas un avota kods arhīvos) no pārbaudītiem šabloniem, bez AI modeļa. "
+"Assistents var iepakot gandrīz visu, bet tam vajag vienu."
+
+#: apps/starah-session/starah_session/app.py:262
+msgid "Show this when I log in"
+msgstr "Rādīt šo, kad es pieteicos"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save"
+msgstr "_Saglabāt"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save and continue"
+msgstr "_Saglabāt un turpināt"
+
+#. Translators: {error} is a system message, often in English.
+#: apps/starah-session/starah_session/app.py:306
+#, python-brace-format
+msgid "Not changed: {error}"
+msgstr "Nav mainīts: {error}"
+
+#: apps/starah-session/starah_session/app.py:312
+#, python-brace-format
+msgid "{agent} may now use your whole home folder."
+msgstr "{agent} var tagad izmantot jūsu visu mājas mapi."
+
+#: apps/starah-session/starah_session/app.py:313
+#, python-brace-format
+msgid "{agent} no longer uses your whole home folder."
+msgstr "{agent} vairs neizmanto jūsu visu mājas mapi."
+
+#: apps/starah-session/starah_session/app.py:326
+msgid "Saving… (you may be asked for your password)"
+msgstr "Saglabā… (var tikt lūgta parole)"
+
+#: apps/starah-session/starah_session/app.py:330
+#, python-brace-format
+msgid "Not saved: {error}"
+msgstr "Nav saglabāts: {error}"
+
+#: apps/starah-session/starah_session/app.py:346
+msgid "Agent Request"
+msgstr "Aģenta pieprasījums"
+
+#: apps/starah-session/starah_session/app.py:362
+msgid "Changes:"
+msgstr "Izmaiņas:"
+
+#. Translators: \"Allow for [10] minutes\", around a number field.
+#: apps/starah-session/starah_session/app.py:377
+msgid "Allow for"
+msgstr "Atļaut uz"
+
+#: apps/starah-session/starah_session/app.py:379
+msgid "minutes"
+msgstr "minūtēm"
+
+#: apps/starah-session/starah_session/app.py:386
+msgid "_Reject"
+msgstr "_Noraidīt"
+
+#: apps/starah-session/starah_session/app.py:388
+msgid "_Approve"
+msgstr "_Apstiprināt"
+
+#: apps/starah-session/starah_session/app.py:401
+#, python-brace-format
+msgid "Could not answer: {error}"
+msgstr "Nevarēja atbildēt: {error}"
+
+#. Translators: the five privilege levels; short names shown in a menu and as
+#. table headings ("2 · Routine").
+#: apps/starah-session/starah_session/model.py:16
+msgid "Observe"
+msgstr "Novērot"
+
+#: apps/starah-session/starah_session/model.py:16
+msgid "Can look at the system, but cannot change anything."
+msgstr "Var aplūkot sistēmu, bet neko nevar mainīt."
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Propose"
+msgstr "Ierosināt"
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Can suggest changes; you approve each one before it happens."
+msgstr "Var ierosināt izmaiņas; jūs apstiprinat katru, pirms tas notiek."
+
+#: apps/starah-session/starah_session/model.py:18
+msgid "Routine"
+msgstr "Rutīna"
+
+#: apps/starah-session/starah_session/model.py:18
+msgid ""
+"Makes changes that a restart into the previous system can undo on its own "
+"(installing software, turning features on or off, browser extensions); asks "
+"you before anything that touches accounts or disks."
+msgstr ""
+"Dara izmaiņas, ko restartēšanās uz iepriekšējo sistēmu var atcelt paša "
+"(programmatūras instalēšana, funkciju ieslēgšana vai izslēgšana, pārlūkprogrammas "
+"Paplašinājumi); jautā jums pirms jebkura, kas pieskaras kontiem vai diskiem."
+
+#: apps/starah-session/starah_session/model.py:21
+msgid "Administer"
+msgstr "Pārvaldīt"
+
+#: apps/starah-session/starah_session/model.py:21
+msgid ""
+"Also edits the configuration freely and manages services on its own; asks "
+"you before sensitive changes."
+msgstr ""
+"Arī labo konfigurāciju brīvi un pārvalda pakalpojumus pats; jautā jums pirms "
+"jutīgām izmaiņām."
+
+#: apps/starah-session/starah_session/model.py:23
+msgid "Delegate"
+msgstr "Deleģēt"
+
+#: apps/starah-session/starah_session/model.py:23
+msgid ""
+"Does everything an administrator can on its own, except changing Starah, "
+"user accounts and passwords."
+msgstr ""
+"Dara visu, ko administrators var pats, izņemot Starah maiņu, "
+"lietotāju kontus un paroles."
+
+#: apps/starah-session/starah_session/model.py:29
+msgid "read-only"
+msgstr "tikai lasīšanai"
+
+#: apps/starah-session/starah_session/model.py:30
+msgid "low-risk"
+msgstr "zemais risks"
+
+#: apps/starah-session/starah_session/model.py:31
+msgid "administration"
+msgstr "pārvaldīšana"
+
+#: apps/starah-session/starah_session/model.py:32
+msgid "sensitive"
+msgstr "jutīgs"
+
+#: apps/starah-session/starah_session/model.py:33
+msgid "never delegated"
+msgstr "nekad deleģēts"
+
+#: apps/starah-session/starah_session/model.py:49
+msgid "Look around"
+msgstr "Apskatīties apkārt"
+
+#: apps/starah-session/starah_session/model.py:50
+msgid "read logs, settings and the system's status"
+msgstr "lasīt žurnālus, iestatījumus un sistēmas stāvokli"
+
+#: apps/starah-session/starah_session/model.py:52
+msgid "Changes a restart can undo"
+msgstr "Izmaiņas, ko restartēt var atcelt"
+
+#: apps/starah-session/starah_session/model.py:53
+msgid "install and remove software"
+msgstr "instalēt un noņemt programmatūru"
+
+#: apps/starah-session/starah_session/model.py:54
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
+msgstr "ieslēgt vai izslēgt funkcijas un pakalpojumus (NixOS rollback to atceļ)"
+
+#: apps/starah-session/starah_session/model.py:55
+msgid "add and remove browser extensions"
+msgstr "pievienot un noņemt pārlūkprogrammas paplašinājumus"
+
+#: apps/starah-session/starah_session/model.py:56
+msgid "mount and eject USB sticks and disks"
+msgstr "pievienot un izjūgt USB atmiņas un diskus"
+
+#: apps/starah-session/starah_session/model.py:58
+msgid "System administration"
+msgstr "Sistēmas pārvaldīšana"
+
+#: apps/starah-session/starah_session/model.py:59
+msgid ""
+"edit the system configuration beyond that: user groups, boot, file systems, "
+"scripts"
+msgstr ""
+"labot sistēmas konfigurāciju aiz tā: lietotāju grupas, ielāde, failu sistēmas, "
+"skripti"
+
+#: apps/starah-session/starah_session/model.py:61
+msgid "start, stop and restart services"
+msgstr "sākt, apturēt un restartēt pakalpojumus"
+
+#: apps/starah-session/starah_session/model.py:62
+msgid "network and Wi-Fi settings, the time, the computer's name and language"
+msgstr "tīkla un Wi-Fi iestatījumi, laiks, datorā nosaukums un valoda"
+
+#: apps/starah-session/starah_session/model.py:63
+msgid "power off, restart or suspend the computer"
+msgstr "izslēgt, restartēt vai apturēt datoru"
+
+#: apps/starah-session/starah_session/model.py:65
+msgid "Sensitive"
+msgstr "Jutīgs"
+
+#: apps/starah-session/starah_session/model.py:66
+msgid ""
+"write service definitions (systemd unit files) and system environment "
+"variables"
+msgstr ""
+"rakstīt pakalpojumu definīcijas (systemd vienības failus) un sistēmas "
+"apkārtējās vides mainīgos"
+
+#: apps/starah-session/starah_session/model.py:68
+msgid "format and partition disks"
+msgstr "formatēt un sadalīt diskus"
+
+#: apps/starah-session/starah_session/model.py:69
+msgid "virtual machines and containers"
+msgstr "virtuālie datori un konteineri"
+
+#: apps/starah-session/starah_session/model.py:70
+msgid "anything Starah doesn't recognise"
+msgstr "jebko, ko Starah neatpazīst"
+
+#: apps/starah-session/starah_session/model.py:72
+msgid "Never, at any level"
+msgstr "Nekad, jebkurā līmenī"
+
+#: apps/starah-session/starah_session/model.py:73
+msgid "change Starah or its levels"
+msgstr "mainīt Starah vai tā līmeņus"
+
+#: apps/starah-session/starah_session/model.py:74
+msgid "create or change user accounts and passwords"
+msgstr "izveidot vai mainīt lietotāju kontus un paroles"
+
+#: apps/starah-session/starah_session/model.py:75
+msgid "run programs as an administrator (pkexec)"
+msgstr "darināt programmas kā administrators (pkexec)"
+
+#. Translators: the cells of the Compare Levels table and the headings of
+#. "What exactly?"; short (they sit under a <U+2705>, <U+003F> or <U+274C> in a narrow column).
+#: apps/starah-session/starah_session/model.py:101
+msgid "On its own"
+msgstr "Pats"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Asks you first"
+msgstr "Vispirms jautā jums"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Not allowed"
+msgstr "Nav atļauts"
+
+#. Translators: {agent} is an agent's name, {what} a technical permission name.
+#: apps/starah-session/starah_session/model.py:196
+#, python-brace-format
+msgid "Agent \"\"{agent}\"\" asks for: {what}"
+msgstr "Aģents \"\"{agent}\"\" prasa: {what}"
+
+#. Translators: {level} is like "2 · Routine".
+#: apps/starah-session/starah_session/model.py:201
+#, python-brace-format
+msgid "Agent: {agent} (level {level})"
+msgstr "Aģents: {agent} (līmenis {level})"
+
+#. Translators: {action} is a technical name (org.tulsi.apply), {kind} one of
+#. "read-only", "low-risk", "administration", "sensitive", "never delegated".
+#: apps/starah-session/starah_session/model.py:205
+#, python-brace-format
+msgid "Permission: {action} — {kind}"
+msgstr "Atļauja: {action} — {kind}"
+
+#. Translators: what the permission is for, e.g. a service's name.
+#: apps/starah-session/starah_session/model.py:210
+#, python-brace-format
+msgid "On: {detail}"
+msgstr "Ieslēgts: {detail}"
+
+#: apps/starah-session/starah_session/model.py:212
+#, python-brace-format
+msgid "Reason given: {reason}"
+msgstr "Dots iemesls: {reason}"
+
+#: apps/starah-session/starah_session/model.py:251
+msgid "Ask me each time"
+msgstr "Jautāt man katru reizi"
+
+#: apps/starah-session/starah_session/model.py:252
+msgid "Package it with a recipe (no AI model)"
+msgstr "Iepakot to ar recepti (bez AI modeļa)"
+
+#: apps/starah-session/starah_session/model.py:253
+msgid "Ask the Assistant (an AI agent)"
+msgstr "Jautāt Asistentam (AI aģents)"
+
+#. Translators: {message} is the script error, in English.
+#: apps/starah-session/starah_session/model.py:338
+#, python-brace-format
+msgid ""
+"Your rules have an error at line {line}: {message}. The rules before it are "
+"still in use."
+msgstr ""
+"Jūsu noteikumos ir kļūda rindā {line}: {message}. Noteikumi pirms tā joprojām "
+"ir lietā."
+
+#: apps/starah-session/starah_session/model.py:340
+#, python-brace-format
+msgid ""
+"Your rules have an error: {message}. The rules before it are still in use."
+msgstr "Jūsu noteikumos ir kļūda: {message}. Noteikumi pirms tā joprojām ir lietā."
+
+#: apps/starah-session/starah_session/model.py:343
+msgid "Your own rules refine these levels (they are in use)."
+msgstr "Jūsu pašu noteikumi uzlabo šos līmeņus (tie ir lietā)."
+
+#: apps/starah-session/starah_session/model.py:344
+msgid "You can refine these levels with your own rules (a small script)."
+msgstr "Jūs varat uzlabot šos līmeņus ar saviem noteikumiem (mazs skripts)."
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:4
+msgid "Choose what AI agents may do on this computer"
+msgstr "Izvēlēties, ko AI aģenti var darīt šajā datorā"
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:5
+msgid "AI;agent;privileges;permissions;Starah;security;"
+msgstr "AI;aģents;privilēģijas;atļaujas;Starah;drošība;"

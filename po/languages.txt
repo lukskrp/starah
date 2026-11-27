@@ -1,0 +1,92 @@
+# The languages Starah's strings are to be translated into: the installer's
+# (TulsiOS's installer, Calamares 3.4.2's lang/ list, every tier), in gettext's locale codes.
+# One po/<code>.po per line. Lines starting with # are notes.
+#
+# Calamares' codes were mapped to what glibc locales and .desktop lookups use:
+#   cs_CZ -> cs, fi_FI -> fi, it_IT -> it, tr_TR -> tr, ne_NP -> ne, ta_IN -> ta,
+#   pt_PT -> pt (pt_BR stays); az_AZ is the same language as az (dropped);
+#   ja-Hira (Japanese in hiragana) has no glibc locale (dropped); plain zh is
+#   covered by zh_CN / zh_TW / zh_HK (dropped). en is the source language.
+#
+# Calamares' tier: complete
+ar
+az
+ca
+cs
+de
+es
+es_AR
+fi
+fr
+he
+hu
+id
+ja
+kk
+ko
+lg
+nb
+pl
+pt_BR
+ru
+sv
+tg
+tr
+uk
+zh_CN
+zh_TW
+# good
+bg
+fur
+hr
+is
+it
+ka
+lt
+pt
+sk
+sq
+uz
+# ok
+as
+ast
+be
+bn
+ca@valencia
+da
+el
+en_GB
+eo
+es_MX
+et
+eu
+fa
+gl
+hi
+ia
+ml
+mr
+nl
+oc
+ro
+si
+sl
+sr
+sr@latin
+th
+vi
+# incomplete in Calamares (translate if you can)
+bs
+es_PR
+fr_CA
+gu
+ie
+kn
+lo
+lv
+mk
+ne
+ta
+te
+ur
+zh_HK

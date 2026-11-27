@@ -1,0 +1,467 @@
+# Thai translations for Starah package.
+# Copyright (C) 2026 THE Starah'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Starah package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Starah\n"
+"Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps/starah-session/starah_session/app.py:66
+#: apps/starah-session/starah_session/app.py:166
+msgid "Compare Levels"
+msgstr "เปรียบเทียบระดับ"
+
+#: apps/starah-session/starah_session/app.py:76
+msgid "What each level lets an agent do"
+msgstr "แต่ละระดับให้เอเยนต์ทำอะไรได้บ้าง"
+
+#. Translators: the table's legend; keep {allow}, {ask} and {deny} (the
+#. marks <U+2705>, <U+003F> and <U+274C>).
+#: apps/starah-session/starah_session/app.py:81
+#, python-brace-format
+msgid ""
+"{allow} on its own   ·   {ask} asks you first (you approve or reject each "
+"time)   ·   {deny} not allowed"
+msgstr ""
+"{allow} โดยตัวเอง · {ask} ขอคุณก่อน (คุณอนุมัติหรือปฏิเสธทุกครั้ง) · {deny} "
+"ไม่อนุญาต"
+
+#. Translators: a table cell's tooltip, e.g. "Routine: Asks you first".
+#: apps/starah-session/starah_session/app.py:107
+#, python-brace-format
+msgid "{level}: {verdict}"
+msgstr "{level}: {verdict}"
+
+#. Translators: "Edit Rules…" is the button's name in Agent Privileges.
+#: apps/starah-session/starah_session/app.py:112
+msgid ""
+"Starah answers each request from the agent's level. Your own rules (Edit "
+"Rules…) can change the answer for particular agents and actions, but never "
+"allow what the last row forbids."
+msgstr ""
+"Starah ตอบสนองแต่ละคำขอจากระดับของเอเยนต์ กฎของคุณเอง (แก้ไขกฎ…) สามารถเปลี่ยน "
+"คำตอบสำหรับเอเยนต์และการกระทำเฉพาะได้ แต่ไม่อนุญาตในสิ่งที่แถวสุดท้ายห้าม"
+
+#: apps/starah-session/starah_session/app.py:115
+#: apps/starah-session/starah_session/app.py:271
+msgid "_Close"
+msgstr "_ปิด"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Starah Setup"
+msgstr "การตั้งค่า Starah"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Agent Privileges"
+msgstr "สิทธิ์ของเอเยนต์"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "Choose what AI agents may do"
+msgstr "เลือกสิ่งที่ AI เอเยนต์สามารถทำได้"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "AI agents on this computer"
+msgstr "AI เอเยนต์บนคอมพิวเตอร์นี้"
+
+#: apps/starah-session/starah_session/app.py:140
+msgid ""
+"Agents run as their own restricted accounts. When an agent needs a "
+"privilege, Starah answers for you from the level you choose here, and asks "
+"you whenever the level says so. You can change this at any time from \"Agent "
+"Privileges\"."
+msgstr ""
+"เอเยนต์ทำงานเป็นบัญชีจำกัดของตัวเอง เมื่อเอเยนต์ต้องการสิทธิ์ Starah ตอบแทนคุณจาก "
+"ระดับที่คุณเลือกที่นี่ และถามคุณทุกครั้งตามระดับ คุณสามารถเปลี่ยนได้ตลอดเวลาจาก "
+"\"สิทธิ์ของเอเยนต์\""
+
+#: apps/starah-session/starah_session/app.py:145
+msgid ""
+"These are the privilege levels you chose. Agents ask you for anything their "
+"level does not allow on its own."
+msgstr "นี่คือระดับสิทธิ์ที่คุณเลือก เอเยนต์ถามคุณสำหรับสิ่งใดๆ ที่ระดับไม่อนุญาตโดยตัวเอง"
+
+#: apps/starah-session/starah_session/app.py:158
+msgid ""
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) "
+"runs as you, with access to all your files."
+msgstr ""
+"⚠ ครอบคลุมเอเยนต์ที่ระบบเริ่มภายใต้ Starah เอเยนต์ที่คุณติดตั้งด้วยวิธีอื่น "
+"(npm, pip, สคริปต์จากเว็บไซต์, โปรแกรมที่ดาวน์โหลด) ทำงานในฐานะคุณ พร้อมเข้าถึง "
+"ไฟล์ทั้งหมดของคุณ"
+
+#: apps/starah-session/starah_session/app.py:167
+msgid "What each level lets an agent do, side by side"
+msgstr "สิ่งที่แต่ละระดับให้เอเยนต์ทำได้ วางเคียงกัน"
+
+#: apps/starah-session/starah_session/app.py:171
+msgid "Learn More"
+msgstr "เรียนรู้เพิ่มเติม"
+
+#: apps/starah-session/starah_session/app.py:179
+msgid "Edit Rules…"
+msgstr "แก้ไขกฎ…"
+
+#: apps/starah-session/starah_session/app.py:181
+msgid ""
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are "
+"checked before they are used, and saving asks for the administrator password."
+msgstr ""
+"เปิดกฎของคุณ (/etc/starah/rules.rhai) ในโปรแกรมแก้ไขเทอร์มินัล; จะถูกตรวจสอบก่อน "
+"ใช้งาน และบันทึกต้องขอรหัสผ่านผู้ดูแลระบบ"
+
+#: apps/starah-session/starah_session/app.py:212
+msgid "What exactly?"
+msgstr "อะไรกันแน่?"
+
+#: apps/starah-session/starah_session/app.py:224
+msgid "May use my whole home folder"
+msgstr "สามารถเข้าถึงโฟลเดอร์โฮมทั้งหมดได้"
+
+#: apps/starah-session/starah_session/app.py:227
+msgid ""
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH "
+"keys (it can push with git), your other projects. Its changes to the system "
+"still follow its level."
+msgstr ""
+"ปิด: เห็นเฉพาะโฟลเดอร์ที่คุณเริ่มการทำงาน และมีล็อกอินของตัวเอง เปิด: ทำงานราวกับ "
+"ว่าเป็นคุณในไฟล์ของคุณ — ล็อกอินและค่ากำหนดของคุณ SSH keys (สามารถ push ด้วย git) "
+"โปรเจกต์อื่นๆ ของคุณ การเปลี่ยนแปลงต่อบริกระบบยังคงเป็นไปตามระดับ"
+
+#: apps/starah-session/starah_session/app.py:244
+msgid "When software you install has no TulsiOS package"
+msgstr "เมื่อซอฟต์แวร์ที่ติดตั้งไม่มีแพ็กเกจ TulsiOS"
+
+#: apps/starah-session/starah_session/app.py:254
+msgid ""
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
+msgstr ""
+"สูตรแพ็กเกจดาวน์โหลดทั่วไป (AppImages, ไฟล์ .deb และ .rpm, โปรแกรมและโค้ดแหล่ง "
+"ในอาร์কা) จากเทมเพลตที่ทดสอบแล้ว โดยไม่มีแบบจำลอง AI ผู้ช่วยสามารถแพ็กเกจสิ่งใดๆ "
+"ก็ได้ แต่ต้องการหนึ่ง"
+
+#: apps/starah-session/starah_session/app.py:262
+msgid "Show this when I log in"
+msgstr "แสดงนี้เมื่อฉันล็อกอิน"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save"
+msgstr "_บันทึก"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save and continue"
+msgstr "_บันทึกและดำเนินการต่อ"
+
+#. Translators: {error} is a system message, often in English.
+#: apps/starah-session/starah_session/app.py:306
+#, python-brace-format
+msgid "Not changed: {error}"
+msgstr "ไม่เปลี่ยนแปลง: {error}"
+
+#: apps/starah-session/starah_session/app.py:312
+#, python-brace-format
+msgid "{agent} may now use your whole home folder."
+msgstr "{agent} สามารถเข้าถึงโฟลเดอร์โฮมทั้งหมดของคุณได้"
+
+#: apps/starah-session/starah_session/app.py:313
+#, python-brace-format
+msgid "{agent} no longer uses your whole home folder."
+msgstr "{agent} ไม่เข้าถึงโฟลเดอร์โฮมทั้งหมดของคุณอีกต่อไป"
+
+#: apps/starah-session/starah_session/app.py:326
+msgid "Saving… (you may be asked for your password)"
+msgstr "กำลังบันทึก… (อาจมีการขอรหัสผ่านของคุณ)"
+
+#: apps/starah-session/starah_session/app.py:330
+#, python-brace-format
+msgid "Not saved: {error}"
+msgstr "ไม่บันทึก: {error}"
+
+#: apps/starah-session/starah_session/app.py:346
+msgid "Agent Request"
+msgstr "คำขอจากเอเยนต์"
+
+#: apps/starah-session/starah_session/app.py:362
+msgid "Changes:"
+msgstr "การเปลี่ยนแปลง:"
+
+#. Translators: \"Allow for [10] minutes\", around a number field.
+#: apps/starah-session/starah_session/app.py:377
+msgid "Allow for"
+msgstr "อนุญาตเป็นเวลา"
+
+#: apps/starah-session/starah_session/app.py:379
+msgid "minutes"
+msgstr "นาที"
+
+#: apps/starah-session/starah_session/app.py:386
+msgid "_Reject"
+msgstr "_ปฏิเสธ"
+
+#: apps/starah-session/starah_session/app.py:388
+msgid "_Approve"
+msgstr "_อนุมัติ"
+
+#: apps/starah-session/starah_session/app.py:401
+#, python-brace-format
+msgid "Could not answer: {error}"
+msgstr "ไม่สามารถตอบได้: {error}"
+
+#. Translators: the five privilege levels; short names shown in a menu and as
+#. table headings ("2 · Routine").
+#: apps/starah-session/starah_session/model.py:16
+msgid "Observe"
+msgstr "สังเกต"
+
+#: apps/starah-session/starah_session/model.py:16
+msgid "Can look at the system, but cannot change anything."
+msgstr "สามารถดูระบบ แต่ไม่สามารถเปลี่ยนแปลงสิ่งใดได้"
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Propose"
+msgstr "เสนอ"
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Can suggest changes; you approve each one before it happens."
+msgstr "สามารถเสนอการเปลี่ยนแปลง; คุณอนุมัติแต่ละครั้งก่อนจะเกิด"
+
+#: apps/starah-session/starah_session/model.py:18
+msgid "Routine"
+msgstr "ประจำ"
+
+#: apps/starah-session/starah_session/model.py:18
+msgid ""
+"Makes changes that a restart into the previous system can undo on its own "
+"(installing software, turning features on or off, browser extensions); asks "
+"you before anything that touches accounts or disks."
+msgstr ""
+"ทำการเปลี่ยนแปลงที่การรีสตาร์ทเข้าไปในระบบก่อนหน้าสามารถยกเลิกได้เอง "
+"(การติดตั้งซอฟต์แวร์, เปิดหรือปิดคุณสมบัติ,ส่วนขยายเบราว์เซอร์); ถามคุณก่อนสิ่งใดๆ "
+"ที่เข้าถึงบัญชีหรือดิสก์"
+
+#: apps/starah-session/starah_session/model.py:21
+msgid "Administer"
+msgstr "ดูแลระบบ"
+
+#: apps/starah-session/starah_session/model.py:21
+msgid ""
+"Also edits the configuration freely and manages services on its own; asks "
+"you before sensitive changes."
+msgstr "แก้ไขการกำหนดค่าได้อย่างอิสระและจัดการบริการด้วยตัวเอง; ถามคุณก่อนการเปลี่ยนแปลงที่ละเอียดอ่อน"
+
+#: apps/starah-session/starah_session/model.py:23
+msgid "Delegate"
+msgstr "มอบหมาย"
+
+#: apps/starah-session/starah_session/model.py:23
+msgid ""
+"Does everything an administrator can on its own, except changing Starah, "
+"user accounts and passwords."
+msgstr "ทำทุกอย่างที่ผู้ดูแลระบบสามารถทำได้ด้วยตัวเอง เว้นแต่การเปลี่ยน Starah บัญชีผู้ใช้และรหัสผ่าน"
+
+#: apps/starah-session/starah_session/model.py:29
+msgid "read-only"
+msgstr "อ่านอย่างเดียว"
+
+#: apps/starah-session/starah_session/model.py:30
+msgid "low-risk"
+msgstr "ความเสี่ยงต่ำ"
+
+#: apps/starah-session/starah_session/model.py:31
+msgid "administration"
+msgstr "การบริหาร"
+
+#: apps/starah-session/starah_session/model.py:32
+msgid "sensitive"
+msgstr "ละเอียดอ่อน"
+
+#: apps/starah-session/starah_session/model.py:33
+msgid "never delegated"
+msgstr "ไม่มีการมอบหมาย"
+
+#: apps/starah-session/starah_session/model.py:49
+msgid "Look around"
+msgstr "มองไปรอบๆ"
+
+#: apps/starah-session/starah_session/model.py:50
+msgid "read logs, settings and the system's status"
+msgstr "อ่านบันทึก การตั้งค่า และสถานะของระบบ"
+
+#: apps/starah-session/starah_session/model.py:52
+msgid "Changes a restart can undo"
+msgstr "การเปลี่ยนแปลงที่การรีสตาร์ทสามารถยกเลิกได้"
+
+#: apps/starah-session/starah_session/model.py:53
+msgid "install and remove software"
+msgstr "ติดตั้งและลบซอฟต์แวร์"
+
+#: apps/starah-session/starah_session/model.py:54
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
+msgstr "เปิดหรือปิดคุณสมบัติและบริการ (การถอยกลับของ NixOS จะยกเลิกสิ่งนี้)"
+
+#: apps/starah-session/starah_session/model.py:55
+msgid "add and remove browser extensions"
+msgstr "เพิ่มและลบส่วนขยายเบราว์เซอร์"
+
+#: apps/starah-session/starah_session/model.py:56
+msgid "mount and eject USB sticks and disks"
+msgstr "เชื่อมต่อและถอดดิสก์และ USB"
+
+#: apps/starah-session/starah_session/model.py:58
+msgid "System administration"
+msgstr "การบริหารระบบ"
+
+#: apps/starah-session/starah_session/model.py:59
+msgid ""
+"edit the system configuration beyond that: user groups, boot, file systems, "
+"scripts"
+msgstr "แก้ไขการกำหนดค่าระบบเพิ่มเติม: กลุ่มผู้ใช้, การบูต, ระบบไฟล์, สคริปต์"
+
+#: apps/starah-session/starah_session/model.py:61
+msgid "start, stop and restart services"
+msgstr "เริ่ม หยุด และรีสตาร์ทบริการ"
+
+#: apps/starah-session/starah_session/model.py:62
+msgid "network and Wi-Fi settings, the time, the computer's name and language"
+msgstr "การตั้งค่าเครือข่ายและ Wi-Fi เวลา ชื่อ และภาษาของคอมพิวเตอร์"
+
+#: apps/starah-session/starah_session/model.py:63
+msgid "power off, restart or suspend the computer"
+msgstr "ปิดเครื่อง รีสตาร์ท หรือพักคอมพิวเตอร์"
+
+#: apps/starah-session/starah_session/model.py:65
+msgid "Sensitive"
+msgstr "ละเอียดอ่อน"
+
+#: apps/starah-session/starah_session/model.py:66
+msgid ""
+"write service definitions (systemd unit files) and system environment "
+"variables"
+msgstr "เขียนคำจำกัดความบริการ (ไฟล์ยูนิต systemd) และตัวแปรสภาพแวดล้อมระบบ"
+
+#: apps/starah-session/starah_session/model.py:68
+msgid "format and partition disks"
+msgstr "จัดรูปแบบและแบ่งพาร์ติชันดิสก์"
+
+#: apps/starah-session/starah_session/model.py:69
+msgid "virtual machines and containers"
+msgstr "เครื่องเสมือนและคอนเทนเนอร์"
+
+#: apps/starah-session/starah_session/model.py:70
+msgid "anything Starah doesn't recognise"
+msgstr "ทุกอย่างที่ Starah ไม่รู้จัก"
+
+#: apps/starah-session/starah_session/model.py:72
+msgid "Never, at any level"
+msgstr "ไม่เคยเลย ที่ระดับใดก็ตาม"
+
+#: apps/starah-session/starah_session/model.py:73
+msgid "change Starah or its levels"
+msgstr "เปลี่ยน Starah หรือระดับของมัน"
+
+#: apps/starah-session/starah_session/model.py:74
+msgid "create or change user accounts and passwords"
+msgstr "สร้างหรือเปลี่ยนบัญชีผู้ใช้และรหัสผ่าน"
+
+#: apps/starah-session/starah_session/model.py:75
+msgid "run programs as an administrator (pkexec)"
+msgstr "เรียกใช้โปรแกรมในฐานะผู้ดูแลระบบ (pkexec)"
+
+#. Translators: the cells of the Compare Levels table and the headings of
+#. "What exactly?"; short (they sit under a <U+2705>, <U+003F> or <U+274C> in a narrow column).
+#: apps/starah-session/starah_session/model.py:101
+msgid "On its own"
+msgstr "โดยตัวเอง"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Asks you first"
+msgstr "ถามคุณก่อน"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Not allowed"
+msgstr "ไม่อนุญาต"
+
+#. Translators: {agent} is an agent's name, {what} a technical permission name.
+#: apps/starah-session/starah_session/model.py:196
+#, python-brace-format
+msgid "Agent \"\"{agent}\"\" asks for: {what}"
+msgstr "เอเยนต์ \"\"{agent}\"\" ขอ: {what}"
+
+#. Translators: {level} is like "2 · Routine".
+#: apps/starah-session/starah_session/model.py:201
+#, python-brace-format
+msgid "Agent: {agent} (level {level})"
+msgstr "เอเยนต์: {agent} (ระดับ {level})"
+
+#. Translators: {action} is a technical name (org.tulsi.apply), {kind} one of
+#. "read-only", "low-risk", "administration", "sensitive", "never delegated".
+#: apps/starah-session/starah_session/model.py:205
+#, python-brace-format
+msgid "Permission: {action} — {kind}"
+msgstr "สิทธิ์: {action} — {kind}"
+
+#. Translators: what the permission is for, e.g. a service's name.
+#: apps/starah-session/starah_session/model.py:210
+#, python-brace-format
+msgid "On: {detail}"
+msgstr "เปิดใช้งาน: {detail}"
+
+#: apps/starah-session/starah_session/model.py:212
+#, python-brace-format
+msgid "Reason given: {reason}"
+msgstr "เหตุผลที่ให้ไว้: {reason}"
+
+#: apps/starah-session/starah_session/model.py:251
+msgid "Ask me each time"
+msgstr "ถามฉันทุกครั้ง"
+
+#: apps/starah-session/starah_session/model.py:252
+msgid "Package it with a recipe (no AI model)"
+msgstr "แพ็กเกจด้วยสูตร (ไม่มีแบบจำลอง AI)"
+
+#: apps/starah-session/starah_session/model.py:253
+msgid "Ask the Assistant (an AI agent)"
+msgstr "ถามผู้ช่วย (เอเยนต์ AI)"
+
+#. Translators: {message} is the script error, in English.
+#: apps/starah-session/starah_session/model.py:338
+#, python-brace-format
+msgid ""
+"Your rules have an error at line {line}: {message}. The rules before it are "
+"still in use."
+msgstr "กฎของคุณมีข้อผิดพลาดที่บรรทัด {line}: {message} กฎก่อนหน้ายังคงถูกใช้งานอยู่"
+
+#: apps/starah-session/starah_session/model.py:340
+#, python-brace-format
+msgid ""
+"Your rules have an error: {message}. The rules before it are still in use."
+msgstr "กฎของคุณมีข้อผิดพลาด: {message} กฎก่อนหน้ายังคงถูกใช้งานอยู่"
+
+#: apps/starah-session/starah_session/model.py:343
+msgid "Your own rules refine these levels (they are in use)."
+msgstr "กฎของคุณเองปรับปรุงระดับเหล่านี้ (กำลังใช้งานอยู่)"
+
+#: apps/starah-session/starah_session/model.py:344
+msgid "You can refine these levels with your own rules (a small script)."
+msgstr "คุณสามารถปรับปรุงระดับเหล่านี้ด้วยกฎของคุณเอง (สคริปต์ขนาดเล็ก)"
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:4
+msgid "Choose what AI agents may do on this computer"
+msgstr "เลือกสิ่งที่ AI เอเยนต์สามารถทำได้บนคอมพิวเตอร์นี้"
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:5
+msgid "AI;agent;privileges;permissions;Starah;security;"
+msgstr "AI;agent;สิทธิ์;การอนุญาต;Starah;ความปลอดภัย;"

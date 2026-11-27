@@ -1,0 +1,486 @@
+# Hindi translations for Starah package.
+# Copyright (C) 2026 THE Starah'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Starah package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Starah\n"
+"Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/starah-session/starah_session/app.py:66
+#: apps/starah-session/starah_session/app.py:166
+msgid "Compare Levels"
+msgstr "स्तरों की तुलना करें"
+
+#: apps/starah-session/starah_session/app.py:76
+msgid "What each level lets an agent do"
+msgstr "प्रत्येक स्तर एजेंट को क्या करने देता है"
+
+#. Translators: the table's legend; keep {allow}, {ask} and {deny} (the
+#. marks ✓, ? and ✗).
+#: apps/starah-session/starah_session/app.py:81
+#, python-brace-format
+msgid ""
+"{allow} on its own   ·   {ask} asks you first (you approve or reject each "
+"time)   ·   {deny} not allowed"
+msgstr ""
+"{allow} अपने आप · {ask} पहले आपको पूछता है (आप हर बार "
+"मंजूरी देते या अस्वीकार करते हैं) · {deny} अनुमति नहीं है"
+
+#. Translators: a table cell's tooltip, e.g. "Routine: Asks you first".
+#: apps/starah-session/starah_session/app.py:107
+#, python-brace-format
+msgid "{level}: {verdict}"
+msgstr "{level}: {verdict}"
+
+#. Translators: "Edit Rules…" is the button's name in Agent Privileges.
+#: apps/starah-session/starah_session/app.py:112
+msgid ""
+"Starah answers each request from the agent's level. Your own rules (Edit "
+"Rules…) can change the answer for particular agents and actions, but never "
+"allow what the last row forbids."
+msgstr ""
+"Starah एजेंट के स्तर से प्रत्येक अनुरोध का उत्तर देता है। आपके नियम (नियम "
+"संपादित करें…) विशेष एजेंटों और कार्रवाइयों के लिए उत्तर बदल सकते हैं, "
+"लेकिन कभी भी आखिरी पंक्ति जो मना करती है उसे अनुमति नहीं देते।"
+
+#: apps/starah-session/starah_session/app.py:115
+#: apps/starah-session/starah_session/app.py:271
+msgid "_Close"
+msgstr "_बंद करें"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Starah Setup"
+msgstr "Starah सेटअप"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Agent Privileges"
+msgstr "एजेंट विशेषाधिकार"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "Choose what AI agents may do"
+msgstr "चुनें कि AI एजेंट क्या कर सकते हैं"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "AI agents on this computer"
+msgstr "इस कंप्यूटर पर AI एजेंट"
+
+#: apps/starah-session/starah_session/app.py:140
+msgid ""
+"Agents run as their own restricted accounts. When an agent needs a "
+"privilege, Starah answers for you from the level you choose here, and asks "
+"you whenever the level says so. You can change this at any time from \"Agent "
+"Privileges\"."
+msgstr ""
+"एजेंट अपने प्रतिबंधित खातों के रूप में चलते हैं। जब एक एजेंट को विशेषाधिकार "
+"की आवश्यकता होती है, Starah आपके चुने हुए स्तर से आपके लिए उत्तर देता है, "
+"और जब स्तर कहता है तब आपको पूछता है। आप कभी भी \"एजेंट विशेषाधिकार\" से "
+"इसे बदल सकते हैं।"
+
+#: apps/starah-session/starah_session/app.py:145
+msgid ""
+"These are the privilege levels you chose. Agents ask you for anything their "
+"level does not allow on its own."
+msgstr ""
+"ये वो विशेषाधिकार स्तर हैं जो आपने चुने। एजेंट आपके से पूछते हैं जो उनका "
+"स्तर अपने आप अनुमति नहीं देता।"
+
+#: apps/starah-session/starah_session/app.py:158
+msgid ""
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) "
+"runs as you, with access to all your files."
+msgstr ""
+"⚠ यह उन एजेंटों को कवर करता है जो आपका सिस्टम Starah के तहत शुरू करता है। "
+"एक एजेंट जिसे आपने किसी अन्य तरीके से इंस्टॉल किया (npm, pip, एक वेबसाइट "
+"से स्क्रिप्ट, एक डाउनलोड किया हुआ प्रोग्राम) आपके रूप में चलता है, आपके "
+"सभी फ़ाइलों तक पहुंच के साथ।"
+
+#: apps/starah-session/starah_session/app.py:167
+msgid "What each level lets an agent do, side by side"
+msgstr "प्रत्येक स्तर एजेंट को क्या कर सकता है, साथ-साथ"
+
+#: apps/starah-session/starah_session/app.py:171
+msgid "Learn More"
+msgstr "और सीखें"
+
+#: apps/starah-session/starah_session/app.py:179
+msgid "Edit Rules…"
+msgstr "नियम संपादित करें…"
+
+#: apps/starah-session/starah_session/app.py:181
+msgid ""
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are "
+"checked before they are used, and saving asks for the administrator password."
+msgstr ""
+"आपके नियमों (/etc/starah/rules.rhai) को एक टर्मिनल संपादक में खोलता है; "
+"वे उपयोग से पहले जाँचे जाते हैं, और सहेजने से प्रशासक पासवर्ड पूछा जाता है।"
+
+#: apps/starah-session/starah_session/app.py:212
+msgid "What exactly?"
+msgstr "बिल्कुल क्या?"
+
+#: apps/starah-session/starah_session/app.py:224
+msgid "May use my whole home folder"
+msgstr "मेरे पूरे होम फ़ोल्डर का उपयोग कर सकता है"
+
+#: apps/starah-session/starah_session/app.py:227
+msgid ""
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH "
+"keys (it can push with git), your other projects. Its changes to the system "
+"still follow its level."
+msgstr ""
+"बंद: यह केवल उसी फ़ोल्डर को देखता है जिसमें आप इसे शुरू करते हैं, और अपने "
+"खुद के लॉगिन हैं। चालू: यह आपके फ़ाइलों में जैसे आप ही हों काम करता है — "
+"आपके लॉगिन और सेटिंग्स, आपके SSH कुंजी (git से भेज सकता है), आपके अन्य "
+"प्रोजेक्ट। सिस्टम में इसके बदलाव अभी भी अपने स्तर का पालन करते हैं।"
+
+#: apps/starah-session/starah_session/app.py:244
+msgid "When software you install has no TulsiOS package"
+msgstr "जब आप इंस्टॉल की जाने वाली सॉफ़्टवेयर में TulsiOS पैकेज नहीं है"
+
+#: apps/starah-session/starah_session/app.py:254
+msgid ""
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
+msgstr ""
+"एक रेसिपी सामान्य डाउनलोड (AppImages, .deb और .rpm फ़ाइलें, प्रोग्राम और "
+"स्रोत कोड आर्काइव में) परीक्षण टेम्पलेट से, बिना किसी AI मॉडल के पैकेज करती है। "
+"सहायक लगभग कुछ भी पैकेज कर सकता है, लेकिन एक चाहिए।"
+
+#: apps/starah-session/starah_session/app.py:262
+msgid "Show this when I log in"
+msgstr "जब मैं लॉग इन करूं तो यह दिखाएं"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save"
+msgstr "_सहेजें"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save and continue"
+msgstr "_सहेजें और जारी रखें"
+
+#. Translators: {error} is a system message, often in English.
+#: apps/starah-session/starah_session/app.py:306
+#, python-brace-format
+msgid "Not changed: {error}"
+msgstr "बदला नहीं: {error}"
+
+#: apps/starah-session/starah_session/app.py:312
+#, python-brace-format
+msgid "{agent} may now use your whole home folder."
+msgstr "{agent} अब आपके पूरे होम फ़ोल्डर का उपयोग कर सकता है।"
+
+#: apps/starah-session/starah_session/app.py:313
+#, python-brace-format
+msgid "{agent} no longer uses your whole home folder."
+msgstr "{agent} अब आपके पूरे होम फ़ोल्डर का उपयोग नहीं करता।"
+
+#: apps/starah-session/starah_session/app.py:326
+msgid "Saving… (you may be asked for your password)"
+msgstr "सहेज रहे हैं… (आपसे आपका पासवर्ड पूछा जा सकता है)"
+
+#: apps/starah-session/starah_session/app.py:330
+#, python-brace-format
+msgid "Not saved: {error}"
+msgstr "सहेजा नहीं: {error}"
+
+#: apps/starah-session/starah_session/app.py:346
+msgid "Agent Request"
+msgstr "एजेंट अनुरोध"
+
+#: apps/starah-session/starah_session/app.py:362
+msgid "Changes:"
+msgstr "बदलाव:"
+
+#. Translators: \"Allow for [10] minutes\", around a number field.
+#: apps/starah-session/starah_session/app.py:377
+msgid "Allow for"
+msgstr "के लिए अनुमति दें"
+
+#: apps/starah-session/starah_session/app.py:379
+msgid "minutes"
+msgstr "मिनट"
+
+#: apps/starah-session/starah_session/app.py:386
+msgid "_Reject"
+msgstr "_अस्वीकार करें"
+
+#: apps/starah-session/starah_session/app.py:388
+msgid "_Approve"
+msgstr "_मंजूरी दें"
+
+#: apps/starah-session/starah_session/app.py:401
+#, python-brace-format
+msgid "Could not answer: {error}"
+msgstr "उत्तर नहीं दे सका: {error}"
+
+#. Translators: the five privilege levels; short names shown in a menu and as
+#. table headings ("2 · Routine").
+#: apps/starah-session/starah_session/model.py:16
+msgid "Observe"
+msgstr "निरीक्षण"
+
+#: apps/starah-session/starah_session/model.py:16
+msgid "Can look at the system, but cannot change anything."
+msgstr "सिस्टम को देख सकता है, लेकिन कुछ भी नहीं बदल सकता।"
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Propose"
+msgstr "प्रस्ताव"
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Can suggest changes; you approve each one before it happens."
+msgstr "बदलाव सुझा सकता है; आप हर एक को होने से पहले मंजूरी देते हैं।"
+
+#: apps/starah-session/starah_session/model.py:18
+msgid "Routine"
+msgstr "रोज़मर्रा"
+
+#: apps/starah-session/starah_session/model.py:18
+msgid ""
+"Makes changes that a restart into the previous system can undo on its own "
+"(installing software, turning features on or off, browser extensions); asks "
+"you before anything that touches accounts or disks."
+msgstr ""
+"ऐसे बदलाव करता है जिन्हें पिछले सिस्टम में रीस्टार्ट करने से अपने आप "
+"उन्ही किया जा सकता है (सॉफ़्टवेयर इंस्टॉल करना, सुविधाओं को चालू या बंद "
+"करना, ब्राउज़र एक्सटेंशन); खातों या डिस्क को छूने वाली किसी चीज़ से पहले "
+"आपसे पूछता है।"
+
+#: apps/starah-session/starah_session/model.py:21
+msgid "Administer"
+msgstr "प्रशासन"
+
+#: apps/starah-session/starah_session/model.py:21
+msgid ""
+"Also edits the configuration freely and manages services on its own; asks "
+"you before sensitive changes."
+msgstr ""
+"कॉन्फ़िगरेशन भी स्वतंत्र रूप से संपादित करता है और सेवाओं को अपने आप "
+"प्रबंधित करता है; संवेदनशील बदलावों से पहले आपको पूछता है।"
+
+#: apps/starah-session/starah_session/model.py:23
+msgid "Delegate"
+msgstr "सौंपें"
+
+#: apps/starah-session/starah_session/model.py:23
+msgid ""
+"Does everything an administrator can on its own, except changing Starah, "
+"user accounts and passwords."
+msgstr ""
+"वह सब कुछ करता है जो एक प्रशासक अपने आप कर सकता है, Starah बदलने, उपयोगकर्ता "
+"खातों और पासवर्ड को छोड़कर।"
+
+#: apps/starah-session/starah_session/model.py:29
+msgid "read-only"
+msgstr "केवल-पठन"
+
+#: apps/starah-session/starah_session/model.py:30
+msgid "low-risk"
+msgstr "कम-जोखिम"
+
+#: apps/starah-session/starah_session/model.py:31
+msgid "administration"
+msgstr "प्रशासन"
+
+#: apps/starah-session/starah_session/model.py:32
+msgid "sensitive"
+msgstr "संवेदनशील"
+
+#: apps/starah-session/starah_session/model.py:33
+msgid "never delegated"
+msgstr "कभी सौंपा नहीं"
+
+#: apps/starah-session/starah_session/model.py:49
+msgid "Look around"
+msgstr "चारों ओर देखें"
+
+#: apps/starah-session/starah_session/model.py:50
+msgid "read logs, settings and the system's status"
+msgstr "लॉग, सेटिंग्स और सिस्टम की स्थिति पढ़ें"
+
+#: apps/starah-session/starah_session/model.py:52
+msgid "Changes a restart can undo"
+msgstr "बदलाव जिन्हें रीस्टार्ट उन्हे कर सकता है"
+
+#: apps/starah-session/starah_session/model.py:53
+msgid "install and remove software"
+msgstr "सॉफ़्टवेयर इंस्टॉल और हटाएं"
+
+#: apps/starah-session/starah_session/model.py:54
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
+msgstr "सुविधाओं और सेवाओं को चालू या बंद करें (एक NixOS रोलबैक इसे उन्हे करता है)"
+
+#: apps/starah-session/starah_session/model.py:55
+msgid "add and remove browser extensions"
+msgstr "ब्राउज़र एक्सटेंशन जोड़ें और हटाएं"
+
+#: apps/starah-session/starah_session/model.py:56
+msgid "mount and eject USB sticks and disks"
+msgstr "USB स्टिक्स और डिस्क माउंट और निकालें"
+
+#: apps/starah-session/starah_session/model.py:58
+msgid "System administration"
+msgstr "सिस्टम प्रशासन"
+
+#: apps/starah-session/starah_session/model.py:59
+msgid ""
+"edit the system configuration beyond that: user groups, boot, file systems, "
+"scripts"
+msgstr ""
+"उससे आगे सिस्टम कॉन्फ़िगरेशन संपादित करें: उपयोगकर्ता समूह, बूट, फ़ाइल "
+"सिस्टम, स्क्रिप्ट"
+
+#: apps/starah-session/starah_session/model.py:61
+msgid "start, stop and restart services"
+msgstr "सेवाएं शुरू, रोकें और रीस्टार्ट करें"
+
+#: apps/starah-session/starah_session/model.py:62
+msgid "network and Wi-Fi settings, the time, the computer's name and language"
+msgstr "नेटवर्क और Wi-Fi सेटिंग्स, समय, कंप्यूटर का नाम और भाषा"
+
+#: apps/starah-session/starah_session/model.py:63
+msgid "power off, restart or suspend the computer"
+msgstr "कंप्यूटर बंद, रीस्टार्ट या रोका जाए"
+
+#: apps/starah-session/starah_session/model.py:65
+msgid "Sensitive"
+msgstr "संवेदनशील"
+
+#: apps/starah-session/starah_session/model.py:66
+msgid ""
+"write service definitions (systemd unit files) and system environment "
+"variables"
+msgstr ""
+"सेवा परिभाषाओं (systemd यूनिट फ़ाइलों) और सिस्टम पर्यावरण "
+"चर लिखें"
+
+#: apps/starah-session/starah_session/model.py:68
+msgid "format and partition disks"
+msgstr "डिस्क को फॉर्मेट और विभाजित करें"
+
+#: apps/starah-session/starah_session/model.py:69
+msgid "virtual machines and containers"
+msgstr "आभासी मशीनें और कंटेनर"
+
+#: apps/starah-session/starah_session/model.py:70
+msgid "anything Starah doesn't recognise"
+msgstr "कुछ भी जो Starah पहचान नहीं पाता"
+
+#: apps/starah-session/starah_session/model.py:72
+msgid "Never, at any level"
+msgstr "कभी नहीं, किसी भी स्तर पर"
+
+#: apps/starah-session/starah_session/model.py:73
+msgid "change Starah or its levels"
+msgstr "Starah या इसके स्तर बदलें"
+
+#: apps/starah-session/starah_session/model.py:74
+msgid "create or change user accounts and passwords"
+msgstr "उपयोगकर्ता खातों और पासवर्ड बनाएं या बदलें"
+
+#: apps/starah-session/starah_session/model.py:75
+msgid "run programs as an administrator (pkexec)"
+msgstr "प्रोग्राम को प्रशासक के रूप में चलाएं (pkexec)"
+
+#. Translators: the cells of the Compare Levels table and the headings of
+#. "What exactly?"; short (they sit under a ✓, ? or ✗ in a narrow column).
+#: apps/starah-session/starah_session/model.py:101
+msgid "On its own"
+msgstr "अपने आप"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Asks you first"
+msgstr "पहले आपको पूछता है"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Not allowed"
+msgstr "अनुमति नहीं"
+
+#. Translators: {agent} is an agent's name, {what} a technical permission name.
+#: apps/starah-session/starah_session/model.py:196
+#, python-brace-format
+msgid "Agent \"\"{agent}\"\" asks for: {what}"
+msgstr "एजेंट \"\"{agent}\"\" पूछ रहा है: {what}"
+
+#. Translators: {level} is like "2 · Routine".
+#: apps/starah-session/starah_session/model.py:201
+#, python-brace-format
+msgid "Agent: {agent} (level {level})"
+msgstr "एजेंट: {agent} (स्तर {level})"
+
+#. Translators: {action} is a technical name (org.tulsi.apply), {kind} one of
+#. "read-only", "low-risk", "administration", "sensitive", "never delegated".
+#: apps/starah-session/starah_session/model.py:205
+#, python-brace-format
+msgid "Permission: {action} — {kind}"
+msgstr "अनुमति: {action} — {kind}"
+
+#. Translators: what the permission is for, e.g. a service's name.
+#: apps/starah-session/starah_session/model.py:210
+#, python-brace-format
+msgid "On: {detail}"
+msgstr "पर: {detail}"
+
+#: apps/starah-session/starah_session/model.py:212
+#, python-brace-format
+msgid "Reason given: {reason}"
+msgstr "दिया गया कारण: {reason}"
+
+#: apps/starah-session/starah_session/model.py:251
+msgid "Ask me each time"
+msgstr "हर बार मुझसे पूछें"
+
+#: apps/starah-session/starah_session/model.py:252
+msgid "Package it with a recipe (no AI model)"
+msgstr "एक रेसिपी के साथ पैकेज करें (कोई AI मॉडल नहीं)"
+
+#: apps/starah-session/starah_session/model.py:253
+msgid "Ask the Assistant (an AI agent)"
+msgstr "सहायक से पूछें (एक AI एजेंट)"
+
+#. Translators: {message} is the script error, in English.
+#: apps/starah-session/starah_session/model.py:338
+#, python-brace-format
+msgid ""
+"Your rules have an error at line {line}: {message}. The rules before it are "
+"still in use."
+msgstr ""
+"आपके नियमों में पंक्ति {line} पर एक त्रुटि है: {message}। इसके पहले के "
+"नियम अभी भी उपयोग में हैं।"
+
+#: apps/starah-session/starah_session/model.py:340
+#, python-brace-format
+msgid ""
+"Your rules have an error: {message}. The rules before it are still in use."
+msgstr ""
+"आपके नियमों में एक त्रुटि है: {message}। इसके पहले के नियम अभी भी "
+"उपयोग में हैं।"
+
+#: apps/starah-session/starah_session/model.py:343
+msgid "Your own rules refine these levels (they are in use)."
+msgstr "आपके अपने नियम इन स्तरों को परिष्कृत करते हैं (वे उपयोग में हैं)।"
+
+#: apps/starah-session/starah_session/model.py:344
+msgid "You can refine these levels with your own rules (a small script)."
+msgstr "आप अपने नियमों के साथ इन स्तरों को परिष्कृत कर सकते हैं (एक छोटा स्क्रिप्ट)।"
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:4
+msgid "Choose what AI agents may do on this computer"
+msgstr "चुनें कि AI एजेंट इस कंप्यूटर पर क्या कर सकते हैं"
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:5
+msgid "AI;agent;privileges;permissions;Starah;security;"
+msgstr "AI;एजेंट;विशेषाधिकार;अनुमतियां;Starah;सुरक्षा;"

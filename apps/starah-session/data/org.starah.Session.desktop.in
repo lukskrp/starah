@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Agent Privileges
+Comment=Choose what AI agents may do on this computer
+Keywords=AI;agent;privileges;permissions;Starah;security;
+Exec=starah-session --show
+Icon=org.starah.Session
+Terminal=false
+Categories=Settings;System;Security;

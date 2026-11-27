@@ -1,0 +1,3 @@
+apps/starah-session/starah_session/app.py
+apps/starah-session/starah_session/model.py
+apps/starah-session/data/org.starah.Session.desktop.in

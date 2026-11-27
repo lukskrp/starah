@@ -1,0 +1,483 @@
+# Telugu translations for Starah package.
+# Copyright (C) 2026 THE Starah'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Starah package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Starah\n"
+"Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: te\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/starah-session/starah_session/app.py:66
+#: apps/starah-session/starah_session/app.py:166
+msgid "Compare Levels"
+msgstr "స్థాయిలను పోల్చండి"
+
+#: apps/starah-session/starah_session/app.py:76
+msgid "What each level lets an agent do"
+msgstr "ప్రతి స్థాయి ఏజెంట్‌కు ఏం చేయడానికి అనుమతిస్తుంది"
+
+#. Translators: the table's legend; keep {allow}, {ask} and {deny} (the
+#. marks <U+2705>, <U+003F> and <U+274C>).
+#: apps/starah-session/starah_session/app.py:81
+#, python-brace-format
+msgid ""
+"{allow} on its own   ·   {ask} asks you first (you approve or reject each "
+"time)   ·   {deny} not allowed"
+msgstr ""
+"{allow} తనంతట తాను · {ask} ముందు మీను అడుగుతుంది (మీరు ప్రతి "
+"సారి ఆమోదిస్తారు లేదా తిరస్కరిస్తారు) · {deny} అనుమతించబడలేదు"
+
+#. Translators: a table cell's tooltip, e.g. "Routine: Asks you first".
+#: apps/starah-session/starah_session/app.py:107
+#, python-brace-format
+msgid "{level}: {verdict}"
+msgstr "{level}: {verdict}"
+
+#. Translators: "Edit Rules…" is the button's name in Agent Privileges.
+#: apps/starah-session/starah_session/app.py:112
+msgid ""
+"Starah answers each request from the agent's level. Your own rules (Edit "
+"Rules…) can change the answer for particular agents and actions, but never "
+"allow what the last row forbids."
+msgstr ""
+"Starah ఏజెంట్ స్థాయి నుండి ప్రతి అభ్యర్థనకు సమాధానం ఇస్తుంది. మీ స్వంత నియమాలు "
+"(నియమాలను సవరించండి…) ప్రత్యేక ఏజెంట్లు మరియు చర్యలకు సమాధానాన్ని మార్చగలవు, కానీ "
+"చివరి అడ్డు వరుస నిషేధించే ఏదీ అనుమతించకూడదు."
+
+#: apps/starah-session/starah_session/app.py:115
+#: apps/starah-session/starah_session/app.py:271
+msgid "_Close"
+msgstr "_మూసివేయి"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Starah Setup"
+msgstr "Starah అமைపు"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Agent Privileges"
+msgstr "ఏజెంట్ విశేషాధికారాలు"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "Choose what AI agents may do"
+msgstr "AI ఏజెంట్లు ఏం చేయగలవో ఎంచుకోండి"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "AI agents on this computer"
+msgstr "ఈ కంప్యూటర్‌పై AI ఏజెంట్లు"
+
+#: apps/starah-session/starah_session/app.py:140
+msgid ""
+"Agents run as their own restricted accounts. When an agent needs a "
+"privilege, Starah answers for you from the level you choose here, and asks "
+"you whenever the level says so. You can change this at any time from \"Agent "
+"Privileges\"."
+msgstr ""
+"ఏజెంట్లు తమ స్వంత పరిమిత లెక్కలుగా నడుస్తాయి. ఒక ఏజెంట్‌కు విశేషాధికారం "
+"పట్టితే, Starah ఇక్కడ మీరు ఎంచుకున్న స్థాయి నుండి మీ కోసం సమాధానం ఇస్తుంది, "
+"మరియు స్థాయి అనుకున్నప్పుడు మీను అడుగుతుంది. మీరు \"ఏజెంట్ విశేషాధికారాలు\" నుండి "
+"ఎప్పుడైనా దీన్ని మార్చవచ్చు."
+
+#: apps/starah-session/starah_session/app.py:145
+msgid ""
+"These are the privilege levels you chose. Agents ask you for anything their "
+"level does not allow on its own."
+msgstr "ఇవి మీరు ఎంచుకున్న విశేషాధికార స్థాయిలు. ఏజెంట్లు తమ స్థాయి "
+"తనంతట తాను అనుమతించని దానికి మీను అడుగుతాయి."
+
+#: apps/starah-session/starah_session/app.py:158
+msgid ""
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) "
+"runs as you, with access to all your files."
+msgstr ""
+"⚠ ఇది Starah కింద మీ వ్యవస్థ ప్రారంభించే ఏజెంట్లన్నింటినీ కవర్ చేస్తుంది. మీరు "
+"వేరే విధంగా ఇన్‌స్టాల్ చేసిన ఏజెంట్ (npm, pip, వెబ్‌సైట్‌ నుండి స్క్రిప్ట్, "
+"డౌన్‌లోడ్ చేసిన పొగ్రామ్) మీ అన్ని ఫైల్‌లకు ప్రాప్యత తో మీలా నడుస్తుంది."
+
+#: apps/starah-session/starah_session/app.py:167
+msgid "What each level lets an agent do, side by side"
+msgstr "ప్రతి స్థాయి ఏజెంట్‌కు ఏం చేయడానికి అనుమతిస్తుంది, పక్కపక్కన"
+
+#: apps/starah-session/starah_session/app.py:171
+msgid "Learn More"
+msgstr " మరింత నేర్చుకోండి"
+
+#: apps/starah-session/starah_session/app.py:179
+msgid "Edit Rules…"
+msgstr "నియమాలను సవరించండి…"
+
+#: apps/starah-session/starah_session/app.py:181
+msgid ""
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are "
+"checked before they are used, and saving asks for the administrator password."
+msgstr ""
+"టర్మినల్ ఎడిటర్‌లో మీ నియమాలను (/etc/starah/rules.rhai) తెరుస్తుంది; వాటిని "
+"ఉపయోగించే ముందు పరిశీలిస్తారు, మరియు భద్రపరిచేటప్పుడు నిర్వాహక password అడుగుతాయి."
+
+#: apps/starah-session/starah_session/app.py:212
+msgid "What exactly?"
+msgstr "తెలియజేయండి?"
+
+#: apps/starah-session/starah_session/app.py:224
+msgid "May use my whole home folder"
+msgstr "నా పూర్తి హోమ్ ఫోల్డర్ ఉపయోగించవచ్చు"
+
+#: apps/starah-session/starah_session/app.py:227
+msgid ""
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH "
+"keys (it can push with git), your other projects. Its changes to the system "
+"still follow its level."
+msgstr ""
+"ఆఫ్: ఇది మీరు ప్రారంభించే ఫోల్డర్‌ను మాత్రమే చూస్తుంది, మరియు దాని స్వంత "
+"లోగాళ్లు ఉంటాయి. ఆన్: ఇది మీ ఫైల్‌లలో మీలా పనిచేస్తుంది — మీ లాగాలు మరియు "
+"సెట్టింగ్‌లు, మీ SSH కీలు (git తో పుష్ చేయవచ్చు), మీ ఇతర ప్రాజెక్ట్‌లు. "
+"వ్యవస్థ‌పై దాని మార్పులు ఇంకా దాని స్థాయిను అనుసరిస్తాయి."
+
+#: apps/starah-session/starah_session/app.py:244
+msgid "When software you install has no TulsiOS package"
+msgstr "మీరు ఇన్‌స్టాల్ చేసే సాఫ్ట్‌వేర్‌కు TulsiOS ప్యాకేజ్ లేనప్పుడు"
+
+#: apps/starah-session/starah_session/app.py:254
+msgid ""
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
+msgstr ""
+"రెసిపీ పరీక్షించబడిన టెంప్లేట్‌ల నుండి సాధారణ డౌన్‌లోడ్‌లను (AppImages, .deb మరియు "
+".rpm ఫైల్‌లు, పొగ్రామ్‌లు మరియు సోర్స్ కోడ్ ఆర్కైవ్‌లలో) AI మోడల్ లేకుండా "
+"ప్యాకేజ్ చేస్తుంది. అసిస్టెంట్ దాదాపు ఏదీ ప్యాకేజ్ చేయగలదు, కానీ ఒకటి అవసరం."
+
+#: apps/starah-session/starah_session/app.py:262
+msgid "Show this when I log in"
+msgstr "నేను లాగిన్ చేసేటప్పుడు దీన్ని చూపించండి"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save"
+msgstr "_భద్రపరచండి"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save and continue"
+msgstr "_భద్రపరచండి మరియు కొనసాగించండి"
+
+#. Translators: {error} is a system message, often in English.
+#: apps/starah-session/starah_session/app.py:306
+#, python-brace-format
+msgid "Not changed: {error}"
+msgstr "మార్చబడలేదు: {error}"
+
+#: apps/starah-session/starah_session/app.py:312
+#, python-brace-format
+msgid "{agent} may now use your whole home folder."
+msgstr "{agent} ఇప్పుడు మీ పూర్తి హోమ్ ఫోల్డర్ ఉపయోగించవచ్చు."
+
+#: apps/starah-session/starah_session/app.py:313
+#, python-brace-format
+msgid "{agent} no longer uses your whole home folder."
+msgstr "{agent} ఇకపై మీ పూర్తి హోమ్ ఫోల్డర్ ఉపయోగించదు."
+
+#: apps/starah-session/starah_session/app.py:326
+msgid "Saving… (you may be asked for your password)"
+msgstr "భద్రపరుస్తోంది… (మీ password అడగవచ్చు)"
+
+#: apps/starah-session/starah_session/app.py:330
+#, python-brace-format
+msgid "Not saved: {error}"
+msgstr "భద్రపరచబడలేదు: {error}"
+
+#: apps/starah-session/starah_session/app.py:346
+msgid "Agent Request"
+msgstr "ఏజెంట్ అభ్యర్థన"
+
+#: apps/starah-session/starah_session/app.py:362
+msgid "Changes:"
+msgstr "మార్పులు:"
+
+#. Translators: \"Allow for [10] minutes\", around a number field.
+#: apps/starah-session/starah_session/app.py:377
+msgid "Allow for"
+msgstr "కు అనుమతించు"
+
+#: apps/starah-session/starah_session/app.py:379
+msgid "minutes"
+msgstr "నిమిషాలు"
+
+#: apps/starah-session/starah_session/app.py:386
+msgid "_Reject"
+msgstr "_తిరస్కరించండి"
+
+#: apps/starah-session/starah_session/app.py:388
+msgid "_Approve"
+msgstr "_ఆమోదింపజేయి"
+
+#: apps/starah-session/starah_session/app.py:401
+#, python-brace-format
+msgid "Could not answer: {error}"
+msgstr "సమాధానం ఇవ్వలేదు: {error}"
+
+#. Translators: the five privilege levels; short names shown in a menu and as
+#. table headings ("2 · Routine").
+#: apps/starah-session/starah_session/model.py:16
+msgid "Observe"
+msgstr "పర్యవేక్షించు"
+
+#: apps/starah-session/starah_session/model.py:16
+msgid "Can look at the system, but cannot change anything."
+msgstr "వ్యవస్థను చూడవచ్చు, కానీ ఏమీ మార్చలేరు."
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Propose"
+msgstr "ప్రతిపాదించు"
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Can suggest changes; you approve each one before it happens."
+msgstr "మార్పులు సూచించవచ్చు; జరగడానికి ముందు మీరు ప్రతి ఒక్కటినీ ఆమోదిస్తారు."
+
+#: apps/starah-session/starah_session/model.py:18
+msgid "Routine"
+msgstr "రూటిన్"
+
+#: apps/starah-session/starah_session/model.py:18
+msgid ""
+"Makes changes that a restart into the previous system can undo on its own "
+"(installing software, turning features on or off, browser extensions); asks "
+"you before anything that touches accounts or disks."
+msgstr ""
+"మునుపటి వ్యవస్థకు మళ్ళీ ప్రారంభించినప్పుడు తనంతట తాను రద్దు చేయగల మార్పులు "
+"చేస్తుంది (సాఫ్ట్‌వేర్ ఇన్‌స్టాల్ చేయడం, ఫీచర్లను ఆన్ లేదా ఆఫ్ చేయడం, బ్రౌజర్ "
+"ఎక్స్టెన్షన్‌లు); ఖాతాలు లేదా డిస్క్‌లను స్పర్శించే ఏదైనా చేయడం కంటే ముందు "
+"మీను అడుగుతుంది."
+
+#: apps/starah-session/starah_session/model.py:21
+msgid "Administer"
+msgstr "నిర్వహించు"
+
+#: apps/starah-session/starah_session/model.py:21
+msgid ""
+"Also edits the configuration freely and manages services on its own; asks "
+"you before sensitive changes."
+msgstr ""
+"కాన్ఫిగరేషన్‌ను స్వేచ్ఛగా సవరిస్తుంది మరియు సర్వీసులను తనంతట తాను "
+"నిర్వహిస్తుంది; సున్నితమైన మార్పులకు ముందు మీను అడుగుతుంది."
+
+#: apps/starah-session/starah_session/model.py:23
+msgid "Delegate"
+msgstr "డెలెగేట్ చేయి"
+
+#: apps/starah-session/starah_session/model.py:23
+msgid ""
+"Does everything an administrator can on its own, except changing Starah, "
+"user accounts and passwords."
+msgstr ""
+"నిర్వాహకుడు తనంతట తాను చేయగల అన్నింటినీ చేస్తుంది, Starah మార్పు, "
+"వాడుకరి ఖాతాలు మరియు passwords除外."
+
+#: apps/starah-session/starah_session/model.py:29
+msgid "read-only"
+msgstr "పఠన-మాత్రమే"
+
+#: apps/starah-session/starah_session/model.py:30
+msgid "low-risk"
+msgstr "తక్కువ-ఛాంస్"
+
+#: apps/starah-session/starah_session/model.py:31
+msgid "administration"
+msgstr "నిర్వహణ"
+
+#: apps/starah-session/starah_session/model.py:32
+msgid "sensitive"
+msgstr "సున్నితమైన"
+
+#: apps/starah-session/starah_session/model.py:33
+msgid "never delegated"
+msgstr "ఎప్పుడూ డెలెగేట్ చేయబడలేదు"
+
+#: apps/starah-session/starah_session/model.py:49
+msgid "Look around"
+msgstr "చుట్టూ చూడు"
+
+#: apps/starah-session/starah_session/model.py:50
+msgid "read logs, settings and the system's status"
+msgstr "లాగ్‌లు, సెట్టింగ్‌లు మరియు వ్యవస్థ స్థితిని చదవండి"
+
+#: apps/starah-session/starah_session/model.py:52
+msgid "Changes a restart can undo"
+msgstr "రీస్టార్ట్ చేయడం ద్వారా రద్దు చేయగల మార్పులు"
+
+#: apps/starah-session/starah_session/model.py:53
+msgid "install and remove software"
+msgstr "సాఫ్ట్‌వేర్ ఇన్‌స్టాల్ చేయి మరియు తొలగించి"
+
+#: apps/starah-session/starah_session/model.py:54
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
+msgstr "ఫీచర్లు మరియు సర్వీసులను ఆన్ లేదా ఆఫ్ చేయి (NixOS రోల్‌బ్యాక్ దీన్ని రద్దు చేస్తుంది)"
+
+#: apps/starah-session/starah_session/model.py:55
+msgid "add and remove browser extensions"
+msgstr "బ్రౌజర్ ఎక్స్టెన్షన్‌లను జోడించండి మరియు తొలగించండి"
+
+#: apps/starah-session/starah_session/model.py:56
+msgid "mount and eject USB sticks and disks"
+msgstr "USB స్టిక్‌లు మరియు డిస్క్‌లను మాౌంట్ చేయండి మరియు ఎజెక్ట్ చేయండి"
+
+#: apps/starah-session/starah_session/model.py:58
+msgid "System administration"
+msgstr "వ్యవస్థ నిర్వహణ"
+
+#: apps/starah-session/starah_session/model.py:59
+msgid ""
+"edit the system configuration beyond that: user groups, boot, file systems, "
+"scripts"
+msgstr ""
+"అంతకంటే వ్యవస్థ కాన్ఫిగరేషన్‌ను సవరించండి: వాడుకరి గ్రూపులు, బూట్, ఫైల్ "
+"సిస్టమ్‌లు, స్క్రిప్ట్‌లు"
+
+#: apps/starah-session/starah_session/model.py:61
+msgid "start, stop and restart services"
+msgstr "సర్వీసులను ప్రారంభించండి, ఆపండి మరియు మళ్ళీ ప్రారంభించండి"
+
+#: apps/starah-session/starah_session/model.py:62
+msgid "network and Wi-Fi settings, the time, the computer's name and language"
+msgstr "నెట్‌వర్క్ మరియు Wi-Fi సెట్టింగ్‌లు, సమయం, కంప్యూటర్ పేరు మరియు భాష"
+
+#: apps/starah-session/starah_session/model.py:63
+msgid "power off, restart or suspend the computer"
+msgstr "కంప్యూటర్‌ను ఆఫ్ చేయండి, రీస్టార్ట్ చేయండి లేదా సస్పెండ్ చేయండి"
+
+#: apps/starah-session/starah_session/model.py:65
+msgid "Sensitive"
+msgstr "సున్నితమైన"
+
+#: apps/starah-session/starah_session/model.py:66
+msgid ""
+"write service definitions (systemd unit files) and system environment "
+"variables"
+msgstr ""
+"సర్వీస్ నిర్వచనాలు (systemd యూనిట్ ఫైల్‌లు) మరియు వ్యవస్థ పరిసర "
+"చరరాశులను రాయండి"
+
+#: apps/starah-session/starah_session/model.py:68
+msgid "format and partition disks"
+msgstr "డిస్క్‌లను ఫార్మాట్ చేయండి మరియు విభజించండి"
+
+#: apps/starah-session/starah_session/model.py:69
+msgid "virtual machines and containers"
+msgstr "వర్చువల్ మేషీన్‌లు మరియు కంటైనర్‌లు"
+
+#: apps/starah-session/starah_session/model.py:70
+msgid "anything Starah doesn't recognise"
+msgstr "Starah గుర్తించని ఏదైనా"
+
+#: apps/starah-session/starah_session/model.py:72
+msgid "Never, at any level"
+msgstr "ఏ స్థాయిలోనైనా ఎప్పుడూ లేదు"
+
+#: apps/starah-session/starah_session/model.py:73
+msgid "change Starah or its levels"
+msgstr "Starah లేదా దాని స్థాయిలను మార్చండి"
+
+#: apps/starah-session/starah_session/model.py:74
+msgid "create or change user accounts and passwords"
+msgstr "వాడుకరి ఖాతాలు మరియు passwordsను సృష్టించండి లేదా మార్చండి"
+
+#: apps/starah-session/starah_session/model.py:75
+msgid "run programs as an administrator (pkexec)"
+msgstr "పొగ్రామ్‌లను నిర్వాహకుడిలా నడుపండి (pkexec)"
+
+#. Translators: the cells of the Compare Levels table and the headings of
+#. "What exactly?"; short (they sit under a <U+2705>, <U+003F> or <U+274C> in a narrow column).
+#: apps/starah-session/starah_session/model.py:101
+msgid "On its own"
+msgstr "తనంతట తాను"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Asks you first"
+msgstr "ముందు మీను అడుగుతుంది"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Not allowed"
+msgstr "అనుమతించబడలేదు"
+
+#. Translators: {agent} is an agent's name, {what} a technical permission name.
+#: apps/starah-session/starah_session/model.py:196
+#, python-brace-format
+msgid "Agent \\\"\\\"{agent}\\\"\\\" asks for: {what}"
+msgstr "ఏజెంట్ \\\"\\\"{agent}\\\"\\\" కోసం అడుగుతోంది: {what}"
+
+#. Translators: {level} is like \"2 · Routine\".
+#: apps/starah-session/starah_session/model.py:201
+#, python-brace-format
+msgid "Agent: {agent} (level {level})"
+msgstr "ఏజెంట్: {agent} (స్థాయి {level})"
+
+#. Translators: {action} is a technical name (org.tulsi.apply), {kind} one of
+#. "read-only", "low-risk", "administration", "sensitive", "never delegated".
+#: apps/starah-session/starah_session/model.py:205
+#, python-brace-format
+msgid "Permission: {action} — {kind}"
+msgstr "అనుమతి: {action} — {kind}"
+
+#. Translators: what the permission is for, e.g. a service's name.
+#: apps/starah-session/starah_session/model.py:210
+#, python-brace-format
+msgid "On: {detail}"
+msgstr "ఆన్: {detail}"
+
+#: apps/starah-session/starah_session/model.py:212
+#, python-brace-format
+msgid "Reason given: {reason}"
+msgstr "ఇచ్చిన కారణం: {reason}"
+
+#: apps/starah-session/starah_session/model.py:251
+msgid "Ask me each time"
+msgstr "ప్రతి సారి నన్ను అడుగు"
+
+#: apps/starah-session/starah_session/model.py:252
+msgid "Package it with a recipe (no AI model)"
+msgstr "రెసిపీ తో ప్యాకేజ్ చేయి (AI మోడల్ లేదు)"
+
+#: apps/starah-session/starah_session/model.py:253
+msgid "Ask the Assistant (an AI agent)"
+msgstr "అసిస్టెంట్‌ను అడుగు (AI ఏజెంట్)"
+
+#. Translators: {message} is the script error, in English.
+#: apps/starah-session/starah_session/model.py:338
+#, python-brace-format
+msgid ""
+"Your rules have an error at line {line}: {message}. The rules before it are "
+"still in use."
+msgstr ""
+"మీ నియమాలలో {line} లైన్‌లో లోపం ఉంది: {message}. దాని కంటే ముందు "
+"నియమాలు ఇంకా ఉపయోగలో ఉన్నాయి."
+
+#: apps/starah-session/starah_session/model.py:340
+#, python-brace-format
+msgid ""
+"Your rules have an error: {message}. The rules before it are still in use."
+msgstr "మీ నియమాలలో లోపం ఉంది: {message}. దాని కంటే ముందు నియమాలు ఇంకా "
+"ఉపయోగలో ఉన్నాయి."
+
+#: apps/starah-session/starah_session/model.py:343
+msgid "Your own rules refine these levels (they are in use)."
+msgstr "మీ స్వంత నియమాలు ఈ స్థాయిలను సూక్ష్మీకరిస్తాయి (అవి ఉపయోగలో ఉన్నాయి)."
+
+#: apps/starah-session/starah_session/model.py:344
+msgid "You can refine these levels with your own rules (a small script)."
+msgstr "మీ స్వంత నియమాలతో ఈ స్థాయిలను సూక్ష్మీకరించవచ్చు (ఒక చిన్న స్క్రిప్ట్)."
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:4
+msgid "Choose what AI agents may do on this computer"
+msgstr "ఈ కంప్యూటర్‌పై AI ఏజెంట్లు ఏం చేయగలవో ఎంచుకోండి"
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:5
+msgid "AI;agent;privileges;permissions;Starah;security;"
+msgstr "AI;ఏజెంట్;విశేషాధికారాలు;అనుమతులు;Starah;భద్రత;"

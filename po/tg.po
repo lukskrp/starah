@@ -1,0 +1,487 @@
+# Tajik translations for Starah package.
+# Copyright (C) 2026 THE Starah'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Starah package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Starah\n"
+"Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: tg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/starah-session/starah_session/app.py:66
+#: apps/starah-session/starah_session/app.py:166
+msgid "Compare Levels"
+msgstr "Муқоисаи сатҳҳо"
+
+#: apps/starah-session/starah_session/app.py:76
+msgid "What each level lets an agent do"
+msgstr "Ҳар як сатҳ ба агент чӣ имкон медиҳад"
+
+#. Translators: the table's legend; keep {allow}, {ask} and {deny} (the
+#. marks ✓, ? and ✗).
+#: apps/starah-session/starah_session/app.py:81
+#, python-brace-format
+msgid ""
+"{allow} on its own   ·   {ask} asks you first (you approve or reject each "
+"time)   ·   {deny} not allowed"
+msgstr ""
+"{allow} ба таври мустақил · {ask} аввал шуморо мепурсад (шумо тасдиқ ё рад "
+"мекунед ҳар дафъа) · {deny} иҷозат дода намешавад"
+
+#. Translators: a table cell's tooltip, e.g. "Routine: Asks you first".
+#: apps/starah-session/starah_session/app.py:107
+#, python-brace-format
+msgid "{level}: {verdict}"
+msgstr "{level}: {verdict}"
+
+#. Translators: "Edit Rules…" is the button's name in Agent Privileges.
+#: apps/starah-session/starah_session/app.py:112
+msgid ""
+"Starah answers each request from the agent's level. Your own rules (Edit "
+"Rules…) can change the answer for particular agents and actions, but never "
+"allow what the last row forbids."
+msgstr ""
+"Starah ҳар як дархостро аз сатҳи агент ҷавоб медиҳад. Қоидаҳои худатон "
+"(Таҳрири қоидаҳо…) ҷавобро барои агентҳои мушаххас ва амалҳо тағйир "
+"деданд, аммо ҳеҷ гоҳ он чиро ки сатри охирӣ манъ мекунад, иҷозат "
+"намедиҳанд."
+
+#: apps/starah-session/starah_session/app.py:115
+#: apps/starah-session/starah_session/app.py:271
+msgid "_Close"
+msgstr "_Пӯшидан"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Starah Setup"
+msgstr "Танзимоти Starah"
+
+#: apps/starah-session/starah_session/app.py:128
+msgid "Agent Privileges"
+msgstr "Имтиёзи агент"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "Choose what AI agents may do"
+msgstr "Интихоб кунед, ки агентҳои AI чӣ кор карда метавонанд"
+
+#: apps/starah-session/starah_session/app.py:137
+msgid "AI agents on this computer"
+msgstr "Агентҳои AI дар ин компютер"
+
+#: apps/starah-session/starah_session/app.py:140
+msgid ""
+"Agents run as their own restricted accounts. When an agent needs a "
+"privilege, Starah answers for you from the level you choose here, and asks "
+"you whenever the level says so. You can change this at any time from “Agent "
+"Privileges”."
+msgstr ""
+"Агентҳо ҳамчун ҳисобҳои маҳдуди худамон кор мекунанд. Вақте ки агент ба "
+"имтиёз ниёз дорад, Starah аз сатҳе, ки шумо дар ин ҷа интихоб мекунед, "
+"барои шумо ҷавоб медиҳад ва вақте ки сатҳ мегӯяд шуморо мепурсад. Шумо "
+"метавонед инро дар ҳар вақт аз «Имтиёзи агент» тағйир диҳед."
+
+#: apps/starah-session/starah_session/app.py:145
+msgid ""
+"These are the privilege levels you chose. Agents ask you for anything their "
+"level does not allow on its own."
+msgstr ""
+"Инҳо сатҳҳои имтиёзе ҳастанд, ки шумо интихоб кардед. Агентҳо шуморо барои "
+"ҳар чизе мепурсанд, ки сатҳи онҳо ба таври мустақил иҷозат намедиҳад."
+
+#: apps/starah-session/starah_session/app.py:158
+msgid ""
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) "
+"runs as you, with access to all your files."
+msgstr ""
+"⚠ Ин агентҳоро дар бар мегирад, ки системаи шумо зери Starah оғоз мекунад. "
+"Агентер, ки шумо бо роҳи дигар насб кардед (npm, pip, скрипт аз вебсайт, "
+"барномаи зеркашӣшуда) ҳамчун шумо кор мекунад, бо дастрасӣ ба ҳамаи файлҳои "
+"шумо."
+
+#: apps/starah-session/starah_session/app.py:167
+msgid "What each level lets an agent do, side by side"
+msgstr "Ҳар як сатҳ ба агент чӣ имкон медиҳад, паҳлӯ ба паҳлӯ"
+
+#: apps/starah-session/starah_session/app.py:171
+msgid "Learn More"
+msgstr "Бештар омӯзед"
+
+#: apps/starah-session/starah_session/app.py:179
+msgid "Edit Rules…"
+msgstr "Таҳрири қоидаҳо…"
+
+#: apps/starah-session/starah_session/app.py:181
+msgid ""
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are "
+"checked before they are used, and saving asks for the administrator password."
+msgstr ""
+"Қоидаҳои шуморо (/etc/starah/rules.rhai) дар таҳриргари терминал кушод; "
+"пеш аз истифода боздид карда мешаванд ва нигоҳдорӣ рамзи аминро мепурсад."
+
+#: apps/starah-session/starah_session/app.py:212
+msgid "What exactly?"
+msgstr "Дақиқан чӣ?"
+
+#: apps/starah-session/starah_session/app.py:224
+msgid "May use my whole home folder"
+msgstr "Метавонад тамоми пасти пурраи худамро истифода барад"
+
+#: apps/starah-session/starah_session/app.py:227
+msgid ""
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH "
+"keys (it can push with git), your other projects. Its changes to the system "
+"still follow its level."
+msgstr ""
+"Хомӯш: он танҳо пастиро мебинад, ки шумо онро оғоз мекунед, ва ҳисобҳои "
+"худ дорад. Рӯшн: он ҳамчун шумо дар файлҳои шумо кор мекунад — ҳисобҳо ва "
+"танзимоти шумо, калидҳои SSH (метавонад бо git push кунад), лоиҳаҳои дигари "
+"шумо. Тағйироти он ба систем ҳанӯз ҳам сатҳи худро пайравӣ мекунад."
+
+#: apps/starah-session/starah_session/app.py:244
+msgid "When software you install has no TulsiOS package"
+msgstr "Вақте ки барномае, ки шумо насб мекунед, бастаи TulsiOS надорад"
+
+#: apps/starah-session/starah_session/app.py:254
+msgid ""
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
+msgstr ""
+"Ретсиб бастаҳои маъмулро зеркашӣ мекунад (AppImages, .deb ва .rpm файлҳо, "
+"барномаҳо ва коди манбаъ дар архивҳо) аз намунаҳои санҷидашуда, бе модели "
+"AI. Дастёранд метавонад қариб ҳар чизеро баста кунад, аммо ба як ниёз дорад."
+
+#: apps/starah-session/starah_session/app.py:262
+msgid "Show this when I log in"
+msgstr "Ҳангоми ворид шудан инро нишон деҳ"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save"
+msgstr "_Нигоҳ доштан"
+
+#: apps/starah-session/starah_session/app.py:276
+msgid "_Save and continue"
+msgstr "_Нигоҳ доштан ва идома додан"
+
+#. Translators: {error} is a system message, often in English.
+#: apps/starah-session/starah_session/app.py:306
+#, python-brace-format
+msgid "Not changed: {error}"
+msgstr "Тағйир дода нашуд: {error}"
+
+#: apps/starah-session/starah_session/app.py:312
+#, python-brace-format
+msgid "{agent} may now use your whole home folder."
+msgstr "{agent} ҳоло метавонад тамоми пасти пурраи шуморо истифода барад."
+
+#: apps/starah-session/starah_session/app.py:313
+#, python-brace-format
+msgid "{agent} no longer uses your whole home folder."
+msgstr "{agent} дигар тамоми пасти пурраи шуморо истифода мебарад."
+
+#: apps/starah-session/starah_session/app.py:326
+msgid "Saving… (you may be asked for your password)"
+msgstr "Нигоҳ дошта мешавад… (шумо метавонед рамзи амии худро пурсед)"
+
+#: apps/starah-session/starah_session/app.py:330
+#, python-brace-format
+msgid "Not saved: {error}"
+msgstr "Нигоҳ дошта нашуд: {error}"
+
+#: apps/starah-session/starah_session/app.py:346
+msgid "Agent Request"
+msgstr "Дархости агент"
+
+#: apps/starah-session/starah_session/app.py:362
+msgid "Changes:"
+msgstr "Тағйирот:"
+
+#. Translators: \"Allow for [10] minutes\", around a number field.
+#: apps/starah-session/starah_session/app.py:377
+msgid "Allow for"
+msgstr "Иҷозат додан ба"
+
+#: apps/starah-session/starah_session/app.py:379
+msgid "minutes"
+msgstr "дақиқа"
+
+#: apps/starah-session/starah_session/app.py:386
+msgid "_Reject"
+msgstr "_Рад кардан"
+
+#: apps/starah-session/starah_session/app.py:388
+msgid "_Approve"
+msgstr "_Тасдиқ кардан"
+
+#: apps/starah-session/starah_session/app.py:401
+#, python-brace-format
+msgid "Could not answer: {error}"
+msgstr "Натавонист ҷавоб диҳад: {error}"
+
+#. Translators: the five privilege levels; short names shown in a menu and as
+#. table headings ("2 · Routine").
+#: apps/starah-session/starah_session/model.py:16
+msgid "Observe"
+msgstr "Мушоҳида"
+
+#: apps/starah-session/starah_session/model.py:16
+msgid "Can look at the system, but cannot change anything."
+msgstr "Метавонад ба систем назар андозад, аммо ягон чизро тағйир дода наметавонад."
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Propose"
+msgstr "Пешниҳод"
+
+#: apps/starah-session/starah_session/model.py:17
+msgid "Can suggest changes; you approve each one before it happens."
+msgstr "Метавонад тағйиротро пешниҳод кунад; шумо ҳар якеро пеш аз рух додан тасдиқ мекунед."
+
+#: apps/starah-session/starah_session/model.py:18
+msgid "Routine"
+msgstr "Рутинӣ"
+
+#: apps/starah-session/starah_session/model.py:18
+msgid ""
+"Makes changes that a restart into the previous system can undo on its own "
+"(installing software, turning features on or off, browser extensions); asks "
+"you before anything that touches accounts or disks."
+msgstr ""
+"Тағйироте мекунад, ки аз нав оғози систем ба системаи пешина метавонад "
+"беҳисоб кунад (насби барнома, хомӯш ё рӯшан кардани хусусиятҳо, васеъкуниҳои "
+"браузер); пеш аз ягон чизе, ки ба ҳисобҳо ё дискҳо дахл дорад, шуморо "
+"мепурсад."
+
+#: apps/starah-session/starah_session/model.py:21
+msgid "Administer"
+msgstr "Идора кардан"
+
+#: apps/starah-session/starah_session/model.py:21
+msgid ""
+"Also edits the configuration freely and manages services on its own; asks "
+"you before sensitive changes."
+msgstr ""
+"Инчунин танзимотро озодона таҳрир мекунад ва хизматҳоро ба таври мустақил "
+" идора мекунад; пеш аз тағйироти ҳассос шуморо мепурсад."
+
+#: apps/starah-session/starah_session/model.py:23
+msgid "Delegate"
+msgstr "Виколан кардан"
+
+#: apps/starah-session/starah_session/model.py:23
+msgid ""
+"Does everything an administrator can on its own, except changing Starah, "
+"user accounts and passwords."
+msgstr ""
+"Ҳама чизеро мекунад, ки мудири система метавонад ба таври мустақил, ба истиснои "
+"тағйири Starah, ҳисобҳои корбар ва рамзҳо."
+
+#: apps/starah-session/starah_session/model.py:29
+msgid "read-only"
+msgstr "Хондан танҳо"
+
+#: apps/starah-session/starah_session/model.py:30
+msgid "low-risk"
+msgstr "Хатар паст"
+
+#: apps/starah-session/starah_session/model.py:31
+msgid "administration"
+msgstr "Идоракунӣ"
+
+#: apps/starah-session/starah_session/model.py:32
+msgid "sensitive"
+msgstr "Ҳассос"
+
+#: apps/starah-session/starah_session/model.py:33
+msgid "never delegated"
+msgstr "Ҳеҷ гоҳ виколан нашуда"
+
+#: apps/starah-session/starah_session/model.py:49
+msgid "Look around"
+msgstr "Дар атроф назар андозед"
+
+#: apps/starah-session/starah_session/model.py:50
+msgid "read logs, settings and the system's status"
+msgstr "хондани журналҳо, танзимот ва вазъи систем"
+
+#: apps/starah-session/starah_session/model.py:52
+msgid "Changes a restart can undo"
+msgstr "Тағйироте, ки аз нав кардан беҳисоб карда метавонад"
+
+#: apps/starah-session/starah_session/model.py:53
+msgid "install and remove software"
+msgstr "насб ва хориҷ кардани барнома"
+
+#: apps/starah-session/starah_session/model.py:54
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
+msgstr "хусусиятҳо ва хизматҳоро рӯшн ё хомӯш кардан (NixOS rollback беҳисоб мекунад)"
+
+#: apps/starah-session/starah_session/model.py:55
+msgid "add and remove browser extensions"
+msgstr "илова ва хориҷ кардани васеъкуниҳои браузер"
+
+#: apps/starah-session/starah_session/model.py:56
+msgid "mount and eject USB sticks and disks"
+msgstr "пайваст ва ҷудо кардани дискҳои USB ва дискҳо"
+
+#: apps/starah-session/starah_session/model.py:58
+msgid "System administration"
+msgstr "Идоракунии систем"
+
+#: apps/starah-session/starah_session/model.py:59
+msgid ""
+"edit the system configuration beyond that: user groups, boot, file systems, "
+"scripts"
+msgstr ""
+"танзимоти системро бартар аз он таҳрир кардан: гурӯҳҳои корбар, оғоз, "
+"системаҳои файлҳо, скриптҳо"
+
+#: apps/starah-session/starah_session/model.py:61
+msgid "start, stop and restart services"
+msgstr "оғоз, қатъ ва аз нав оғози хизматҳо"
+
+#: apps/starah-session/starah_session/model.py:62
+msgid "network and Wi-Fi settings, the time, the computer's name and language"
+msgstr "танзимоти шабака ва Wi-Fi, вақт, номи компютер ва забон"
+
+#: apps/starah-session/starah_session/model.py:63
+msgid "power off, restart or suspend the computer"
+msgstr "хомӯш, аз нав оғоз ё таътил кардани компютер"
+
+#: apps/starah-session/starah_session/model.py:65
+msgid "Sensitive"
+msgstr "Ҳассос"
+
+#: apps/starah-session/starah_session/model.py:66
+msgid ""
+"write service definitions (systemd unit files) and system environment "
+"variables"
+msgstr ""
+"навиштани таърифҳои хизмат (файлҳои воҳиди systemd) ва тағйирёбандаҳои "
+"муҳити систем"
+
+#: apps/starah-session/starah_session/model.py:68
+msgid "format and partition disks"
+msgstr "формат ва тақсим кардани дискҳо"
+
+#: apps/starah-session/starah_session/model.py:69
+msgid "virtual machines and containers"
+msgstr "машинаҳои виртуалӣ ва контейнерҳо"
+
+#: apps/starah-session/starah_session/model.py:70
+msgid "anything Starah doesn't recognise"
+msgstr "ҳар чизе, ки Starah эътироф намекунад"
+
+#: apps/starah-session/starah_session/model.py:72
+msgid "Never, at any level"
+msgstr "Ҳеҷ гоҳ, дар ҳар сатҳ"
+
+#: apps/starah-session/starah_session/model.py:73
+msgid "change Starah or its levels"
+msgstr "тағйири Starah ё сатҳҳои он"
+
+#: apps/starah-session/starah_session/model.py:74
+msgid "create or change user accounts and passwords"
+msgstr "эҷод ё тағйири ҳисобҳои корбар ва рамзҳо"
+
+#: apps/starah-session/starah_session/model.py:75
+msgid "run programs as an administrator (pkexec)"
+msgstr "кор кардани барномаҳо ҳамчун мудири систем (pkexec)"
+
+#. Translators: the cells of the Compare Levels table and the headings of
+#. "What exactly?"; short (they sit under a ✓, ? or ✗ in a narrow column).
+#: apps/starah-session/starah_session/model.py:101
+msgid "On its own"
+msgstr "Ба таври мустақил"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Asks you first"
+msgstr "Аввал шуморо мепурсад"
+
+#: apps/starah-session/starah_session/model.py:101
+msgid "Not allowed"
+msgstr "Иҷозат дода намешавад"
+
+#. Translators: {agent} is an agent's name, {what} a technical permission name.
+#: apps/starah-session/starah_session/model.py:196
+#, python-brace-format
+msgid "Agent “{agent}” asks for: {what}"
+msgstr "Агент \"{agent}\" дархост мекунад: {what}"
+
+#. Translators: {level} is like "2 · Routine".
+#: apps/starah-session/starah_session/model.py:201
+#, python-brace-format
+msgid "Agent: {agent} (level {level})"
+msgstr "Агент: {agent} (сатҳи {level})"
+
+#. Translators: {action} is a technical name (org.tulsi.apply), {kind} one of
+#. "read-only", "low-risk", "administration", "sensitive", "never delegated".
+#: apps/starah-session/starah_session/model.py:205
+#, python-brace-format
+msgid "Permission: {action} — {kind}"
+msgstr "Иҷозат: {action} — {kind}"
+
+#. Translators: what the permission is for, e.g. a service's name.
+#: apps/starah-session/starah_session/model.py:210
+#, python-brace-format
+msgid "On: {detail}"
+msgstr "Дар: {detail}"
+
+#: apps/starah-session/starah_session/model.py:212
+#, python-brace-format
+msgid "Reason given: {reason}"
+msgstr "Сабаби додашуда: {reason}"
+
+#: apps/starah-session/starah_session/model.py:251
+msgid "Ask me each time"
+msgstr "Ҳар дафъа аз ман пурсед"
+
+#: apps/starah-session/starah_session/model.py:252
+msgid "Package it with a recipe (no AI model)"
+msgstr "Онро бо ретсиб баста кунед (бе модели AI)"
+
+#: apps/starah-session/starah_session/model.py:253
+msgid "Ask the Assistant (an AI agent)"
+msgstr "Аз дастёранд пурсед (агенти AI)"
+
+#. Translators: {message} is the script error, in English.
+#: apps/starah-session/starah_session/model.py:338
+#, python-brace-format
+msgid ""
+"Your rules have an error at line {line}: {message}. The rules before it are "
+"still in use."
+msgstr ""
+"Қоидаҳои шумо дар сатри {line} хатогӣ доранд: {message}. Қоидаҳои пеш аз он "
+"ҳанӯз ҳам истифода мешаванд."
+
+#: apps/starah-session/starah_session/model.py:340
+#, python-brace-format
+msgid ""
+"Your rules have an error: {message}. The rules before it are still in use."
+msgstr ""
+"Қоидаҳои шумо хатогӣ доранд: {message}. Қоидаҳои пеш аз он ҳанӯз ҳам "
+"истифода мешаванд."
+
+#: apps/starah-session/starah_session/model.py:343
+msgid "Your own rules refine these levels (they are in use)."
+msgstr "Қоидаҳои худатон ин сатҳҳоро такмил медиҳанд (онҳо истифода мешаванд)."
+
+#: apps/starah-session/starah_session/model.py:344
+msgid "You can refine these levels with your own rules (a small script)."
+msgstr "Шумо метавонед ин сатҳҳоро бо қоидаҳои худ таҳриф кунед (скрипти хурд)."
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:4
+msgid "Choose what AI agents may do on this computer"
+msgstr "Интихоб кунед, ки агентҳои AI дар ин компютер чӣ кор карда метавонанд"
+
+#: apps/starah-session/data/org.starah.Session.desktop.in:5
+msgid "AI;agent;privileges;permissions;Starah;security;"
+msgstr "AI;агент;имтиёзҳо;иҷозатҳо;Starah;амният;"

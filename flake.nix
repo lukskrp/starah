@@ -46,6 +46,26 @@
         agents = nixpkgs.legacyPackages.x86_64-linux.testers.runNixOSTest (
           import ./nix/tests/agents.nix { inherit self; }
         );
+        # po/starah.pot has every string the window marks for translation, and
+        # each translation compiles (po/README.md).
+        translations =
+          let
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          in
+          pkgs.runCommand "starah-translations" { nativeBuildInputs = [ pkgs.gettext ]; } ''
+            cp -r ${self}/. src && chmod -R u+w src && cd src
+            cp po/starah.pot committed.pot
+            bash po/update-pot.sh
+            if ! diff -u <(grep -v '^#:' committed.pot) <(grep -v '^#:' po/starah.pot); then
+              echo "po/starah.pot is out of date: run po/update-pot.sh and commit it" >&2
+              exit 1
+            fi
+            for f in po/*.po; do
+              [ -e "$f" ] || continue
+              msgfmt -c -o /dev/null "$f" || { echo "broken: $f" >&2; exit 1; }
+            done
+            touch $out
+          '';
       };
     };
 }

@@ -1,0 +1,375 @@
+# Azerbaijani translations
+# Copyright (C) 2026 THE Starah'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Starah package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Starah\n"
+"Report-Msgid-Bugs-To: https://github.com/lukskrp/starah\n"
+"PO-Revision-Date: 2026-01-01 00:00+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+msgid "Compare Levels"
+msgstr "Səviyyələri Müqayisə Et"
+
+msgid "What each level lets an agent do"
+msgstr "Hər səviyyənin agente nələri icazə verdiyini"
+
+#, python-brace-format
+msgid ""
+"{allow} on its own   ·   {ask} asks you first (you approve or reject each tim"
+"e)   ·   {deny} not allowed"
+msgstr ""
+"{allow} təkbaşına   ·   {ask} əvvəlcə səndən soruşur (hər dəfə təsdiq və ya r"
+"ədd edirsiniz)   ·   {deny} icazə verilmir"
+
+#, python-brace-format
+msgid "{level}: {verdict}"
+msgstr "{level}: {verdict}"
+
+msgid ""
+"Starah answers each request from the agent's level. Your own rules (Edit Rule"
+"s…) can change the answer for particular agents and actions, but never allow "
+"what the last row forbids."
+msgstr ""
+"Starah hər agent istəyini səviyyəsinə cavablandırır. Öz qaydalarınız (Qaydala"
+"rı Redaktə Edin…) bəzi agentlər və əməliyyatlar üçün cavabı dəyişə bilər, lak"
+"in son sətrin qadağa etdiyi heç nəyi icazə verə bilməz."
+
+msgid "_Close"
+msgstr "_Bağla"
+
+msgid "Starah Setup"
+msgstr "Starah Qurulması"
+
+msgid "Agent Privileges"
+msgstr "Agent Imtiyazları"
+
+msgid "Choose what AI agents may do"
+msgstr "AI agentlarının nə edə biləcəyini seçin"
+
+msgid "AI agents on this computer"
+msgstr "Bu kompüterdəki AI agentları"
+
+msgid ""
+"Agents run as their own restricted accounts. When an agent needs a privilege,"
+" Starah answers for you from the level you choose here, and asks you whenever"
+" the level says so. You can change this at any time from “Agent Privileges”."
+msgstr ""
+"Agentlər öz məhdud hesabları altında işləyir. Bir agentə imtiyaz lazım olduqd"
+"a, Starah burada seçdiyiniz səviyyədəndən adınızdan cavab verir və səviyyə tə"
+"ləb etdikdə səzdən soruşur. Bu hər zaman \"Agent Imtiyazları\"ndan dəyişə bil"
+"irsiniz."
+
+msgid ""
+"These are the privilege levels you chose. Agents ask you for anything their l"
+"evel does not allow on its own."
+msgstr ""
+"Seçdiyiniz imtiyaz səviyyələri bunlardır. Agentlər səviyyələrinin təkbaşına i"
+"cazə vermədiyi hər şey üçün səzdən soruşur."
+
+msgid ""
+"⚠ This covers agents your system starts under Starah. An agent you installed "
+"some other way (npm, pip, a script from a website, a downloaded program) runs"
+" as you, with access to all your files."
+msgstr ""
+"⚠ Bu, Starah altında başlayan agentları əhatə edir. Başqa yolla qurduğunuz ag"
+"ent (npm, pip, vebsaytdan skript, yüklənmiş proqram) sizin adınızda işləyir v"
+"ə bütün fayllarınıza girişi var."
+
+msgid "What each level lets an agent do, side by side"
+msgstr "Hər səviyyənin agente nələri icazə verdiyi, yan-yana"
+
+msgid "Learn More"
+msgstr "Daha çox öyrənin"
+
+msgid "Edit Rules…"
+msgstr "Qaydaları Redaktə Edin…"
+
+msgid ""
+"Opens your rules (/etc/starah/rules.rhai) in a terminal editor; they are chec"
+"ked before they are used, and saving asks for the administrator password."
+msgstr ""
+"Qaydalarınızı (/etc/starah/rules.rhai) terminal redaktorunda açır; istifadədə"
+"n əvvəl yoxlanılır və yaddaşa salmaq administratort parolu tələb edir."
+
+msgid "What exactly?"
+msgstr "Dəqiq nə?"
+
+msgid "May use my whole home folder"
+msgstr "Bütün ev qovluğunu istifadə edə bilər"
+
+msgid ""
+"Off: it sees only the folder you start it in, and has its own logins. On: it "
+"works as if it were you in your files — your logins and settings, your SSH ke"
+"ys (it can push with git), your other projects. Its changes to the system sti"
+"ll follow its level."
+msgstr ""
+"Söndür: yalnız onu başlatdığınız qovluğu görür və öz girişlərinə malikdir. Aç"
+"ık: sizin kimi fayllarınızda işləyir — girişləriniz və parametrləriniz, SSH a"
+"çarlarınız (git ilə push edə bilər), digər layihələriniz. Sistəmə etdiyi dəyi"
+"şikliklər yenə səviyyəsinə tabedir."
+
+msgid "When software you install has no TulsiOS package"
+msgstr "Qurduğunuz proqramın TulsiOS paketi olmadıqda"
+
+msgid ""
+"A recipe packages common downloads (AppImages, .deb and .rpm files, programs "
+"and source code in archives) from tested templates, without an AI model. The "
+"Assistant can package almost anything, but needs one."
+msgstr ""
+"Resept tez-tez endirilənləri (AppImages, .deb və .rpm faylları, arxivlərdəki "
+"proqramlar və mənbə kodu) test edilən şablonlardan, AI model olmadan paketləy"
+"ir. Assistent demək olar hər şeyi paketləyə bilər, lakin ona ehtiyac var."
+
+msgid "Show this when I log in"
+msgstr "Bu daxil olduqda göstər"
+
+msgid "_Save"
+msgstr "_Yaddaşa ver"
+
+msgid "_Save and continue"
+msgstr "_Yaddaşa ver və davam et"
+
+#, python-brace-format
+msgid "Not changed: {error}"
+msgstr "Dəyişdirilmədi: {error}"
+
+#, python-brace-format
+msgid "{agent} may now use your whole home folder."
+msgstr "{agent} indi bütün ev qovluğunu istifadə edə bilər."
+
+#, python-brace-format
+msgid "{agent} no longer uses your whole home folder."
+msgstr "{agent} artıq bütün ev qovluğunu istifadə etmir."
+
+msgid "Saving… (you may be asked for your password)"
+msgstr "Yaddaşa yazılır… (parolunuz soruşula bilər)"
+
+#, python-brace-format
+msgid "Not saved: {error}"
+msgstr "Yaddaşa salınmadı: {error}"
+
+msgid "Agent Request"
+msgstr "Agent İstəyi"
+
+msgid "Changes:"
+msgstr "Dəyişikliklər:"
+
+msgid "Allow for"
+msgstr "Qoyulmasın"
+
+msgid "minutes"
+msgstr "dəqiqə"
+
+msgid "_Reject"
+msgstr "_Rədd et"
+
+msgid "_Approve"
+msgstr "_Təsdiq et"
+
+#, python-brace-format
+msgid "Could not answer: {error}"
+msgstr "Cavab verə bilmədi: {error}"
+
+msgid "Observe"
+msgstr "Gözətçi"
+
+msgid "Can look at the system, but cannot change anything."
+msgstr "Sistemə baxa bilər, lakin heç nəyi dəyişə bilməz."
+
+msgid "Propose"
+msgstr "Təklif"
+
+msgid "Can suggest changes; you approve each one before it happens."
+msgstr "Dəyişikliklər təklif edə bilər, amma hər birini baş verməzdən əvvəl siz təsdiqləyirsiniz."
+"Dəyişiklikləri təklif edə bilər; hər birini baş verməzdən əvvəl siz təsdiq ed"
+"irsiniz."
+
+msgid "Routine"
+msgstr "Adi"
+
+msgid ""
+"Makes changes that a restart into the previous system can undo on its own (in"
+"stalling software, turning features on or off, browser extensions); asks you "
+"before anything that touches accounts or disks."
+msgstr ""
+"Əvvəlki sistemin təkbaşana geri qaytara biləcəyi dəyişikliklər edir (proqram "
+"quraşdırmaq, xüsusiyyətləri açmaq və ya bağlamaq, brauzer genişlənmələri); he"
+"sablar və disklərə toxunan hər şeydən əvvəl səzdən soruşur."
+
+msgid "Administer"
+msgstr "İdarəetmə"
+
+msgid ""
+"Also edits the configuration freely and manages services on its own; asks you"
+" before sensitive changes."
+msgstr ""
+"Konfiqurasiyanı sərbəst redaktə edir və xidmətləri öz dəstəyi idarə edir; həs"
+"sas dəyişikliklərdən əvvəl səzdən soruşur."
+
+msgid "Delegate"
+msgstr "Vəkilət"
+
+msgid ""
+"Does everything an administrator can on its own, except changing Starah, user"
+" accounts and passwords."
+msgstr ""
+"Starahı, istifadəçi hesablarını və parolları dəyişmədən, administratortun edə"
+" biləcəyi hər şeyi təkbaşana edir."
+
+msgid "read-only"
+msgstr "yalnız oxu"
+
+msgid "low-risk"
+msgstr "açıq riskli"
+
+msgid "administration"
+msgstr "idarəetmə"
+
+msgid "sensitive"
+msgstr "həssas"
+
+msgid "never delegated"
+msgstr "heç vaxt vəkil edilməyib"
+
+msgid "Look around"
+msgstr "Gəzmək"
+
+msgid "read logs, settings and the system's status"
+msgstr "logları, parametrləri və sistemin vəziyyətini oxu"
+
+msgid "Changes a restart can undo"
+msgstr "Geri qaytarma ilə ləğv edilə bilən dəyişikliklər"
+
+msgid "install and remove software"
+msgstr "proqram quraşdırmaq və silmək"
+
+msgid "turn features and services on or off (a NixOS rollback undoes it)"
+msgstr "xidmətləri və xüsusiyyətləri aktivləşdirin və ya söndürün (NixOS geri qaytarma bunu ləğv edir)"
+"xüsusiyyətləri və xidmətləri açmaq və ya bağlamaq (NixOS geri qaytarması onu "
+"ləğv edir)"
+
+msgid "add and remove browser extensions"
+msgstr "brauzer genişlənmələrini əlavə və silmək"
+
+msgid "mount and eject USB sticks and disks"
+msgstr "USB flash sürənləri və diskləri birləşdirmək və ayırmaq"
+
+msgid "System administration"
+msgstr "Sistem idarəetməsi"
+
+msgid ""
+"edit the system configuration beyond that: user groups, boot, file systems, s"
+"cripts"
+msgstr ""
+"bundan sonra sistem konfiqurasiyasını redaktə edin: istifadəçi qrupları, yükl"
+"ənmə, fayl sistemləri, skriptlər"
+
+msgid "start, stop and restart services"
+msgstr "xidmətləri başlatmaq, dayandırmaq və yenidən başlatmaq"
+
+msgid "network and Wi-Fi settings, the time, the computer's name and language"
+msgstr "şəbəkə və Wi-Fi parametrləri, vaxt, kompüterin adı və dili"
+
+msgid "power off, restart or suspend the computer"
+msgstr "kompüteri söndürmək, yenidən başlatmaq və ya yatılamaq"
+
+msgid "Sensitive"
+msgstr "Həssas"
+
+msgid ""
+"write service definitions (systemd unit files) and system environment variabl"
+"es"
+msgstr ""
+"xidmət təriflərini yazmaq (systemd vahid faylları) və sistem mühiti dəyişənlə"
+"ri"
+
+msgid "format and partition disks"
+msgstr "diskləri formatlamaq və bölmələrə ayırmaq"
+
+msgid "virtual machines and containers"
+msgstr "virtual maşınlar və qablar"
+
+msgid "anything Starah doesn't recognise"
+msgstr "Starahın tanımadığı hər şey"
+
+msgid "Never, at any level"
+msgstr "Heç vaxt, hər səviyyədə"
+
+msgid "change Starah or its levels"
+msgstr "Starahı və ya səviyyələrini dəyişmək"
+
+msgid "create or change user accounts and passwords"
+msgstr "istifadəçi hesablarını və parolları yaratmaq və ya dəyişmək"
+
+msgid "run programs as an administrator (pkexec)"
+msgstr "proqramları administratort kimi işlətmək (pkexec)"
+
+msgid "On its own"
+msgstr "öz təkbaşana"
+
+msgid "Asks you first"
+msgstr "əvvəlcə səndən soruşur"
+
+msgid "Not allowed"
+msgstr "İcazə verilmir"
+
+#, python-brace-format
+msgid "Agent “{agent}” asks for: {what}"
+msgstr "Agent \"{agent}\" soruşur: {what}"
+
+#, python-brace-format
+msgid "Agent: {agent} (level {level})"
+msgstr "Agent: {agent} (səviyy {level})"
+
+#, python-brace-format
+msgid "Permission: {action} — {kind}"
+msgstr "İcazə: {action} — {kind}"
+
+#, python-brace-format
+msgid "On: {detail}"
+msgstr "Üzərində: {detail}"
+
+#, python-brace-format
+msgid "Reason given: {reason}"
+msgstr "Verilmiş səbəb: {reason}"
+
+msgid "Ask me each time"
+msgstr "Hər dəfə mənə soruş"
+
+msgid "Package it with a recipe (no AI model)"
+msgstr "Onu resept ilə paketlə (AI model olmadan)"
+
+msgid "Ask the Assistant (an AI agent)"
+msgstr "Assistentə soruş (bir AI agentı)"
+
+#, python-brace-format
+msgid ""
+"Your rules have an error at line {line}: {message}. The rules before it are s"
+"till in use."
+msgstr ""
+"Qaydalarınızda {line} sətirdə xəta var: {message}. Ondakı qaydalar hələ istif"
+"adə olunur."
+
+#, python-brace-format
+msgid "Your rules have an error: {message}. The rules before it are still in use."
+msgstr "Qaydalarınızda xəta var: {message}. Ondakı qaydalar hələ istifadə olunur."
+
+msgid "Your own rules refine these levels (they are in use)."
+msgstr "Öz qaydalarınız bu səviyyələri təkmilləşdirir (onlar istifadə olunur)."
+
+msgid "You can refine these levels with your own rules (a small script)."
+msgstr "Öz qaydalarınızla (kiçik skript) bu səviyyələri təkmilləşdirə bilərsiniz."
+
+msgid "Choose what AI agents may do on this computer"
+msgstr "Bu kompiterdə AI agentlarının nə edə biləcəyini seçin"
+
+msgid "AI;agent;privileges;permissions;Starah;security;"
+msgstr "AI;agent;imtiyazlar;icazələr;Starah;təhlükəsizlik;"
+
